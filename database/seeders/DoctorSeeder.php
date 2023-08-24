@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Doctor;
+use App\Models\Specialty;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
@@ -16,6 +17,7 @@ class DoctorSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
+        $specialties = Specialty::all();
         for ($i = 1; $i <= 5; $i++) {
             $newDoctor = new Doctor();
             $newDoctor->address = $faker->address();
@@ -26,6 +28,13 @@ class DoctorSeeder extends Seeder
             $newDoctor->service = 'Pulizia dei denti';
             $newDoctor->user_id = $i;
             $newDoctor->save();
+
+            $myNumber = rand(1, 2);
+            $arraySpecialties = [];
+            for ($c = 0; $c <  $myNumber; $c++) {
+                $arraySpecialties[] = $specialties->random()->id;
+            }
+            $newDoctor->specialties()->attach(array_unique($arraySpecialties));
         }
     }
 }
