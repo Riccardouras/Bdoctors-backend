@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('end_date');
             $table->timestamps();
             $table->foreignId('doctor_id')->constrained();
+            $table->foreignId('sponsor_id')->constrained();
         });
     }
 
