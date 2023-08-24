@@ -27,5 +27,6 @@ class MessageSeeder extends Seeder
             $newMessage->date = $faker->dateTime();
             $newMessage->doctor_id = rand(1, count($doctors));
         }
+        
     }
 }
