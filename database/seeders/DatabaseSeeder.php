@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Message;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -20,6 +21,8 @@ class DatabaseSeeder extends Seeder
             VoteSeeder::class,
             SponsorSeeder::class,
             DoctorSeeder::class,
+            MessageSeeder::class
+
         ]);
         // \App\Models\User::factory(10)->create();
 
