@@ -17,7 +17,7 @@ class MessageSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        $doctors = Doctor::all();
+        $doctor_ids = Doctor::all()->pluck('id')->toArray();
 
         for ($i = 0; $i < 10; $i++) {
             $newMessage = new Message();
@@ -25,7 +25,8 @@ class MessageSeeder extends Seeder
             $newMessage->full_name = $faker->name();
             $newMessage->mail = $faker->email();
             $newMessage->date = $faker->dateTime();
-            $newMessage->doctor_id = rand(1, count($doctors));
+            $newMessage->doctor_id = $faker->randomElement($doctor_ids);
+            $newMessage->save();
         }
         
     }

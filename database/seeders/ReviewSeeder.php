@@ -17,7 +17,7 @@ class ReviewSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        $doctors = Doctor::all();
+        $doctor_ids = Doctor::all()->pluck('id')->toArray();
 
         for ($i = 0; $i < 10; $i++) {
             $newReview = new Review();
@@ -25,8 +25,8 @@ class ReviewSeeder extends Seeder
             $newReview->title = $faker->sentence();
             $newReview->comment = $faker->text();
             $newReview->date = $faker->dateTime();
+            $newReview->doctor_id = $faker->randomElement($doctor_ids);
             $newReview->save();
         }
-        $newReview->doctors()->attach($doctors->random()->id);
     }
 }

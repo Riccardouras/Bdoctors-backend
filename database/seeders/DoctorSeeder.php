@@ -18,6 +18,7 @@ class DoctorSeeder extends Seeder
     public function run(Faker $faker)
     {
         $specialties = Specialty::all();
+        $specialties_ids = Specialty::all()->pluck('id')->toArray();
         for ($i = 1; $i <= 5; $i++) {
             $newDoctor = new Doctor();
             $newDoctor->address = $faker->address();
@@ -31,10 +32,10 @@ class DoctorSeeder extends Seeder
 
             $myNumber = rand(1, 2);
             $arraySpecialties = [];
-            for ($c = 0; $c <  $myNumber; $c++) {
+            for ($c = 0; $c < $myNumber; $c++) {
                 $arraySpecialties[] = $specialties->random()->id;
             }
-            $newDoctor->specialties()->attach(array_unique($arraySpecialties));
+            $newDoctor->specialties()->sync($arraySpecialties);
         }
     }
 }
