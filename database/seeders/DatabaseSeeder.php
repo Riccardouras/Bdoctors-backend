@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UserSeeder::class,
-            DoctorSeeder::class
+            DoctorSeeder::class,
+            SpecialtySeeder::class
         ]);
         // \App\Models\User::factory(10)->create();
 
