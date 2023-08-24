@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('specialties', function (Blueprint $table) {
+        Schema::create('doctor_vote', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->dateTime('rated_at')->default(now());
             $table->timestamps();
+            $table->foreignId('doctor_id')->constrained();
+            $table->foreignId('vote_id')->constrained();
         });
     }
 
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('specialties'); 
+        Schema::dropIfExists('doctor_vote');
     }
 };
