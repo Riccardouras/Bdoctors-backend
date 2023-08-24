@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('title');
+            $table->text('comment');
+            $table->dateTime('date')->default(now());
+            $table->foreignId('doctor_id')->constrained();
             $table->timestamps();
         });
     }
