@@ -57,6 +57,12 @@
                     <div class="text-danger mb-3"></div>
                 @enderror
 
+                <label for="profile_img">Curriculum (PDF)</label>
+                <input type="file" class="form-control mb-3" name="curriculum" id="curriculum">
+                @error('curriculum')
+                    <div class="text-danger mb-3"></div>
+                @enderror
+
                 <span>Specializzazione/i</span>
                 <div class="d-block btn-group mb-3" role="group">
                     @foreach ($specialtiesArray as $i => $specialty)
