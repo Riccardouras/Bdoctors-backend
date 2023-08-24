@@ -16,10 +16,10 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        $user = Auth::user()->id;
-        $doctor = Doctor::where('user_id', $user)->get();
+        // $user = Auth::user()->id;
+        // $doctor = Doctor::where('user_id', $user)->get();
 
-        return view();
+        // return view();
     }
 
     /**
