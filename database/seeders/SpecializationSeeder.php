@@ -15,7 +15,7 @@ class SpecialtySeeder extends Seeder
      */
     public function run()
     {
-        $specialties = [
+        $specializations = [
             'Allergologia',
             'Anatomia Patologica',
             'Andrologia',
@@ -70,9 +70,9 @@ class SpecialtySeeder extends Seeder
             'Urologia',
         ];
 
-        foreach ($specialties as $specialty) {
+        foreach ($specializations as $specialization) {
             DB::table('specialties')->insert([
-                'name' => $specialty,
+                'name' => $specialization,
             ]);
         }
     }

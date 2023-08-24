@@ -18,10 +18,10 @@ class Doctor extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function specialties(): BelongsToMany
+    public function specializations(): BelongsToMany
     {
 
-        return $this->belongsToMany(Specialty::class);
+        return $this->belongsToMany(Specialization::class);
     }
 
     public function sponsors(): BelongsToMany
