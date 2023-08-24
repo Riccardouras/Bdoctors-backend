@@ -42,7 +42,5 @@ class Doctor extends Model
 
 
 
-
-
     use HasFactory;
 }
