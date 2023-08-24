@@ -25,5 +25,12 @@ class Doctor extends Model
 
     }
 
+    public function sponsors(): BelongsToMany
+    {
+        
+        return $this->belongsToMany(Sponsor::class);
+
+    }
+
     use HasFactory;
 }
