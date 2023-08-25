@@ -26,7 +26,7 @@ class DoctorController extends Controller
             'doctor' => $doctor
         ];
 
-        return view('admin.doctors.index', $data);
+        return view('admin.doctors.profile', $data);
     }
 
     /**
@@ -101,7 +101,7 @@ class DoctorController extends Controller
 
         $doctor->specialties()->sync($data['specialty']);
 
-        return to_route('admin.doctors.index', compact('doctor'));
+        return to_route('admin.doctors.profile', compact('doctor'));
     }
 
     /**
