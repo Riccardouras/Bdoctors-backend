@@ -15,13 +15,13 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $usersNames = ['matteo', 'riccardo', 'gabriele', 'luca', 'francesco'];
+        $usersNames = config('doctors');
 
         foreach ($usersNames as $userName) {
 
             $newUser = new User();
-            $newUser->name = $userName;
-            $newUser->email = $userName . '@gmail.com';
+            $newUser->name = $userName['name'];
+            $newUser->email = $userName['name'] . '@gmail.com';
             $newUser->password =  bcrypt('prova123');
             $newUser->save();
         }

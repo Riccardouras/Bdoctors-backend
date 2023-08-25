@@ -18,13 +18,18 @@ class DoctorSeeder extends Seeder
     public function run(Faker $faker)
     {
         $specialties_ids = Specialty::all()->pluck('id')->toArray();
-        for ($i = 1; $i <= 5; $i++) {
+
+        $doctorsData = config('doctors');
+
+        for ($i = 1; $i <= count($doctorsData); $i++) {
+            $doctorData = $doctorsData[$i];
+
             $newDoctor = new Doctor();
-            $newDoctor->address = $faker->address();
-            $newDoctor->city = $faker->city();
-            $newDoctor->image = 'https://i0.wp.com/albertaps.ca/wp-content/uploads/2016/03/doctor-placeholder.jpg?ssl=1';
-            $newDoctor->curriculum = 'https://img.freepik.com/free-vector/minimalist-cv-template_23-2148916066.jpg?w=996&t=st=1692808441~exp=1692809041~hmac=e53f33f074516204fb82b1f68525e7ff8b127515ec37e473d500fdb933040686';
-            $newDoctor->phone_number = $faker->phoneNumber();
+            $newDoctor->address = $doctorData['address'];
+            $newDoctor->city = $doctorData ['city'];
+            $newDoctor->image = $doctorData['image'];
+            $newDoctor->curriculum = $doctorData['curriculum'];
+            $newDoctor->phone_number = $doctorData['phone_number'];
             $newDoctor->service = 'Pulizia dei denti';
             $newDoctor->user_id = $i;
             $newDoctor->save();
