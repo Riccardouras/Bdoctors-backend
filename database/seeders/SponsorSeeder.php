@@ -21,6 +21,7 @@ class SponsorSeeder extends Seeder
             ['name' => '144 hours', 'price' => 9.99, 'hours' => 144],
         ];
 
+        
         foreach ($sponsorData as $data) {
             DB::table('sponsors')->insert($data);
         };  
