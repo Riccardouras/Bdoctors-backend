@@ -20,8 +20,8 @@ class DatabaseSeeder extends Seeder
             SpecialtySeeder::class,
             VoteSeeder::class,
             SponsorSeeder::class,
-            ReviewSeeder::class,
             DoctorSeeder::class,
+            ReviewSeeder::class,
             MessageSeeder::class
 
         ]);

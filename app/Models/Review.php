@@ -9,7 +9,7 @@ class Review extends Model
 {
     public function doctor(): BelongsTo
     {
-        return $this->belongsTo(Doctor::class);
+        return $this->BelongsTo(Doctor::class);
     }
 
     use HasFactory;

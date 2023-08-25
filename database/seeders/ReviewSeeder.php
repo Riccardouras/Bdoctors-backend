@@ -19,14 +19,16 @@ class ReviewSeeder extends Seeder
     {
         $doctors = Doctor::all();
 
-        for ($i = 0; $i < 10; $i++) {
-            $newReview = new Review();
-            $newReview->name = $faker->name();
-            $newReview->title = $faker->sentence();
-            $newReview->comment = $faker->text();
-            $newReview->date = $faker->dateTime();
-            $newReview->save();
+        foreach ($doctors as $doctor) {
+            for ($i = 0; $i < 10; $i++) {
+                $newReview = new Review();
+                $newReview->name = $faker->name();
+                $newReview->title = $faker->sentence();
+                $newReview->comment = $faker->text();
+                $newReview->date = $faker->dateTime();
+                $doctor->reviews()->save($newReview);
+            }
         }
-        $newReview->doctors()->attach($doctors->random()->id);
+       
     }
 }
