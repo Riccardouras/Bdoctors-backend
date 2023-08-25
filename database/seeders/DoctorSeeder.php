@@ -23,8 +23,8 @@ class DoctorSeeder extends Seeder
             $newDoctor = new Doctor();
             $newDoctor->address = $faker->address();
             $newDoctor->city = $faker->city();
-            $newDoctor->img_path = 'https://i0.wp.com/albertaps.ca/wp-content/uploads/2016/03/doctor-placeholder.jpg?ssl=1';
-            $newDoctor->cv_path = 'https://img.freepik.com/free-vector/minimalist-cv-template_23-2148916066.jpg?w=996&t=st=1692808441~exp=1692809041~hmac=e53f33f074516204fb82b1f68525e7ff8b127515ec37e473d500fdb933040686';
+            $newDoctor->image = 'https://i0.wp.com/albertaps.ca/wp-content/uploads/2016/03/doctor-placeholder.jpg?ssl=1';
+            $newDoctor->curriculum = 'https://img.freepik.com/free-vector/minimalist-cv-template_23-2148916066.jpg?w=996&t=st=1692808441~exp=1692809041~hmac=e53f33f074516204fb82b1f68525e7ff8b127515ec37e473d500fdb933040686';
             $newDoctor->phone_number = $faker->phoneNumber();
             $newDoctor->service = 'Pulizia dei denti';
             $newDoctor->user_id = $i;

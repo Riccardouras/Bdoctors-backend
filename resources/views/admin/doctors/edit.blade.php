@@ -51,8 +51,8 @@
                     <div class="text-danger mb-3">{{ $message }}</div>
                 @enderror
 
-                <label for="profile_img">Immagine di profilo</label>
-                <input type="file" class="form-control mb-3" name="profile_img" id="profile_img">
+                <label for="image">Immagine di profilo</label>
+                <input type="file" class="form-control mb-3" name="image" id="image">
                 @error('profile_img')
                     <div class="text-danger mb-3"></div>
                 @enderror
