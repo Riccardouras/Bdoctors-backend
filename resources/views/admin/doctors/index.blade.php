@@ -23,8 +23,10 @@
             @endforeach
             
         @else
-            <span class="fw-bold">Specializzazione</span>
-            {{$doctor->specialties[0]->name}}
+            <span class="fw-bold">Specializzazione:</span>
+            @foreach ($doctor->specialties as $specialty)
+                {{ $specialty->name }}
+            @endforeach
         @endif
         <br>
         
@@ -32,9 +34,17 @@
         <span class="fw-bold">Indirizzo:</span>  {{ $doctor->address }} <br>
         <span class="fw-bold">Telefono:</span>  {{ $doctor->phone_number }} <br>
         <span class="fw-bold">Prestazioni:</span>  {{ $doctor->service }} <br>
-        <a href="{{ asset('storage/'. $doctor->curriculum) }}"><span class="fw-bold">Curriculum</span></a> <br>
-        <img src="{{ asset('storage/'. $doctor->image) }}" alt="">
-        <img src="{{ $doctor->curriculum }}" alt="">
+        @if ($doctor->curriculum == null)
+            <span class="text-danger">Aggiorna il profilo e inserisci il curriculum</span>
+        @else
+            <a href="{{ asset('storage/'. $doctor->curriculum) }}"><span class="fw-bold">Curriculum</span></a> <br>
+        @endif
+        <br>
+        @if ($doctor->image == null)
+            <span class="text-danger">Aggiorna il profilo e inserisci la foto profilo</span>
+        @else
+            <img src="{{ asset('storage/'. $doctor->image) }}" alt="">
+        @endif
     </div>
 
     

@@ -12,7 +12,7 @@
                         @csrf
 
                         <div class="mb-4 row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -26,7 +26,43 @@
                         </div>
 
                         <div class="mb-4 row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('Città') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('name') }}" required autocomplete="city">
+
+                                @error('city')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="mb-4 row">
+                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('name') }}" required autocomplete="address">
+
+                                @error('address')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="d-block btn-group mb-3" role="group">
+                            <p>Specializzazione/i</p>
+                            @foreach ($specialtiesArray as $i => $specialty)
+                                <input type="checkbox" value="{{$specialty->id}}" class="btn-check" id="specialty{{$i}}" name="specialty[]">
+                                <label for="specialty{{$i}}" class="btn btn-outline-primary mb-1 rounded-0 mx-0"> {{ $specialty->name }}</label>
+                            @endforeach
+                        </div>
+
+                        <div class="mb-4 row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo E-Mail') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -54,7 +90,7 @@
                         </div>
 
                         <div class="mb-4 row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Conferma Password') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
