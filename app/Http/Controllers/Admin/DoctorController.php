@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Doctor;
+use App\Models\Specialty;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,10 +17,14 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        // $user = Auth::user()->id;
-        // $doctor = Doctor::where('user_id', $user)->get();
+        $user = Auth::user()->id;
+        $doctor = Doctor::Where('user_id', $user)->first();
 
-        // return view();
+        $data = [
+            'doctor' => $doctor
+        ];
+
+        return view('admin.doctors.index', $data);
     }
 
     /**
@@ -60,9 +65,16 @@ class DoctorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Doctor $doctor)
     {
-        //
+
+        $data= [
+            'doctor' => $doctor,
+            'specialtiesArray' => Specialty::all(),
+            'doctorSpecialties' => $doctor->specialties->pluck('id')->toArray()
+        ];
+
+        return view('admin.doctors.edit', $data);
     }
 
     /**

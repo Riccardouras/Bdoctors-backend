@@ -30,12 +30,6 @@ class Doctor extends Model
         return $this->belongsToMany(Sponsor::class);
     }
 
-    public function reviews()
-    {
-
-        return $this->hasMany(Review::class);
-
-    }
 
 
 

@@ -18,18 +18,16 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             SpecialtySeeder::class,
+            DoctorSeeder::class,
             VoteSeeder::class,
             SponsorSeeder::class,
+<<<<<<< HEAD
             DoctorSeeder::class,
+=======
+>>>>>>> main
             ReviewSeeder::class,
             MessageSeeder::class
 
         ]);
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
     }
 }
