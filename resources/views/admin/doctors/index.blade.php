@@ -21,13 +21,14 @@
                     {{ $specialty->name }},
                 @endif
             @endforeach
-            <br>
+            
         @else
             <span class="fw-bold">Specializzazione</span>
             {{$doctor->specialties[0]->name}}
         @endif
+        <br>
         
-            <span class="fw-bold">Città:</span>  {{ $doctor->city }} <br>
+        <span class="fw-bold">Città:</span>  {{ $doctor->city }} <br>
         <span class="fw-bold">Indirizzo:</span>  {{ $doctor->address }} <br>
         <span class="fw-bold">Telefono:</span>  {{ $doctor->phone_number }} <br>
         <span class="fw-bold">Prestazioni:</span>  {{ $doctor->service }} <br>

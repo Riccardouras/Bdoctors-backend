@@ -26,7 +26,7 @@ class DoctorController extends Controller
             'doctor' => $doctor
         ];
 
-        return view('admin.doctors.profile', $data);
+        return view('admin.doctors.index', $data);
     }
 
     /**
@@ -91,9 +91,14 @@ class DoctorController extends Controller
 
         $data = $request->validated();
 
-        if($data['image']){
+        if(array_key_exists('image',$data)){
             $imgPath = Storage::put('uploads', $data['image']);
             $data['image'] = $imgPath;
+        }
+
+        if(array_key_exists('curriculum',$data)){
+            $imgPath = Storage::put('uploads', $data['curriculum']);
+            $data['curriculum'] = $imgPath;
         }
 
         $doctor->fill($data);
@@ -101,7 +106,7 @@ class DoctorController extends Controller
 
         $doctor->specialties()->sync($data['specialty']);
 
-        return to_route('admin.doctors.profile', compact('doctor'));
+        return to_route('admin.doctors.index', compact('doctor'));
     }
 
     /**
