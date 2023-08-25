@@ -22,31 +22,31 @@
                 @method('PUT')
 
                 <label for="name">Nome</label>
-                <input type="text" class="form-control mb-3" name="name" id="name" value="{{ $doctor->user->name }}">
+                <input type="text" class="form-control mb-3" name="name" id="name" value="{{ $doctor->user->name }}" required min="5" max="30">
                 @error('name')
                     <div class="text-danger mb-3">{{ $message }}</div>
                 @enderror
 
                 <label for="city">Città</label>
-                <input type="text" class="form-control mb-3" name="city" id="city" value="{{ $doctor['city'] }}">
+                <input type="text" class="form-control mb-3" name="city" id="city" value="{{ $doctor['city'] }}" required max="30">
                 @error('name')
                     <div class="text-danger mb-3">{{ $message }}</div>
                 @enderror
 
                 <label for="address">Indirizzo</label>
-                <input type="text" class="form-control mb-3" name="address" id="address" value="{{ $doctor['address'] }}">
+                <input type="text" class="form-control mb-3" name="address" id="address" value="{{ $doctor['address'] }}" required max="100">
                 @error('name')
                     <div class="text-danger mb-3">{{ $message }}</div>
                 @enderror
 
                 <label for="phone_number">Telefono</label>
-                <input type="text" class="form-control mb-3" name="phone_number" id="phone_number" value="{{ $doctor['phone_number'] }}">
+                <input type="text" class="form-control mb-3" name="phone_number" id="phone_number" value="{{ $doctor['phone_number'] }}" max="20">
                 @error('name')
                     <div class="text-danger mb-3">{{ $message }}</div>
                 @enderror
 
                 <label for="service">Prestazioni</label>
-                <input type="text" class="form-control mb-3" name="service" id="service" value="{{ $doctor['service'] }}">
+                <input type="text" class="form-control mb-3" name="service" id="service" value="{{ $doctor['service'] }}" max="2000">
                 @error('name')
                     <div class="text-danger mb-3">{{ $message }}</div>
                 @enderror
@@ -57,7 +57,7 @@
                     <div class="text-danger mb-3"></div>
                 @enderror
 
-                <label for="profile_img">Curriculum (PDF)</label>
+                <label for="curriculum">Curriculum (PDF)</label>
                 <input type="file" class="form-control mb-3" name="curriculum" id="curriculum">
                 @error('curriculum')
                     <div class="text-danger mb-3"></div>
