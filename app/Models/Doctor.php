@@ -11,6 +11,15 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Doctor extends Model
 {
 
+    protected $fillable = [
+        'city',
+        'address',
+        'phone_number',
+        'service',
+        'image',
+        'curriculum'
+    ];
+
     // Get the user that owns the Doctor Profile//
 
     public function user(): BelongsTo

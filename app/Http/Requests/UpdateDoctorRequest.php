@@ -29,7 +29,7 @@ class UpdateDoctorRequest extends FormRequest
             'address' => 'required|max:100',
             'phone_number' => 'max:20',
             'service' => 'max:2000',
-            'profile_img' => 'max:5120',
+            'image' => 'max:5012',
             'curriculum' => 'mimetypes:pdf',
             'specialty' => 'required|exists:specialties,id'
         ];
@@ -52,7 +52,7 @@ class UpdateDoctorRequest extends FormRequest
             'address.max' => 'L\'indirizzo può avere massimo 100 caratteri',
             'phone_number.max' => 'Il numero di telefono può avere masssimo 20 caratteri',
             'service.max' => 'Il campo di testo delle prestazioni può avere massimo 2000 caratteri',
-            'profile_img' => 'L\'immagine deve pesare massimo 5MB',
+            'image.max' => 'L\'immagine deve pesare massimo 5MB',
             'curriculum.mimetypes' => 'Il curriculum deve essere in formato PDF',
             'specialty.required' => 'Seleziona almeno una specializzazione',
             'specialty.exists' => 'C\'è stato un problema, riprova'
