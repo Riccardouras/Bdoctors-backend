@@ -6,7 +6,7 @@ return [
             'surname' => 'Grande',
             'address'=>'Via del Magnanimo 7',
             'city'=>'Roma',
-            'image'=>'https://www.jobsagencyfm.com/wp-content/uploads/2016/08/quiero-trabajar-medico-inglaterra.png',
+            'image'=>'https://www.numerochiuso.info/wp-content/uploads/2022/11/medico-di-famiglia.jpg',
             'curriculum'=>'cvmedico.pdf',
             'phone_number'=>'3891681144'
         ],
@@ -15,7 +15,7 @@ return [
             'surname' => 'Trevisan',
             'address'=>'Via Moro 81',
             'city'=>'Treviso',
-            'image'=>'https://thumbs.dreamstime.com/b/doctor-20154809.jpg',
+            'image'=>'https://www.numerochiuso.info/wp-content/uploads/2022/11/medico-di-famiglia.jpg',
             'curriculum'=>'cvmedico.pdf',
             'phone_number'=>'3331118784'
         ],
@@ -24,7 +24,7 @@ return [
             'surname' => 'Demografico',
             'address'=>'Via Giotto 91',
             'city'=>'Milano',
-            'image'=>'https://www.jobsagencyfm.com/wp-content/uploads/2016/08/quiero-trabajar-medico-inglaterra.png',
+            'image'=>'https://www.numerochiuso.info/wp-content/uploads/2022/11/medico-di-famiglia.jpg',
             'curriculum'=>'cvmedico.pdf',
             'phone_number'=>'3471094124',
         ],
@@ -33,7 +33,7 @@ return [
             'surname' => 'Donatelli',
             'address'=>'Via Liguria 12',
             'city'=>'Torino',
-            'image'=>'https://thumbs.dreamstime.com/b/doctor-20154809.jpg',
+            'image'=>'https://www.numerochiuso.info/wp-content/uploads/2022/11/medico-di-famiglia.jpg',
             'curriculum'=>'cvmedico.pdf',
             'phone_number'=>'355127198'
         ],
@@ -42,7 +42,7 @@ return [
             'surname' => 'Prosciutto',
             'address'=>'Via Sardegna 99',
             'city'=>'Napoli',
-            'image'=>'https://www.jobsagencyfm.com/wp-content/uploads/2016/08/quiero-trabajar-medico-inglaterra.png',
+            'image'=>'https://www.numerochiuso.info/wp-content/uploads/2022/11/medico-di-famiglia.jpg',
             'curriculum'=>'cvmedico.pdf',
             'phone_number'=>'3201019222'
         ],
@@ -51,7 +51,7 @@ return [
             'surname' => 'Ciccipaglia',
             'address'=>'Via del Santuario 9',
             'city'=>'Campobasso',
-            'image'=>'https://thumbs.dreamstime.com/b/doctor-20154809.jpg',
+            'image'=>'https://www.numerochiuso.info/wp-content/uploads/2022/11/medico-di-famiglia.jpg',
             'curriculum'=>'cvmedico.pdf',
             'phone_number'=>'3819012455'
         ],
@@ -60,7 +60,7 @@ return [
             'surname' => 'Coppola',
             'address'=>'Piazza Alcide De Gasperi 44',
             'city'=>'Padova',
-            'image'=>'https://www.jobsagencyfm.com/wp-content/uploads/2016/08/quiero-trabajar-medico-inglaterra.png',
+            'image'=>'https://www.numerochiuso.info/wp-content/uploads/2022/11/medico-di-famiglia.jpg',
             'curriculum'=>'cvmedico.pdf',
             'phone_number'=>'3115648123'
         ],
@@ -69,7 +69,7 @@ return [
             'surname' => 'Gregoriani',
             'address'=>'Via del Salmone',
             'city'=>'Bari',
-            'image'=>'https://thumbs.dreamstime.com/b/doctor-20154809.jpg',
+            'image'=>'https://www.numerochiuso.info/wp-content/uploads/2022/11/medico-di-famiglia.jpg',
             'curriculum'=>'cvmedico.pdf',
             'phone_number'=>'3319089733'
         ],
@@ -78,7 +78,7 @@ return [
             'surname' => 'Fallacci',
             'address'=>'Via del Mulino 81',
             'city'=>'Mantova',
-            'image'=>'https://www.jobsagencyfm.com/wp-content/uploads/2016/08/quiero-trabajar-medico-inglaterra.png',
+            'image'=>'https://www.numerochiuso.info/wp-content/uploads/2022/11/medico-di-famiglia.jpg',
             'curriculum'=>'cvmedico.pdf',
             'phone_number'=>'3489088901'
         ],
@@ -87,7 +87,7 @@ return [
             'surname' => 'Pauro',
             'address'=>'Via del Sauro 12',
             'city'=>'Sbrunchio sul mento',
-            'image'=>'https://thumbs.dreamstime.com/b/doctor-20154809.jpg',
+            'image'=>'https://www.numerochiuso.info/wp-content/uploads/2022/11/medico-di-famiglia.jpg',
             'curriculum'=>'cvmedico.pdf',
             'phone_number'=>'3411890123'
         ],
@@ -96,7 +96,7 @@ return [
             'surname' => 'Rossi',
             'address'=>'Via Consueta 1',
             'city'=>'Paese',
-            'image'=>'https://www.jobsagencyfm.com/wp-content/uploads/2016/08/quiero-trabajar-medico-inglaterra.png',
+            'image'=>'https://www.numerochiuso.info/wp-content/uploads/2022/11/medico-di-famiglia.jpg',
             'curriculum'=>'cvmedico.pdf',
             'phone_number'=>'3333333333'
         ],
@@ -105,7 +105,7 @@ return [
             'surname' => 'Bates',
             'address'=>'Via dell Hotel 18',
             'city'=>'Firenze',
-            'image'=>'https://www.jobsagencyfm.com/wp-content/uploads/2016/08/quiero-trabajar-medico-inglaterra.png',
+            'image'=>'https://www.numerochiuso.info/wp-content/uploads/2022/11/medico-di-famiglia.jpg',
             'curriculum'=>'cvmedico.pdf',
             'phone_number'=>'3901990133'
         ],
@@ -114,17 +114,16 @@ return [
             'surname' => 'Canzoni',
             'address'=>'Via popolare',
             'city'=>'Urbino',
-            'image'=>'https://thumbs.dreamstime.com/b/doctor-20154809.jpg',
+            'image'=>'https://www.numerochiuso.info/wp-content/uploads/2022/11/medico-di-famiglia.jpg',
             'curriculum'=>'cvmedico.pdf',
             'phone_number'=>'3489019202'
         ],
-     
         [
             'name'=> 'Paolo',
             'surname' => 'Fiordalisi',
             'address'=>'Via del Fangario 23',
             'city'=>'Cagliari',
-            'image'=>'https://www.jobsagencyfm.com/wp-content/uploads/2016/08/quiero-trabajar-medico-inglaterra.png',
+            'image'=>'https://www.numerochiuso.info/wp-content/uploads/2022/11/medico-di-famiglia.jpg',
             'curriculum'=>'cvmedico.pdf',
             'phone_number'=>'3891790189'
         ],
@@ -133,7 +132,7 @@ return [
             'surname' => 'Salvatore',
             'address'=>'Via del Poeta 45',
             'city'=>'Genova',
-            'image'=>'https://thumbs.dreamstime.com/b/doctor-20154809.jpg',
+            'image'=>'https://www.numerochiuso.info/wp-content/uploads/2022/11/medico-di-famiglia.jpg',
             'curriculum'=>'cvmedico.pdf',
             'phone_number'=>'37898091199'
         ],
@@ -142,7 +141,7 @@ return [
             'surname' => 'Padinolfo',
             'address'=>'Via Ernesto Forza 17',
             'city'=>'Palermo',
-            'image'=>'https://www.jobsagencyfm.com/wp-content/uploads/2016/08/quiero-trabajar-medico-inglaterra.png',
+            'image'=>'https://www.numerochiuso.info/wp-content/uploads/2022/11/medico-di-famiglia.jpg',
             'curriculum'=>'cvmedico.pdf',
             'phone_number'=>'3567809123'
         ],
@@ -151,7 +150,7 @@ return [
             'surname' => 'Fanna',
             'address'=>'Via Giacomo Matteotti 26',
             'city'=>'Potenza',
-            'image'=>'https://thumbs.dreamstime.com/b/doctor-20154809.jpg',
+            'image'=>'https://www.numerochiuso.info/wp-content/uploads/2022/11/medico-di-famiglia.jpg',
             'curriculum'=>'cvmedico.pdf',
             'phone_number'=>'3908918901'
         ],
@@ -160,7 +159,7 @@ return [
             'surname' => 'Aspetti',
             'address'=>'Via dell Artista',
             'city'=>'Siena',
-            'image'=>'https://www.jobsagencyfm.com/wp-content/uploads/2016/08/quiero-trabajar-medico-inglaterra.png',
+            'image'=>'https://www.numerochiuso.info/wp-content/uploads/2022/11/medico-di-famiglia.jpg',
             'curriculum'=>'cvmedico.pdf',
             'phone_number'=>'3789018909'
         ],
@@ -169,7 +168,7 @@ return [
             'surname' => 'Usai',
             'address'=>'Via delle Vele',
             'city'=>'Perugia',
-            'image'=>'https://thumbs.dreamstime.com/b/doctor-20154809.jpg',
+            'image'=>'https://www.numerochiuso.info/wp-content/uploads/2022/11/medico-di-famiglia.jpg',
             'curriculum'=>'cvmedico.pdf',
             'phone_number'=>'3901890788'
         ],
@@ -178,7 +177,7 @@ return [
             'surname' => 'Carrà',
             'address'=>'Via della Montagna 12',
             'city'=>'Udine',
-            'image'=>'https://www.jobsagencyfm.com/wp-content/uploads/2016/08/quiero-trabajar-medico-inglaterra.png',
+            'image'=>'https://www.numerochiuso.info/wp-content/uploads/2022/11/medico-di-famiglia.jpg',
             'curriculum'=>'cvmedico.pdf',
             'phone_number'=>'3389018902'
         ],
@@ -187,7 +186,7 @@ return [
             'surname' => 'Frassica',
             'address'=>'Via Marche 14',
             'city'=>'Bolzano',
-            'image'=>'https://thumbs.dreamstime.com/b/doctor-20154809.jpg',
+            'image'=>'https://www.numerochiuso.info/wp-content/uploads/2022/11/medico-di-famiglia.jpg',
             'curriculum'=>'cvmedico.pdf',
             'phone_number'=>'3891790188'
         ]
