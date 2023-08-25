@@ -19,24 +19,22 @@ class DoctorSeeder extends Seeder
     {
         $specialties_ids = Specialty::all()->pluck('id')->toArray();
 
-        $doctorsData = config('doctors');
+        $doctorsArray = config('doctors');
 
-        for ($i = 1; $i <= count($doctorsData); $i++) {
-            $doctorData = $doctorsData[$i];
-
+        foreach($doctorsArray as $i => $doctor){
             $newDoctor = new Doctor();
-            $newDoctor->address = $doctorData['address'];
-            $newDoctor->city = $doctorData ['city'];
-            $newDoctor->image = $doctorData['image'];
-            $newDoctor->curriculum = $doctorData['curriculum'];
-            $newDoctor->phone_number = $doctorData['phone_number'];
+            $newDoctor->address = $doctor['address'];
+            $newDoctor->city = $doctor ['city'];
+            $newDoctor->image = $doctor['image'];
+            $newDoctor->curriculum = $doctor['curriculum'];
+            $newDoctor->phone_number = $doctor['phone_number'];
             $newDoctor->service = 'Pulizia dei denti';
-            $newDoctor->user_id = $i;
+            $newDoctor->user_id = $i+1;
             $newDoctor->save();
 
-            $myNumber = rand(1, 2);
+            $numberOfSpecialties = rand(1, 2);
             $arraySpecialties = [];
-            for ($c = 0; $c < $myNumber; $c++) {
+            for ($c = 0; $c < $numberOfSpecialties; $c++) {
                 $arraySpecialties[] = $faker->randomElement($specialties_ids);
             }
             $newDoctor->specialties()->sync($arraySpecialties);
