@@ -43,6 +43,7 @@
         @if ($doctor->image == null)
             <span class="text-danger">Aggiorna il profilo e inserisci la foto profilo</span>
         @else
+            <span class="fw-bold">IMMAGINE DI PROFILO</span><br>
             <img src="{{ asset('storage/'. $doctor->image) }}" alt="">
         @endif
     </div>

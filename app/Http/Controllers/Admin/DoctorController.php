@@ -103,6 +103,10 @@ class DoctorController extends Controller
             $data['curriculum'] = $imgPath;
         }
 
+        $user = Auth::user();
+        $user->name = $data['name'];
+        $user->update();
+
         $doctor->fill($data);
         $doctor->update();
 
