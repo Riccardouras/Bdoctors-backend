@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateDoctorRequest;
 use App\Models\Doctor;
+use App\Models\Review;
 use App\Models\Specialty;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,8 +20,8 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        $user = Auth::user()->id;
-        $doctor = Doctor::Where('user_id', $user)->first();
+        $user_id = Auth::user()->id;
+        $doctor = Doctor::where('user_id', $user_id)->first();
 
         $data = [
             'doctor' => $doctor
@@ -119,4 +120,21 @@ class DoctorController extends Controller
     {
         //
     }
+
+    /**
+     * Show the doctor's reviews.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function reviews()
+    {
+        $user_id= Auth::user()->id;
+        $doctor= Doctor::where('user_id', $user_id)->pluck('id');
+        $doctor_id = $doctor[0];
+
+        $reviews = Review::where('doctor_id', $doctor_id)->orderBy('date', 'desc')->get();
+
+        return view('admin.doctors.reviews',compact('reviews'));
+    }
+
 }
