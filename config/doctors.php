@@ -6,7 +6,7 @@ return [
             'address'=>'Via del Magnanimo 7',
             'city'=>'Roma',
             'image'=>'uploads/medico.jpg',
-            'curriculum'=>'cvmedico.pdf',
+            'curriculum'=>'uploads/cvmedico.pdf',
             'phone_number'=>'3891681144'
         ],
         [
@@ -14,7 +14,7 @@ return [
             'address'=>'Via Moro 81',
             'city'=>'Treviso',
             'image'=>'uploads/medico.jpg',
-            'curriculum'=>'cvmedico.pdf',
+            'curriculum'=>'uploads/cvmedico.pdf',
             'phone_number'=>'3331118784'
         ],
         [
@@ -22,7 +22,7 @@ return [
             'address'=>'Via Giotto 91',
             'city'=>'Milano',
             'image'=>'uploads/medico.jpg',
-            'curriculum'=>'cvmedico.pdf',
+            'curriculum'=>'uploads/cvmedico.pdf',
             'phone_number'=>'3471094124',
         ],
         [
@@ -30,7 +30,7 @@ return [
             'address'=>'Via Liguria 12',
             'city'=>'Torino',
             'image'=>'uploads/medico.jpg',
-            'curriculum'=>'cvmedico.pdf',
+            'curriculum'=>'uploads/cvmedico.pdf',
             'phone_number'=>'355127198'
         ],
         [
@@ -38,7 +38,7 @@ return [
             'address'=>'Via Sardegna 99',
             'city'=>'Napoli',
             'image'=>'uploads/medico.jpg',
-            'curriculum'=>'cvmedico.pdf',
+            'curriculum'=>'uploads/cvmedico.pdf',
             'phone_number'=>'3201019222'
         ],
         [
@@ -46,7 +46,7 @@ return [
             'address'=>'Via del Santuario 9',
             'city'=>'Campobasso',
             'image'=>'uploads/medico.jpg',
-            'curriculum'=>'cvmedico.pdf',
+            'curriculum'=>'uploads/cvmedico.pdf',
             'phone_number'=>'3819012455'
         ],
         [
@@ -54,7 +54,7 @@ return [
             'address'=>'Piazza Alcide De Gasperi 44',
             'city'=>'Padova',
             'image'=>'uploads/medico.jpg',
-            'curriculum'=>'cvmedico.pdf',
+            'curriculum'=>'uploads/cvmedico.pdf',
             'phone_number'=>'3115648123'
         ],
         [
@@ -62,7 +62,7 @@ return [
             'address'=>'Via del Salmone',
             'city'=>'Bari',
             'image'=>'uploads/medico.jpg',
-            'curriculum'=>'cvmedico.pdf',
+            'curriculum'=>'uploads/cvmedico.pdf',
             'phone_number'=>'3319089733'
         ],
         [
@@ -70,7 +70,7 @@ return [
             'address'=>'Via del Mulino 81',
             'city'=>'Mantova',
             'image'=>'uploads/medico.jpg',
-            'curriculum'=>'cvmedico.pdf',
+            'curriculum'=>'uploads/cvmedico.pdf',
             'phone_number'=>'3489088901'
         ],
         [
@@ -78,7 +78,7 @@ return [
             'address'=>'Via del Sauro 12',
             'city'=>'Sbrunchio sul mento',
             'image'=>'uploads/medico.jpg',
-            'curriculum'=>'cvmedico.pdf',
+            'curriculum'=>'uploads/cvmedico.pdf',
             'phone_number'=>'3411890123'
         ],
         [
@@ -86,7 +86,7 @@ return [
             'address'=>'Via Consueta 1',
             'city'=>'Paese',
             'image'=>'uploads/medico.jpg',
-            'curriculum'=>'cvmedico.pdf',
+            'curriculum'=>'uploads/cvmedico.pdf',
             'phone_number'=>'3333333333'
         ],
         [
@@ -94,7 +94,7 @@ return [
             'address'=>'Via dell Hotel 18',
             'city'=>'Firenze',
             'image'=>'uploads/medico.jpg',
-            'curriculum'=>'cvmedico.pdf',
+            'curriculum'=>'uploads/cvmedico.pdf',
             'phone_number'=>'3901990133'
         ],
         [
@@ -102,7 +102,7 @@ return [
             'address'=>'Via popolare',
             'city'=>'Urbino',
             'image'=>'uploads/medico.jpg',
-            'curriculum'=>'cvmedico.pdf',
+            'curriculum'=>'uploads/cvmedico.pdf',
             'phone_number'=>'3489019202'
         ],
         [
@@ -110,7 +110,7 @@ return [
             'address'=>'Via del Fangario 23',
             'city'=>'Cagliari',
             'image'=>'uploads/medico.jpg',
-            'curriculum'=>'cvmedico.pdf',
+            'curriculum'=>'uploads/cvmedico.pdf',
             'phone_number'=>'3891790189'
         ],
         [
@@ -118,7 +118,7 @@ return [
             'address'=>'Via del Poeta 45',
             'city'=>'Genova',
             'image'=>'uploads/medico.jpg',
-            'curriculum'=>'cvmedico.pdf',
+            'curriculum'=>'uploads/cvmedico.pdf',
             'phone_number'=>'37898091199'
         ],
         [
@@ -126,7 +126,7 @@ return [
             'address'=>'Via Ernesto Forza 17',
             'city'=>'Palermo',
             'image'=>'uploads/medico.jpg',
-            'curriculum'=>'cvmedico.pdf',
+            'curriculum'=>'uploads/cvmedico.pdf',
             'phone_number'=>'3567809123'
         ],
         [
@@ -134,7 +134,7 @@ return [
             'address'=>'Via Giacomo Matteotti 26',
             'city'=>'Potenza',
             'image'=>'uploads/medico.jpg',
-            'curriculum'=>'cvmedico.pdf',
+            'curriculum'=>'uploads/cvmedico.pdf',
             'phone_number'=>'3908918901'
         ],
         [
@@ -142,7 +142,7 @@ return [
             'address'=>'Via dell Artista',
             'city'=>'Siena',
             'image'=>'uploads/medico.jpg',
-            'curriculum'=>'cvmedico.pdf',
+            'curriculum'=>'uploads/cvmedico.pdf',
             'phone_number'=>'3789018909'
         ],
         [
@@ -150,7 +150,7 @@ return [
             'address'=>'Via delle Vele',
             'city'=>'Perugia',
             'image'=>'uploads/medico.jpg',
-            'curriculum'=>'cvmedico.pdf',
+            'curriculum'=>'uploads/cvmedico.pdf',
             'phone_number'=>'3901890788'
         ],
         [
@@ -158,7 +158,7 @@ return [
             'address'=>'Via della Montagna 12',
             'city'=>'Udine',
             'image'=>'uploads/medico.jpg',
-            'curriculum'=>'cvmedico.pdf',
+            'curriculum'=>'uploads/cvmedico.pdf',
             'phone_number'=>'3389018902'
         ],
         [
@@ -166,7 +166,7 @@ return [
             'address'=>'Via Marche 14',
             'city'=>'Bolzano',
             'image'=>'uploads/medico.jpg',
-            'curriculum'=>'cvmedico.pdf',
+            'curriculum'=>'uploads/cvmedico.pdf',
             'phone_number'=>'3891790188'
         ]
 ];
