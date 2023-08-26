@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateDoctorRequest;
 use App\Models\Doctor;
+use App\Models\Message;
 use App\Models\Review;
 use App\Models\Specialty;
 use Illuminate\Http\Request;
@@ -122,7 +123,7 @@ class DoctorController extends Controller
     }
 
     /**
-     * Show the doctor's reviews.
+     * Show the doctor's received reviews.
      *
      * @return \Illuminate\Http\Response
      */
@@ -135,6 +136,22 @@ class DoctorController extends Controller
         $reviews = Review::where('doctor_id', $doctor_id)->orderBy('date', 'desc')->get();
 
         return view('admin.doctors.reviews',compact('reviews'));
+    }
+
+    /**
+     * Show the doctor's received messages.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function messages()
+    {
+        $user_id= Auth::user()->id;
+        $doctor= Doctor::where('user_id', $user_id)->pluck('id');
+        $doctor_id = $doctor[0];
+
+        $messages = Message::where('doctor_id', $doctor_id)->orderBy('date', 'desc')->get();
+
+        return view('admin.doctors.messages',compact('messages'));
     }
 
 }

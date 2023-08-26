@@ -27,6 +27,7 @@ Route::middleware(['auth'])
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         
+        Route::get('doctors/messages', [DoctorController::class, 'messages'])->name('doctors.messages');
         Route::get('doctors/reviews', [DoctorController::class, 'reviews'])->name('doctors.reviews');
 
         Route::resource('doctors', DoctorController::class);

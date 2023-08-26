@@ -55,6 +55,13 @@
                             </li>
 
                             <li class="nav-item">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.doctors.messages' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.doctors.messages') }}">
+                                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Messaggi
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.doctors.reviews' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.doctors.reviews') }}">
                                     <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Recensioni
