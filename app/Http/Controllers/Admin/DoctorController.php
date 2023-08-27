@@ -71,8 +71,10 @@ class DoctorController extends Controller
      */
     public function edit(Doctor $doctor)
     {
-
-        $data= [
+        if ($doctor->id != auth()->id()) {
+            abort(code: 403);
+        }
+        $data = [
             'doctor' => $doctor,
             'specialtiesArray' => Specialty::all(),
             'doctorSpecialties' => $doctor->specialties->pluck('id')->toArray()
@@ -93,12 +95,12 @@ class DoctorController extends Controller
 
         $data = $request->validated();
 
-        if(array_key_exists('image',$data)){
+        if (array_key_exists('image', $data)) {
             $imgPath = Storage::put('uploads', $data['image']);
             $data['image'] = $imgPath;
         }
 
-        if(array_key_exists('curriculum',$data)){
+        if (array_key_exists('curriculum', $data)) {
             $imgPath = Storage::put('uploads', $data['curriculum']);
             $data['curriculum'] = $imgPath;
         }
@@ -133,13 +135,13 @@ class DoctorController extends Controller
      */
     public function reviews()
     {
-        $user_id= Auth::user()->id;
-        $doctor= Doctor::where('user_id', $user_id)->pluck('id');
+        $user_id = Auth::user()->id;
+        $doctor = Doctor::where('user_id', $user_id)->pluck('id');
         $doctor_id = $doctor[0];
 
         $reviews = Review::where('doctor_id', $doctor_id)->orderBy('date', 'desc')->get();
 
-        return view('admin.doctors.reviews',compact('reviews'));
+        return view('admin.doctors.reviews', compact('reviews'));
     }
 
     /**
@@ -149,13 +151,12 @@ class DoctorController extends Controller
      */
     public function messages()
     {
-        $user_id= Auth::user()->id;
-        $doctor= Doctor::where('user_id', $user_id)->pluck('id');
+        $user_id = Auth::user()->id;
+        $doctor = Doctor::where('user_id', $user_id)->pluck('id');
         $doctor_id = $doctor[0];
 
         $messages = Message::where('doctor_id', $doctor_id)->orderBy('date', 'desc')->get();
 
-        return view('admin.doctors.messages',compact('messages'));
+        return view('admin.doctors.messages', compact('messages'));
     }
-
 }
