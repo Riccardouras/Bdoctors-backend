@@ -37,25 +37,25 @@
                 @enderror
 
                 <label for="city">Città</label>
-                <input type="text" class="form-control mb-3  @error('city') is-invalid @enderror" name="city" id="city" value="{{ $doctor['city'] }}" required max="30">
+                <input type="text" class="form-control mb-3  @error('city') is-invalid @enderror" name="city" id="city" value="{{ $doctor['city'] }}" required maxlength="30">
                 @error('name')
                     <div class="text-danger mb-3">{{ $message }}</div>
                 @enderror
 
                 <label for="address">Indirizzo</label>
-                <input type="text" class="form-control mb-3  @error('address') is-invalid @enderror" name="address" id="address" value="{{ $doctor['address'] }}" required max="100">
+                <input type="text" class="form-control mb-3  @error('address') is-invalid @enderror" name="address" id="address" value="{{ $doctor['address'] }}" required maxlength="100">
                 @error('address')
                     <div class="text-danger mb-3">{{ $message }}</div>
                 @enderror
 
                 <label for="phone_number">Telefono</label>
-                <input type="text" class="form-control mb-3  @error('phone_number') is-invalid @enderror" name="phone_number" id="phone_number" value="{{ $doctor['phone_number'] }}" max="20">
+                <input type="text" class="form-control mb-3  @error('phone_number') is-invalid @enderror" name="phone_number" id="phone_number" value="{{ $doctor['phone_number'] }}" maxlength="20">
                 @error('phone_number')
                     <div class="text-danger mb-3">{{ $message }}</div>
                 @enderror
 
                 <label for="service">Prestazioni</label>
-                <input type="text" class="form-control mb-3  @error('service') is-invalid @enderror" name="service" id="service" value="{{ $doctor['service'] }}" max="2000">
+                <input type="text" class="form-control mb-3  @error('service') is-invalid @enderror" name="service" id="service" value="{{ $doctor['service'] }}" maxlength="2000">
                 @error('service')
                     <div class="text-danger mb-3">{{ $message }}</div>
                 @enderror

@@ -29,7 +29,7 @@ class UpdateDoctorRequest extends FormRequest
             'address' => 'required|max:100',
             'phone_number' => 'max:20',
             'service' => 'max:2000',
-            'image' => 'max:5012',
+            'image' => 'max:5120',
             'curriculum' => 'mimes:pdf',
             'specialty' => 'required|exists:specialties,id'
         ];
