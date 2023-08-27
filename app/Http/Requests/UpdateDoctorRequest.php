@@ -30,7 +30,7 @@ class UpdateDoctorRequest extends FormRequest
             'phone_number' => 'max:20',
             'service' => 'max:2000',
             'image' => 'max:5012',
-            'curriculum' => 'mimetypes:pdf',
+            'curriculum' => 'mimes:pdf',
             'specialty' => 'required|exists:specialties,id'
         ];
     }
