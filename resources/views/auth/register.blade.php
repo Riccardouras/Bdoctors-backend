@@ -55,7 +55,15 @@
 
                         <div class="d-block btn-group mb-3" role="group">
                             <p>Specializzazione/i</p>
+                            <?php $currentLetter = null; ?>
                             @foreach ($specialtiesArray as $i => $specialty)
+                                <?php 
+                                $firstLetter = substr($specialty->name, 0, 1);
+                                if ($currentLetter !== $firstLetter) {
+                                    $currentLetter = $firstLetter;
+                                    echo "<h5>{$currentLetter}:</h5>";
+                                }
+                                ?>
                                 <input type="checkbox" value="{{$specialty->id}}" class="btn-check" id="specialty{{$i}}" name="specialty[]" @checked (in_array($specialty->id, old('specialty') ?? array( 'chiave' => 'valore')))>
                                 <label for="specialty{{$i}}" class="btn btn-outline-primary mb-1 rounded-0 mx-0"> {{ $specialty->name }}</label>
                             @endforeach
