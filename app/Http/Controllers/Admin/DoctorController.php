@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateDoctorRequest;
 use App\Models\Doctor;
+use App\Models\Message;
+use App\Models\Review;
 use App\Models\Specialty;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class DoctorController extends Controller
 {
@@ -17,8 +21,8 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        $user = Auth::user()->id;
-        $doctor = Doctor::Where('user_id', $user)->first();
+        $user_id = Auth::user()->id;
+        $doctor = Doctor::where('user_id', $user_id)->first();
 
         $data = [
             'doctor' => $doctor
@@ -67,8 +71,10 @@ class DoctorController extends Controller
      */
     public function edit(Doctor $doctor)
     {
-
-        $data= [
+        if ($doctor->id != auth()->id()) {
+            abort(code: 403);
+        }
+        $data = [
             'doctor' => $doctor,
             'specialtiesArray' => Specialty::all(),
             'doctorSpecialties' => $doctor->specialties->pluck('id')->toArray()
@@ -84,9 +90,31 @@ class DoctorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateDoctorRequest $request, Doctor $doctor)
     {
-        //
+
+        $data = $request->validated();
+
+        if (array_key_exists('image', $data)) {
+            $imgPath = Storage::put('uploads', $data['image']);
+            $data['image'] = $imgPath;
+        }
+
+        if (array_key_exists('curriculum', $data)) {
+            $imgPath = Storage::put('uploads', $data['curriculum']);
+            $data['curriculum'] = $imgPath;
+        }
+
+        $user = Auth::user();
+        $user->name = $data['name'];
+        $user->update();
+
+        $doctor->fill($data);
+        $doctor->update();
+
+        $doctor->specialties()->sync($data['specialty']);
+
+        return to_route('admin.doctors.index', compact('doctor'));
     }
 
     /**
@@ -98,5 +126,37 @@ class DoctorController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Show the doctor's received reviews.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function reviews()
+    {
+        $user_id = Auth::user()->id;
+        $doctor = Doctor::where('user_id', $user_id)->pluck('id');
+        $doctor_id = $doctor[0];
+
+        $reviews = Review::where('doctor_id', $doctor_id)->orderBy('date', 'desc')->get();
+
+        return view('admin.doctors.reviews', compact('reviews'));
+    }
+
+    /**
+     * Show the doctor's received messages.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function messages()
+    {
+        $user_id = Auth::user()->id;
+        $doctor = Doctor::where('user_id', $user_id)->pluck('id');
+        $doctor_id = $doctor[0];
+
+        $messages = Message::where('doctor_id', $doctor_id)->orderBy('date', 'desc')->get();
+
+        return view('admin.doctors.messages', compact('messages'));
     }
 }

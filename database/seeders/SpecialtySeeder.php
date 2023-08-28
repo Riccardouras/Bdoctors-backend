@@ -15,6 +15,8 @@ class SpecialtySeeder extends Seeder
      */
     public function run()
     {
+        $specialties = config('specialties');
+
         foreach ($specialties as $specialty) {
             DB::table('specialties')->insert([
                 'name' => $specialty,

@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('address');
             $table->string('city');
-            $table->string('img_path')->nullable();
-            $table->string('cv_path')->nullable();
+            $table->string('image')->nullable();
+            $table->string('curriculum')->nullable();
             $table->string('phone_number')->nullable();
             $table->text('service')->nullable();
             $table->timestamps();

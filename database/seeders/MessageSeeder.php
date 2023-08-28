@@ -19,14 +19,18 @@ class MessageSeeder extends Seeder
     {
         $doctor_ids = Doctor::all()->pluck('id')->toArray();
 
-        for ($i = 0; $i < 10; $i++) {
-            $newMessage = new Message();
-            $newMessage->text = $faker->text(50);
-            $newMessage->full_name = $faker->name();
-            $newMessage->mail = $faker->email();
-            $newMessage->date = $faker->dateTime();
-            $newMessage->doctor_id = $faker->randomElement($doctor_ids);
-            $newMessage->save();
+        foreach($doctor_ids as $id){
+            $numberOfMessage = rand(1,5);
+
+            for ($c = 0; $c < $numberOfMessage; $c++) {
+                $newMessage = new Message();
+                $newMessage->text = $faker->text(50);
+                $newMessage->full_name = $faker->name();
+                $newMessage->mail = $faker->email();
+                $newMessage->date = $faker->dateTime();
+                $newMessage->doctor_id = $id;
+                $newMessage->save();
+            }
         }
         
     }

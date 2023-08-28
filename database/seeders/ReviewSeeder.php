@@ -17,16 +17,22 @@ class ReviewSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        $doctor_ids = Doctor::all()->pluck('id')->toArray();
+        $doctor_ids = Doctor::all()->pluck('id')->toArray();    
 
-        for ($i = 0; $i < 10; $i++) {
-            $newReview = new Review();
-            $newReview->name = $faker->name();
-            $newReview->title = $faker->sentence();
-            $newReview->comment = $faker->text();
-            $newReview->date = $faker->dateTime();
-            $newReview->save();
+        foreach($doctor_ids as $id){
+            $numberOfReview = rand(1,5);
+
+            for ($c = 0; $c < $numberOfReview; $c++) {
+                $newReview = new Review();
+                $newReview->name = $faker->name();
+                $newReview->title = $faker->sentence();
+                $newReview->comment = $faker->text();
+                $newReview->date = $faker->dateTime();
+                $newReview->doctor_id = $id;
+                $newReview->save();
+            }
         }
-        $newReview->doctors()->attach($doctors->random()->id);
+
+        
     }
 }
