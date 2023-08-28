@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
 
-            $table->foreignId('doctor_id')->constrained();
-            $table->foreignId('specialty_id')->constrained();
+            $table->foreignId('doctor_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('specialty_id')->constrained()->cascadeOnDelete();
         });
     }
 

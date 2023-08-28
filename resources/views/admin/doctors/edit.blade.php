@@ -102,32 +102,42 @@
                             <embed src="{{ asset('storage/' . $doctor->curriculum) }}" />
                         </div>
                     @endif
-                
+
                     <embed id="cvPreview" style="display: none" src="#" />
                 </div>
-                
+
 
                 <span>Specializzazione/i</span>
                 <div class="d-block btn-group mb-3" role="group">
                     <?php $currentLetter = null; ?>
-                        @foreach ($specialtiesArray as $i => $specialty)
-                            <?php 
-                                $firstLetter = substr($specialty->name, 0, 1);
-                                if ($currentLetter !== $firstLetter) {
-                                    $currentLetter = $firstLetter;
-                                    echo "<h5>{$currentLetter}:</h5>";
-                                }
-                            ?>
-                                    <input type="checkbox" value="{{$specialty->id}}" class="btn-check" id="specialty{{$i}}" name="specialty[]" 
-                                    @if(in_array($specialty->id, old('specialty') ?? $doctor->specialties->pluck('id')->toArray())) checked @endif>
-                                    <label for="specialty{{$i}}" class="btn btn-outline-primary mb-1 rounded-0 mx-0"> {{ $specialty->name }}</label>
-                        @endforeach
+                    @foreach ($specialtiesArray as $i => $specialty)
+                        <?php
+                        $firstLetter = substr($specialty->name, 0, 1);
+                        if ($currentLetter !== $firstLetter) {
+                            $currentLetter = $firstLetter;
+                            echo "<h5>{$currentLetter}:</h5>";
+                        }
+                        ?>
+                        <input type="checkbox" value="{{ $specialty->id }}" class="btn-check"
+                            id="specialty{{ $i }}" name="specialty[]"
+                            @if (in_array($specialty->id, old('specialty') ?? $doctor->specialties->pluck('id')->toArray())) checked @endif>
+                        <label for="specialty{{ $i }}" class="btn btn-outline-primary mb-1 rounded-0 mx-0">
+                            {{ $specialty->name }}</label>
+                    @endforeach
                 </div>
                 @error('specialty')
                     <div class="text-danger mb-3">{{ $message }}</div>
                 @enderror
 
                 <input type="submit" class="form-control btn btn-primary">
+            </form>
+
+            <form action="{{ route('admin.doctors.destroy', $doctor) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button class="btn btn-danger">Cancella utente</button>
+
+
             </form>
         </div>
     </div>
@@ -147,7 +157,7 @@
 
         // const curriculum = document.getElementById('curriculum');
 
-        curriculum.onchange = evt =>{
+        curriculum.onchange = evt => {
             cvPreview = document.getElementById('cvPreview');
             cvPreview.style.display = 'block';
 

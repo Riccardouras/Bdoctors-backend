@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('comment');
             $table->dateTime('date')->default(now());
-            $table->foreignId('doctor_id')->constrained();
+            $table->foreignId('doctor_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
