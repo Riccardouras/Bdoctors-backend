@@ -75,7 +75,7 @@
                     <div class="text-danger mb-3"></div>
                 @enderror
                 <div class="d-flex gap-4">
-                    @if ($doctor->image)
+                    @if ($doctor->image != null)
                         <figure class="figure w-25">
                             <img class="figure-img img-fluid img-thumbnail" src="{{ asset('storage/' . $doctor->image) }}"
                                 alt="currentImg">
@@ -96,9 +96,16 @@
                 @error('curriculum')
                     <div class="invalid-feedback mb-3">{{ $message }}</div>
                 @enderror
-                <div>
-                    <embed src="{{ asset('storage/' . $doctor->curriculum) }}" />
+                <div class="d-flex gap-4">
+                    @if ($doctor->curriculum != null)
+                        <div>
+                            <embed src="{{ asset('storage/' . $doctor->curriculum) }}" />
+                        </div>
+                    @endif
+                
+                    <embed id="cvPreview" style="display: none" src="#" />
                 </div>
+                
 
                 <span>Specializzazione/i</span>
                 <div class="d-block btn-group mb-3" role="group">
@@ -128,6 +135,18 @@
             const [file] = image.files
             if (file) {
                 preview.src = URL.createObjectURL(file)
+            }
+        }
+
+        // const curriculum = document.getElementById('curriculum');
+
+        curriculum.onchange = evt =>{
+            cvPreview = document.getElementById('cvPreview');
+            cvPreview.style.display = 'block';
+
+            const [file] = curriculum.files;
+            if (file) {
+                cvPreview.src = URL.createObjectURL(file);
             }
         }
     </script>
