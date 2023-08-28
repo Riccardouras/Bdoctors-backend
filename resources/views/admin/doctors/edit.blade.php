@@ -32,35 +32,38 @@
 
                 <label for="name">Nome</label>
                 <input type="text" class="form-control mb-3  @error('name') is-invalid @enderror" name="name"
-                    id="name" value="{{ $doctor->user->name }}" required minlength="5" maxlength="30">
+                    id="name" value="{{ old('name') ? old('name') : $doctor->user->name }}" required minlength="5"
+                    maxlength="30">
                 @error('name')
                     <div class="text-danger mb-3">{{ $message }}</div>
                 @enderror
 
                 <label for="city">Città</label>
                 <input type="text" class="form-control mb-3  @error('city') is-invalid @enderror" name="city"
-                    id="city" value="{{ $doctor['city'] }}" required maxlength="30">
-                @error('name')
+                    id="city" value="{{ old('city') ? old('city') : $doctor['city'] }}" required maxlength="30">
+                @error('city')
                     <div class="text-danger mb-3">{{ $message }}</div>
                 @enderror
 
                 <label for="address">Indirizzo</label>
                 <input type="text" class="form-control mb-3  @error('address') is-invalid @enderror" name="address"
-                    id="address" value="{{ $doctor['address'] }}" required maxlength="100">
+                    id="address" value="{{ old('address') ? old('address') : $doctor['address'] }}" required
+                    maxlength="100">
                 @error('address')
                     <div class="text-danger mb-3">{{ $message }}</div>
                 @enderror
 
                 <label for="phone_number">Telefono</label>
                 <input type="text" class="form-control mb-3  @error('phone_number') is-invalid @enderror"
-                    name="phone_number" id="phone_number" value="{{ $doctor['phone_number'] }}" maxlength="20">
+                    name="phone_number" id="phone_number"
+                    value="{{ old('phone_number') ? old('phone_number') : $doctor['phone_number'] }}" maxlength="20">
                 @error('phone_number')
                     <div class="text-danger mb-3">{{ $message }}</div>
                 @enderror
 
                 <label for="service">Prestazioni</label>
                 <input type="text" class="form-control mb-3  @error('service') is-invalid @enderror" name="service"
-                    id="service" value="{{ $doctor['service'] }}" maxlength="2000">
+                    id="service" value="{{ old('service') ? old('service') : $doctor['service'] }}" maxlength="2000">
                 @error('service')
                     <div class="text-danger mb-3">{{ $message }}</div>
                 @enderror
@@ -71,8 +74,21 @@
                 @error('profile_img')
                     <div class="text-danger mb-3"></div>
                 @enderror
-                <img id="imgPreview" src="#" alt="myImg" class="mt-3 img-fluid img-thumbnail  w-25"
-                    style="display:none;" />
+                <div class="d-flex gap-4">
+                    @if ($doctor->image)
+                        <figure class="figure w-25">
+                            <img class="figure-img img-fluid img-thumbnail" src="{{ asset('storage/' . $doctor->image) }}"
+                                alt="currentImg">
+                            <figcaption class="figure-caption">Current Image</figcaption>
+                        </figure>
+                    @endif
+                    <figure class="figure w-25">
+                        <img class="figure-img img-fluid img-thumbnail" id="imgPreview" src="#" alt="myImg"
+                            style="display:none" />
+                        <figcaption id="figCapPreview" class="figure-caption" style="display:none">Image Preview
+                        </figcaption>
+                    </figure>
+                </div>
 
                 <label for="curriculum">Curriculum (PDF)</label>
                 <input type="file" class="form-control mb-3  @error('curriculum') is-invalid @enderror" name="curriculum"
@@ -80,6 +96,9 @@
                 @error('curriculum')
                     <div class="invalid-feedback mb-3">{{ $message }}</div>
                 @enderror
+                <div>
+                    <embed src="{{ asset('storage/' . $doctor->curriculum) }}" />
+                </div>
 
                 <span>Specializzazione/i</span>
                 <div class="d-block btn-group mb-3" role="group">
@@ -103,7 +122,9 @@
     <script>
         image.onchange = evt => {
             preview = document.getElementById('imgPreview');
+            capPreview = document.getElementById('figCapPreview');
             preview.style.display = 'block';
+            capPreview.style.display = 'block';
             const [file] = image.files
             if (file) {
                 preview.src = URL.createObjectURL(file)
