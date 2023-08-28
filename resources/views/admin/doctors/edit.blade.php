@@ -30,7 +30,7 @@
 
                 @method('PUT')
 
-                <label for="name">Nome</label>
+                <label for="name">Nome Completo</label>
                 <input type="text" class="form-control mb-3  @error('name') is-invalid @enderror" name="name"
                     id="name" value="{{ old('name') ? old('name') : $doctor->user->name }}" required minlength="5"
                     maxlength="30">

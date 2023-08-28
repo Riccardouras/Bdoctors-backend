@@ -12,7 +12,7 @@
                         @csrf
 
                         <div class="mb-4 row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome Completo') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -29,7 +29,7 @@
                             <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('Città') }}</label>
 
                             <div class="col-md-6">
-                                <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('name') }}" required autocomplete="city">
+                                <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autocomplete="city">
 
                                 @error('city')
                                 <span class="invalid-feedback" role="alert">
@@ -43,7 +43,7 @@
                             <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo') }}</label>
 
                             <div class="col-md-6">
-                                <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('name') }}" required autocomplete="address">
+                                <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address">
 
                                 @error('address')
                                 <span class="invalid-feedback" role="alert">
@@ -56,7 +56,7 @@
                         <div class="d-block btn-group mb-3" role="group">
                             <p>Specializzazione/i</p>
                             @foreach ($specialtiesArray as $i => $specialty)
-                                <input type="checkbox" value="{{$specialty->id}}" class="btn-check" id="specialty{{$i}}" name="specialty[]">
+                                <input type="checkbox" value="{{$specialty->id}}" class="btn-check" id="specialty{{$i}}" name="specialty[]" @checked (in_array($specialty->id, old('specialty') ?? array( 'chiave' => 'valore')))>
                                 <label for="specialty{{$i}}" class="btn btn-outline-primary mb-1 rounded-0 mx-0"> {{ $specialty->name }}</label>
                             @endforeach
                         </div>
