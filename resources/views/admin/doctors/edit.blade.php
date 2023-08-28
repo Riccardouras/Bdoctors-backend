@@ -111,7 +111,7 @@
                 <div class="d-block btn-group mb-3" role="group">
                     @foreach ($specialtiesArray as $i => $specialty)
                         <input type="checkbox" value="{{ $specialty->id }}" class="btn-check"
-                            id="specialty{{ $i }}" name="specialty[]" @checked (in_array($specialty->id, old('specialties') ?? $doctor->specialties->pluck('id')->toArray()))>
+                            id="specialty{{ $i }}" name="specialty[]" @checked (in_array($specialty->id, old('specialty') ?? $doctor->specialties->pluck('id')->toArray()))>
                         <label for="specialty{{ $i }}" class="btn btn-outline-primary mb-1 rounded-0 mx-0">
                             {{ $specialty->name }}</label>
                     @endforeach
