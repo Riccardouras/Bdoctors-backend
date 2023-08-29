@@ -45,7 +45,7 @@ class DoctorSeeder extends Seeder
             $voteIdArray= [];
             foreach ($votes as $vote) {
                 if ($vote['doctor_id']== $newDoctor->id)  {
-                   $voteIdArray[]=$vote['vote_id'];
+                    $voteIdArray[]=$vote['vote_id'];
                 }
                 $newDoctor->votes()->sync($voteIdArray);
             }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\DoctorController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\UserController;
@@ -20,3 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/doctors', [UserController::class, 'index']);
 Route::get('/doctors/{id}', [UserController::class, 'show']);
+
+Route::get('/sponsoredDoctors', [DoctorController::class, 'sponsored']);
