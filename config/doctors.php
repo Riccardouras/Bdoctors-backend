@@ -2,7 +2,7 @@
 
 return [
         [
-            'name'=> 'Andrea Grande',
+            'name'=> 'Andrea',
             'address'=>'Via del Magnanimo 7',
             'city'=>'Roma',
             'image'=>'uploads/medico.jpg',
