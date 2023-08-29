@@ -211,16 +211,25 @@ class DoctorController extends Controller
             ];
         }
 
-        
+
+        $lastMonthMessages = $doctor->messages()->where('date', '>', $lastMonthDates)->count();
+        $lastYearMessages = $doctor->messages()->where('date', '>', $lastYearDates)->count();
+
+        $lastMonthReviews = $doctor->reviews()->where('date', '>', $lastMonthDates)->count();
+        $lastYearReviews = $doctor->reviews()->where('date', '>', $lastYearDates)->count();
+
+
+
 
         $data = [
             'lastMonthVotes' => $lastMonthVotes,
             'lastYearVotes' => $lastYearVotes,
+            'lastMonthMessages' => $lastMonthMessages,
+            'lastYearMessages' => $lastYearMessages,
+            'lastMonthReviews' => $lastMonthReviews,
+            'lastYearReviews' => $lastYearReviews,
             'user' => $user
         ];
-
-        
-
 
         return view('admin.doctors.stats', $data);
     }

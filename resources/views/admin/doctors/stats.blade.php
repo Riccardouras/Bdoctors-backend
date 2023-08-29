@@ -2,15 +2,16 @@
 
 @section('content')
     <div class="container mt-3">
-        <div class="row justify-content-center">
-            <h1> Ciao {{ $user->name }}</h1>
+        <div class="row">
+            <h1 class="mb-5"> Ciao {{ $user->name }}</h1>
 
-            <div class="col-6">
-                <h3>VOTI ULTIMO MESE</h3>
+
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+            <div class="col-6 mb-5">
+                <h3 class="text-center">VOTI ULTIMO MESE</h3>
                 <canvas id="monthlyVote"></canvas>
             </div>
-    
-            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
             <script>
                 const monthlyVote = document.getElementById('monthlyVote');
@@ -38,8 +39,8 @@
                 });
             </script>
     
-            <div class="col-6">
-                <h3>VOTI ULTIMO ANNO</h3>
+            <div class="col-6 mb-5">
+                <h3 class="text-center">VOTI ULTIMO ANNO</h3>
                 <canvas id="yearlyVote"></canvas>
             </div>
     
@@ -69,6 +70,70 @@
                     }
                 });
             </script>
+
+            <div class="col-6 mb-5">
+                <h3 class="text-center">RECENSIONI RICEVUTE</h3>
+                <canvas id="reviewsChart"></canvas>
+            </div>
+
+            <script>
+                const reviewsChart = document.getElementById('reviewsChart');
+
+                new Chart(reviewsChart, {
+                    type: 'bar',
+                    data: {
+                    labels: ['ULTIMO MESE', 'ULTIMO ANNO'],
+                    datasets: [{
+                        label: 'Numero di voti',
+                        data: [{{ $lastMonthReviews }}, {{ $lastYearReviews }}],
+                        borderWidth: 1
+                    }]
+                    },
+                    options: {
+                    scales: {
+                        y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 1
+                        }
+                        }
+                    }
+                    }
+                });
+            </script>
+
+            <div class="col-6 mb-5">
+                <h3 class="text-center">NUMERO MESSAGGI RICEVUTI</h3>
+                <canvas id="messagesChart"></canvas>
+            </div>
+
+            <script>
+                const messagesChart = document.getElementById('messagesChart');
+
+                new Chart(messagesChart, {
+                    type: 'bar',
+                    data: {
+                    labels: ['ULTIMO MESE', 'ULTIMO ANNO'],
+                    datasets: [{
+                        label: 'Numero di voti',
+                        data: [{{ $lastMonthMessages }}, {{ $lastYearMessages }}],
+                        borderWidth: 1
+                    }]
+                    },
+                    options: {
+                    scales: {
+                        y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 1
+                        }
+                        }
+                    }
+                    }
+                });
+            </script>
+
+
         </div>
 
         
