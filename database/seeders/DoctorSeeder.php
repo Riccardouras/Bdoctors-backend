@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Doctor;
 use App\Models\Specialty;
+use App\Models\Vote;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
@@ -38,6 +39,16 @@ class DoctorSeeder extends Seeder
                 $arraySpecialties[] = $faker->randomElement($specialties_ids);
             }
             $newDoctor->specialties()->sync($arraySpecialties);
+
+            $votes = config('votes');
+
+            $voteIdArray= [];
+            foreach ($votes as $vote) {
+                if ($vote['doctor_id']== $newDoctor->id)  {
+                   $voteIdArray[]=$vote['vote_id'];
+                }
+                $newDoctor->votes()->sync($voteIdArray);
+            }
         }
     }
 }

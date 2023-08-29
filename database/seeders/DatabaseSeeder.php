@@ -18,8 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             SpecialtySeeder::class,
-            DoctorSeeder::class,
             VoteSeeder::class,
+            DoctorSeeder::class,
             SponsorSeeder::class,
             ReviewSeeder::class,
             MessageSeeder::class
