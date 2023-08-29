@@ -15,23 +15,19 @@ class MessageSeeder extends Seeder
      *
      * @return void
      */
-    public function run(Faker $faker)
+    public function run()
     {
-        $doctor_ids = Doctor::all()->pluck('id')->toArray();
+        $messagesArray = config('messages');
 
-        foreach($doctor_ids as $id){
-            $numberOfMessage = rand(1,5);
+        foreach ($messagesArray as $message) {
 
-            for ($c = 0; $c < $numberOfMessage; $c++) {
-                $newMessage = new Message();
-                $newMessage->text = $faker->text(50);
-                $newMessage->full_name = $faker->name();
-                $newMessage->mail = $faker->email();
-                $newMessage->date = $faker->dateTime();
-                $newMessage->doctor_id = $id;
-                $newMessage->save();
-            }
+            $newMessage = new Message();
+            $newMessage->text = $message['text'];
+            $newMessage->full_name = $message['full_name'];
+            $newMessage->mail = $message['mail'];
+            $newMessage->date = $message['date'];
+            $newMessage->doctor_id = $message['doctor_id'];
+            $newMessage->save();
         }
-        
     }
 }

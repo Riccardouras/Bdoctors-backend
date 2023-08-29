@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('text');
             $table->string('full_name');
             $table->string('mail');
-            $table->dateTime('date');
+            $table->date('date');
 
             $table->foreignId('doctor_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
