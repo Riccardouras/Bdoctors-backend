@@ -22,12 +22,11 @@ class DoctorController extends Controller
         foreach($sponsoredDoctorsIDS as $id){
 
             $doctor = Doctor::where('id', $id)->first();
-            
 
-            $doctorImage = Doctor::where('id', $id)->select('image')->first();
+            $doctorImage = $doctor->select('image')->first();
             $doctorImage =  'http://localhost:8000/storage/' . $doctorImage->image;
 
-            $userID = Doctor::where('id', $id)->pluck('user_id');
+            $userID = $doctor->pluck('user_id');
             $doctorName = User::where('id', $userID[0])->select('name')->first();
             $doctorName = $doctorName->name;
             
