@@ -163,4 +163,61 @@ class DoctorController extends Controller
 
         return view('admin.doctors.messages', compact('messages'));
     }
+
+
+    /**
+     * Show the doctor's statistic.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function stats()
+    {
+        $user = Auth::user();
+        $doctor = Doctor::where('user_id', $user->id)->first();
+
+        $lastMonthDates = mktime(0, 0, 0, date("m")-1, date("d"),   date("Y"));;
+        $lastMonthDates = gmdate("Y-m-d H:i:s", $lastMonthDates);
+        $lastYearDates = mktime(0, 0, 0, date("m"), date("d"),   date("Y")-1);;
+        $lastYearDates = gmdate("Y-m-d H:i:s", $lastYearDates);
+
+        $oneStar = $doctor->votes()->where('date', '>', $lastMonthDates)->where('vote_id', '1')->count();
+        $twoStar = $doctor->votes()->where('date', '>', $lastMonthDates)->where('vote_id', '2')->count();
+        $threeStar = $doctor->votes()->where('date', '>', $lastMonthDates)->where('vote_id', '3')->count();
+        $fourStar = $doctor->votes()->where('date', '>', $lastMonthDates)->where('vote_id', '4')->count();
+        $fiveStar = $doctor->votes()->where('date', '>', $lastMonthDates)->where('vote_id', '5')->count();
+
+        $lastMonthVotes = [
+            'oneStar' => $oneStar,
+            'twoStar' => $twoStar,
+            'threeStar' => $threeStar,
+            'fourStar' => $fourStar,
+            'fiveStar' => $fiveStar
+        ];
+
+        $oneStar = $doctor->votes()->where('date', '>', $lastYearDates)->where('vote_id', '1')->count();
+        $twoStar = $doctor->votes()->where('date', '>', $lastYearDates)->where('vote_id', '2')->count();
+        $threeStar = $doctor->votes()->where('date', '>', $lastYearDates)->where('vote_id', '3')->count();
+        $fourStar = $doctor->votes()->where('date', '>', $lastYearDates)->where('vote_id', '4')->count();
+        $fiveStar = $doctor->votes()->where('date', '>', $lastYearDates)->where('vote_id', '5')->count();
+
+        $lastYearVotes = [
+            'oneStar' => $oneStar,
+            'twoStar' => $twoStar,
+            'threeStar' => $threeStar,
+            'fourStar' => $fourStar,
+            'fiveStar' => $fiveStar
+        ];
+
+
+        $data = [
+            'lastMonthVotes' => $lastMonthVotes,
+            'lastYearVotes' => $lastYearVotes,
+            'user' => $user
+        ];
+
+        
+
+
+        return view('admin.doctors.stats', $data);
+    }
 }

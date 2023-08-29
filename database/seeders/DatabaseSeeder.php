@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             DoctorSeeder::class,
             SponsorSeeder::class,
             DoctorSponsorSeeder::class,
+            DoctorVoteSeeder::class,
             ReviewSeeder::class,
             MessageSeeder::class
 

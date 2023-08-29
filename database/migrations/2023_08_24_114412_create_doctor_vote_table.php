@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('doctor_vote', function (Blueprint $table) {
             $table->id();
+            $table->date('date');
             $table->foreignId('doctor_id')->constrained()->cascadeOnDelete();
             $table->foreignId('vote_id')->constrained()->cascadeOnDelete();
             $table->timestamps();

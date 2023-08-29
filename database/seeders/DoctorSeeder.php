@@ -40,15 +40,6 @@ class DoctorSeeder extends Seeder
             }
             $newDoctor->specialties()->sync($arraySpecialties);
 
-            $votes = config('votes');
-
-            $voteIdArray= [];
-            foreach ($votes as $vote) {
-                if ($vote['doctor_id']== $newDoctor->id)  {
-                    $voteIdArray[]=$vote['vote_id'];
-                }
-                $newDoctor->votes()->sync($voteIdArray);
-            }
         }
     }
 }
