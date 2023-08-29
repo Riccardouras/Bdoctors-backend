@@ -49,6 +49,11 @@ class Doctor extends Model
         return $this->hasMany(Message::class);
     }
 
+    public function votes()
+    {
+        return $this->belongsToMany(Vote::class);
+    }
+
 
 
     use HasFactory;

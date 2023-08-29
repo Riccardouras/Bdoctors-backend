@@ -7,12 +7,11 @@ use App\Models\Doctor;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class DoctorController extends Controller
 {
     public function index()
     {
-        $doctors = Doctor::with('user');
-
+        $doctors = Doctor::with('user', 'messages', 'reviews', 'messages', 'sponsors', 'specialties', 'votes')->get();
         $response = [
             'success' => true,
             'results' => $doctors,
