@@ -11,7 +11,7 @@ class DoctorController extends Controller
 {
     public function index()
     {
-        $doctors = Doctor::with('user', 'messages', 'reviews', 'messages', 'sponsors', 'specialties', 'votes')->get();
+        $doctors = Doctor::with('user', 'messages', 'reviews', 'messages', 'sponsors', 'specialties', 'votes')->paginate(6);
         $response = [
             'success' => true,
             'results' => $doctors,
