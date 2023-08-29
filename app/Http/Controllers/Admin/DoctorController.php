@@ -180,34 +180,38 @@ class DoctorController extends Controller
         $lastYearDates = mktime(0, 0, 0, date("m"), date("d"),   date("Y")-1);;
         $lastYearDates = gmdate("Y-m-d H:i:s", $lastYearDates);
 
-        $oneStar = $doctor->votes()->where('date', '>', $lastMonthDates)->where('vote_id', '1')->count();
-        $twoStar = $doctor->votes()->where('date', '>', $lastMonthDates)->where('vote_id', '2')->count();
-        $threeStar = $doctor->votes()->where('date', '>', $lastMonthDates)->where('vote_id', '3')->count();
-        $fourStar = $doctor->votes()->where('date', '>', $lastMonthDates)->where('vote_id', '4')->count();
-        $fiveStar = $doctor->votes()->where('date', '>', $lastMonthDates)->where('vote_id', '5')->count();
+        $lastMonthVotes = [];
+        $lastYearVotes = [];
 
-        $lastMonthVotes = [
-            'oneStar' => $oneStar,
-            'twoStar' => $twoStar,
-            'threeStar' => $threeStar,
-            'fourStar' => $fourStar,
-            'fiveStar' => $fiveStar
+        $dynamicVotesVariables = [
+            [
+                'timeVariable' => &$lastMonthDates,
+                'storeVariable' => &$lastMonthVotes
+            ],
+            [
+                'timeVariable' => &$lastYearDates,
+                'storeVariable' => &$lastYearVotes
+            ]
         ];
 
-        $oneStar = $doctor->votes()->where('date', '>', $lastYearDates)->where('vote_id', '1')->count();
-        $twoStar = $doctor->votes()->where('date', '>', $lastYearDates)->where('vote_id', '2')->count();
-        $threeStar = $doctor->votes()->where('date', '>', $lastYearDates)->where('vote_id', '3')->count();
-        $fourStar = $doctor->votes()->where('date', '>', $lastYearDates)->where('vote_id', '4')->count();
-        $fiveStar = $doctor->votes()->where('date', '>', $lastYearDates)->where('vote_id', '5')->count();
+        foreach($dynamicVotesVariables as $variables){
 
-        $lastYearVotes = [
-            'oneStar' => $oneStar,
-            'twoStar' => $twoStar,
-            'threeStar' => $threeStar,
-            'fourStar' => $fourStar,
-            'fiveStar' => $fiveStar
-        ];
+            $oneStar = $doctor->votes()->where('date', '>', $variables['timeVariable'])->where('vote_id', '1')->count();
+            $twoStar = $doctor->votes()->where('date', '>', $variables['timeVariable'])->where('vote_id', '2')->count();
+            $threeStar = $doctor->votes()->where('date', '>', $variables['timeVariable'])->where('vote_id', '3')->count();
+            $fourStar = $doctor->votes()->where('date', '>', $variables['timeVariable'])->where('vote_id', '4')->count();
+            $fiveStar = $doctor->votes()->where('date', '>', $variables['timeVariable'])->where('vote_id', '5')->count();
 
+            $variables['storeVariable'] = [
+                'oneStar' => $oneStar,
+                'twoStar' => $twoStar,
+                'threeStar' => $threeStar,
+                'fourStar' => $fourStar,
+                'fiveStar' => $fiveStar
+            ];
+        }
+
+        
 
         $data = [
             'lastMonthVotes' => $lastMonthVotes,
