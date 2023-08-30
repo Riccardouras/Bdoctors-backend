@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('doctor_sponsor', function (Blueprint $table) {
             $table->id();
             $table->dateTime('start_date');
-            $table->date('end_date');
+            $table->dateTime('end_date');
             $table->foreignId('doctor_id')->constrained()->cascadeOnDelete();
             $table->foreignId('sponsor_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
