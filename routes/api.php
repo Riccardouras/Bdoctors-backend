@@ -24,5 +24,5 @@ Route::get('/doctors/{id}', [UserController::class, 'show']);
 
 Route::get('/sponsoredDoctors', [DoctorController::class, 'sponsored']);
 Route::get('/allSpecialties', [DoctorController::class, 'allSpecialties']);
-Route::post('/searchPerSpecialty', [DoctorController::class, 'searchPerSpecialty']);
-Route::post('/searchWithFilter', [DoctorController::class, 'searchWithFilter']);
+Route::get('/searchPerSpecialty', [DoctorController::class, 'searchPerSpecialty']);
+Route::get('/searchWithFilter', [DoctorController::class, 'searchWithFilter']);
