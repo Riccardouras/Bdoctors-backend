@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\Doctor;
 use App\Models\DoctorSponsor;
+use App\Models\Specialty;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -46,5 +47,16 @@ class DoctorController extends Controller
         ];
 
         return response()->json($response);
+    }
+
+    public function allSpecialties(){
+
+        $specialtiesArray = Specialty::select('id', 'name')->get();
+
+        return response()->json([
+            'success' => true,
+            'results' => $specialtiesArray
+        ]);
+
     }
 }

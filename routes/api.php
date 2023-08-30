@@ -23,3 +23,4 @@ Route::get('/doctors', [UserController::class, 'index']);
 Route::get('/doctors/{id}', [UserController::class, 'show']);
 
 Route::get('/sponsoredDoctors', [DoctorController::class, 'sponsored']);
+Route::get('/allSpecialties', [DoctorController::class, 'allSpecialties']);
