@@ -105,4 +105,63 @@ class DoctorController extends Controller
         return response()->json($response);
         
     }
+
+    public function searchWithFilter(Request $request){
+
+        $specialty = $request->input('specialty');
+        $minAvgVote = $request->input('minAvgVote');
+        $minNumOfReviews = $request->input('minNumOfReviews');
+
+        $doctors_IDS = DoctorSpecialty::where('specialty_id', $specialty)->pluck('doctor_id')->toArray();
+
+        $doctors= [];
+
+        foreach($doctors_IDS as $id){
+
+            $check = true;
+
+            $doctor = Doctor::where('id', $id)->first();
+
+            $doctorImage = Doctor::where('id',$id)->select('image')->first();
+            $doctorImage =  'http://localhost:8000/storage/' . $doctorImage->image;
+
+            $userID = Doctor::where('id',$id)->pluck('user_id');
+            $doctorName = User::where('id', $userID[0])->select('name')->first();
+            $doctorName = $doctorName->name;
+            
+            $doctorSpecialtiesArray = $doctor->specialties()->pluck('name')->toArray();
+
+            $numberOfReviews = $doctor->reviews()->count();
+            if($numberOfReviews < $minNumOfReviews){
+                $check=false;
+            }
+
+            $averageVote = DoctorVote::where('doctor_id', $id)->avg('vote_id');
+            if($averageVote == null){
+                $averageVote = 0;
+            }
+            if($averageVote < $minAvgVote){
+                $check=false;
+            }
+
+            if($check){
+                $doctors[] = [
+                    'doctorImage' => $doctorImage,
+                    'doctorName' => $doctorName,
+                    'doctorSpecialtiesArray' => $doctorSpecialtiesArray,
+                    'numberOfReviews' => $numberOfReviews,
+                    'averageVote' => $averageVote
+                ];
+            }
+            
+        }
+
+        $response = [
+            'success' => true,
+            'results' => $doctors
+        ];
+
+        return response()->json($response);
+        
+    }
 }
