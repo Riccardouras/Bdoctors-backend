@@ -48,7 +48,7 @@
         @if ($doctor->curriculum == null)
             <span class="text-danger">Aggiorna il profilo e inserisci il curriculum</span>
         @else
-            <a href="{{ asset('storage/'. $doctor->curriculum) }}"><span class="fw-bold">Curriculum</span></a> <br>
+            <a target="_blank" href="{{ asset('storage/'. $doctor->curriculum) }}"><span class="fw-bold">Curriculum</span></a> <br>
         @endif
         <br>
         @if ($doctor->image == null)
