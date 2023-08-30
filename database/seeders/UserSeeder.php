@@ -21,7 +21,8 @@ class UserSeeder extends Seeder
 
             $newUser = new User();
             $newUser->name = $userName['name'];
-            $newUser->email = $userName['name'] . '@gmail.com';
+            $loweredNoSpaceName = strtolower(str_replace(' ','', $userName['name']));
+            $newUser->email = $loweredNoSpaceName . '@gmail.com';
             $newUser->password =  bcrypt('prova123');
             $newUser->save();
         }

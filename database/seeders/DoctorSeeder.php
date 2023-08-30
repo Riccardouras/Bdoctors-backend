@@ -29,16 +29,11 @@ class DoctorSeeder extends Seeder
             $newDoctor->image = $doctor['image'];
             $newDoctor->curriculum = $doctor['curriculum'];
             $newDoctor->phone_number = $doctor['phone_number'];
-            $newDoctor->service = 'Pulizia dei denti';
+            $newDoctor->service = $doctor['service'];
             $newDoctor->user_id = $i+1;
             $newDoctor->save();
 
-            $numberOfSpecialties = rand(1, 2);
-            $arraySpecialties = [];
-            for ($c = 0; $c < $numberOfSpecialties; $c++) {
-                $arraySpecialties[] = $faker->randomElement($specialties_ids);
-            }
-            $newDoctor->specialties()->sync($arraySpecialties);
+            $newDoctor->specialties()->sync($doctor['specialties']);
 
         }
     }
