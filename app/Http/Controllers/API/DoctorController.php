@@ -23,10 +23,10 @@ class DoctorController extends Controller
 
             $doctor = Doctor::where('id', $id)->first();
 
-            $doctorImage = $doctor->select('image')->first();
+            $doctorImage = Doctor::where('id',$id)->select('image')->first();
             $doctorImage =  'http://localhost:8000/storage/' . $doctorImage->image;
 
-            $userID = $doctor->pluck('user_id');
+            $userID = Doctor::where('id',$id)->pluck('user_id');
             $doctorName = User::where('id', $userID[0])->select('name')->first();
             $doctorName = $doctorName->name;
             
