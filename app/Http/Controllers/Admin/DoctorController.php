@@ -175,9 +175,9 @@ class DoctorController extends Controller
         $user = Auth::user();
         $doctor = Doctor::where('user_id', $user->id)->first();
 
-        $lastMonthDates = mktime(0, 0, 0, date("m")-1, date("d"),   date("Y"));;
+        $lastMonthDates = mktime(0, 0, 0, date("m")-1, date("d"),   date("Y"));
         $lastMonthDates = gmdate("Y-m-d H:i:s", $lastMonthDates);
-        $lastYearDates = mktime(0, 0, 0, date("m"), date("d"),   date("Y")-1);;
+        $lastYearDates = mktime(0, 0, 0, date("m"), date("d"),   date("Y")-1);
         $lastYearDates = gmdate("Y-m-d H:i:s", $lastYearDates);
 
         $lastMonthVotes = [];
@@ -211,15 +211,11 @@ class DoctorController extends Controller
             ];
         }
 
-
         $lastMonthMessages = $doctor->messages()->where('date', '>', $lastMonthDates)->count();
         $lastYearMessages = $doctor->messages()->where('date', '>', $lastYearDates)->count();
 
         $lastMonthReviews = $doctor->reviews()->where('date', '>', $lastMonthDates)->count();
         $lastYearReviews = $doctor->reviews()->where('date', '>', $lastYearDates)->count();
-
-
-
 
         $data = [
             'lastMonthVotes' => $lastMonthVotes,

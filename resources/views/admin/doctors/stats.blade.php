@@ -84,7 +84,7 @@
                     data: {
                     labels: ['ULTIMO MESE', 'ULTIMO ANNO'],
                     datasets: [{
-                        label: 'Numero di voti',
+                        label: 'Numero di recensioni',
                         data: [{{ $lastMonthReviews }}, {{ $lastYearReviews }}],
                         borderWidth: 1
                     }]
@@ -115,7 +115,7 @@
                     data: {
                     labels: ['ULTIMO MESE', 'ULTIMO ANNO'],
                     datasets: [{
-                        label: 'Numero di voti',
+                        label: 'Numero di messaggi',
                         data: [{{ $lastMonthMessages }}, {{ $lastYearMessages }}],
                         borderWidth: 1
                     }]
