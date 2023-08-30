@@ -87,6 +87,7 @@ class DoctorController extends Controller
             $numberOfReviews = $doctor->reviews()->count();
 
             $averageVote = DoctorVote::where('doctor_id', $id)->avg('vote_id');
+            $averageVote = round($averageVote, 1);
 
             $doctors[] = [
                 'doctorImage' => $doctorImage,
@@ -137,6 +138,7 @@ class DoctorController extends Controller
             }
 
             $averageVote = DoctorVote::where('doctor_id', $id)->avg('vote_id');
+            $averageVote = round($averageVote, 1);
             if($averageVote == null){
                 $averageVote = 0;
             }
