@@ -36,7 +36,7 @@
                         <ul class="nav flex-column">
 
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="/">
+                                <a target="_blank" class="nav-link text-white" href="/">
                                     <i class="fa-solid fa-home-alt fa-lg fa-fw"></i> Vai al sito
                                 </a>
                             </li>
