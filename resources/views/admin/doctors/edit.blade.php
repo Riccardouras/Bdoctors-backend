@@ -76,7 +76,7 @@
                 @enderror
                 <div class="d-flex gap-4">
                     @if ($doctor->image != null)
-                        <figure class="figure w-25">
+                        <figure id="currentImg" class="figure w-25">
                             <img class="figure-img img-fluid img-thumbnail" src="{{ asset('storage/' . $doctor->image) }}"
                                 alt="currentImg">
                             <figcaption class="figure-caption">Current Image</figcaption>
@@ -99,7 +99,7 @@
                 <div class="d-flex gap-4">
                     @if ($doctor->curriculum != null)
                         <div>
-                            <embed src="{{ asset('storage/' . $doctor->curriculum) }}" />
+                            <embed id="currentCv" src="{{ asset('storage/' . $doctor->curriculum) }}" />
                         </div>
                     @endif
 
@@ -152,8 +152,12 @@
             const [file] = image.files
             if (file) {
                 preview.src = URL.createObjectURL(file)
+                currentImg = document.getElementById('currentImg');
+                currentImg.style.opacity = '0.4';
             }
         }
+
+
 
         // const curriculum = document.getElementById('curriculum');
 
@@ -164,6 +168,8 @@
             const [file] = curriculum.files;
             if (file) {
                 cvPreview.src = URL.createObjectURL(file);
+                currentCv = document.getElementById('currentCv');
+                currentCv.style.opacity = '0.4';
             }
         }
     </script>
