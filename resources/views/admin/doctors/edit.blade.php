@@ -6,23 +6,6 @@
 
             <h1>MODIFICA PROFILO</h1>
 
-            @if ($errors->any())
-                <div class="card border-danger">
-                    <div class="card-title m-0">
-                        <h2 class="text-danger m-0">ERRORI</h2>
-                    </div>
-                    <div class="card-body p-0">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li class="text-danger">
-                                    {{ $error }}
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-            @endif
-
             <form action="{{ route('admin.doctors.update', $doctor) }}" method="POST" class="needs-valiation"
                 enctype="multipart/form-data">
 
