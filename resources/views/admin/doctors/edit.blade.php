@@ -92,8 +92,9 @@
                 <div class="row">
                     @php
                     $totalSpecialties = count($specialtiesArray);
-                    $specialtiesPerColumn = ceil($totalSpecialties / 3);
+                    $specialtiesPerColumn = ceil($totalSpecialties / 2);
                     $currentColumn = 1;
+                    $currentLetter = '';
                     @endphp
                 
                     @foreach ($specialtiesArray as $i => $specialty)
@@ -101,8 +102,7 @@
                             @if ($i > 0)
                                 </div>
                             @endif
-                            <div class="col-md-3">
-                                <?php $currentLetter = ''; ?>
+                                <div class="col-4">
                         @endif
                 
                         <?php
@@ -112,10 +112,11 @@
                             echo "<h5>{$currentLetter}:</h5>";
                         }
                         ?>
-                        <input type="checkbox" value="{{ $specialty->id }}" class="btn-check"
+                        <div class="form-check">
+                            <input type="checkbox" value="{{ $specialty->id }}" class="form-check-input"
                             id="specialty{{ $i }}" name="specialty[]" @checked (in_array($specialty->id, old('specialty') ?? ['chiave' => 'valore']))>
-                        <label for="specialty{{ $i }}"
-                            class="btn btn-outline-primary mb-1 rounded-0 mx-0"> {{ $specialty->name }}</label>
+                            <label for="specialty{{ $i }}" class="form-check-label"> {{ $specialty->name }}</label>
+                        </div>
                     @endforeach
                     </div>
                 </div>
