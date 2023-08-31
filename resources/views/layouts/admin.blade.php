@@ -30,13 +30,21 @@
 
         <div class="container-fluid vh-100">
             <div class="row h-100">
-                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse fixed-top h-100">
+                <nav id="sidebarMenu"
+                    class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse fixed-top h-100">
                     <div class="position-sticky pt-3">
                         <ul class="nav flex-column">
 
                             <li class="nav-item">
                                 <a class="nav-link text-white" href="/">
-                                    <i class="fa-solid fa-home-alt fa-lg fa-fw"></i> Home
+                                    <i class="fa-solid fa-home-alt fa-lg fa-fw"></i> Vai al sito
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.doctors.index' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.doctors.index') }}">
+                                    <i class="fa-solid fa-user-doctor fa-lg fa-fw"></i> Home
                                 </a>
                             </li>
 
@@ -47,12 +55,6 @@
                                 </a>
                             </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.doctors.index' ? 'bg-secondary' : '' }}"
-                                    href="{{ route('admin.doctors.index') }}">
-                                    <i class="fa-solid fa-user-doctor fa-lg fa-fw"></i> Profilo
-                                </a>
-                            </li>
 
                             <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.doctors.messages' ? 'bg-secondary' : '' }}"
