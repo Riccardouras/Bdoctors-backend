@@ -14,26 +14,27 @@ use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 class DoctorController extends Controller
 {
-    
-    public function sponsored(){
-        $currentDate = $date = date("Y-m-d H:i:s");
+
+    public function sponsored()
+    {
+        $currentDate = date("Y-m-d H:i:s");
         $activeSponsorships = DoctorSponsor::where('end_date', '>', $currentDate);
 
         $sponsoredDoctorsIDS = $activeSponsorships->pluck('doctor_id')->toArray();
 
         $sponsoredDoctors = [];
 
-        foreach($sponsoredDoctorsIDS as $id){
+        foreach ($sponsoredDoctorsIDS as $id) {
 
             $doctor = Doctor::where('id', $id)->first();
 
-            $doctorImage = Doctor::where('id',$id)->select('image')->first();
+            $doctorImage = Doctor::where('id', $id)->select('image')->first();
             $doctorImage =  'http://localhost:8000/storage/' . $doctorImage->image;
 
-            $userID = Doctor::where('id',$id)->pluck('user_id');
+            $userID = Doctor::where('id', $id)->pluck('user_id');
             $doctorName = User::where('id', $userID[0])->select('name')->first();
             $doctorName = $doctorName->name;
-            
+
             $doctorSpecialtiesArray = $doctor->specialties()->pluck('name')->toArray();
 
             $sponsoredDoctors[] = [
@@ -41,7 +42,6 @@ class DoctorController extends Controller
                 'doctorName' => $doctorName,
                 'doctorSpecialtiesArray' => $doctorSpecialtiesArray
             ];
-
         }
 
         $response = [
@@ -52,7 +52,8 @@ class DoctorController extends Controller
         return response()->json($response);
     }
 
-    public function allSpecialties(){
+    public function allSpecialties()
+    {
 
         $specialtiesArray = Specialty::select('id', 'name')->get();
 
@@ -60,28 +61,28 @@ class DoctorController extends Controller
             'success' => true,
             'results' => $specialtiesArray
         ]);
-
     }
 
-    public function searchPerSpecialty(Request $request){
+    public function searchPerSpecialty(Request $request)
+    {
 
         $specialty = $request->input('specialty');
 
         $doctors_IDS = DoctorSpecialty::where('specialty_id', $specialty)->pluck('doctor_id')->toArray();
 
-        $doctors= [];
+        $doctors = [];
 
-        foreach($doctors_IDS as $id){
+        foreach ($doctors_IDS as $id) {
 
             $doctor = Doctor::where('id', $id)->first();
 
-            $doctorImage = Doctor::where('id',$id)->select('image')->first();
+            $doctorImage = Doctor::where('id', $id)->select('image')->first();
             $doctorImage =  'http://localhost:8000/storage/' . $doctorImage->image;
 
-            $userID = Doctor::where('id',$id)->pluck('user_id');
+            $userID = Doctor::where('id', $id)->pluck('user_id');
             $doctorName = User::where('id', $userID[0])->select('name')->first();
             $doctorName = $doctorName->name;
-            
+
             $doctorSpecialtiesArray = $doctor->specialties()->pluck('name')->toArray();
 
             $numberOfReviews = $doctor->reviews()->count();
@@ -104,10 +105,10 @@ class DoctorController extends Controller
         ];
 
         return response()->json($response);
-        
     }
 
-    public function searchWithFilter(Request $request){
+    public function searchWithFilter(Request $request)
+    {
 
         $specialty = $request->input('specialty');
         $minAvgVote = $request->input('minAvgVote');
@@ -115,38 +116,38 @@ class DoctorController extends Controller
 
         $doctors_IDS = DoctorSpecialty::where('specialty_id', $specialty)->pluck('doctor_id')->toArray();
 
-        $doctors= [];
+        $doctors = [];
 
-        foreach($doctors_IDS as $id){
+        foreach ($doctors_IDS as $id) {
 
             $check = true;
 
             $doctor = Doctor::where('id', $id)->first();
 
-            $doctorImage = Doctor::where('id',$id)->select('image')->first();
+            $doctorImage = Doctor::where('id', $id)->select('image')->first();
             $doctorImage =  'http://localhost:8000/storage/' . $doctorImage->image;
 
-            $userID = Doctor::where('id',$id)->pluck('user_id');
+            $userID = Doctor::where('id', $id)->pluck('user_id');
             $doctorName = User::where('id', $userID[0])->select('name')->first();
             $doctorName = $doctorName->name;
-            
+
             $doctorSpecialtiesArray = $doctor->specialties()->pluck('name')->toArray();
 
             $numberOfReviews = $doctor->reviews()->count();
-            if($numberOfReviews < $minNumOfReviews){
-                $check=false;
+            if ($numberOfReviews < $minNumOfReviews) {
+                $check = false;
             }
 
             $averageVote = DoctorVote::where('doctor_id', $id)->avg('vote_id');
             $averageVote = round($averageVote, 1);
-            if($averageVote == null){
+            if ($averageVote == null) {
                 $averageVote = 0;
             }
-            if($averageVote < $minAvgVote){
-                $check=false;
+            if ($averageVote < $minAvgVote) {
+                $check = false;
             }
 
-            if($check){
+            if ($check) {
                 $doctors[] = [
                     'doctorImage' => $doctorImage,
                     'doctorName' => $doctorName,
@@ -155,7 +156,6 @@ class DoctorController extends Controller
                     'averageVote' => $averageVote
                 ];
             }
-            
         }
 
         $response = [
@@ -164,6 +164,5 @@ class DoctorController extends Controller
         ];
 
         return response()->json($response);
-        
     }
 }
