@@ -88,22 +88,37 @@
 
 
             <span>Specializzazione/i</span>
-            <div class="d-block btn-group mb-3" role="group">
-                <?php $currentLetter = null; ?>
-                @foreach ($specialtiesArray as $i => $specialty)
-                    <?php
-                    $firstLetter = substr($specialty->name, 0, 1);
-                    if ($currentLetter !== $firstLetter) {
-                        $currentLetter = $firstLetter;
-                        echo "<h5>{$currentLetter}:</h5>";
-                    }
-                    ?>
-                    <input type="checkbox" value="{{ $specialty->id }}" class="btn-check"
-                        id="specialty{{ $i }}" name="specialty[]"
-                        @if (in_array($specialty->id, old('specialty') ?? $doctor->specialties->pluck('id')->toArray())) checked @endif>
-                    <label for="specialty{{ $i }}" class="btn btn-outline-primary mb-1 rounded-0 mx-0">
-                        {{ $specialty->name }}</label>
-                @endforeach
+            <div class="d-block btn-group mb-5 mt-3" role="group">
+                <div class="row">
+                    @php
+                    $totalSpecialties = count($specialtiesArray);
+                    $specialtiesPerColumn = ceil($totalSpecialties / 3);
+                    $currentColumn = 1;
+                    @endphp
+                
+                    @foreach ($specialtiesArray as $i => $specialty)
+                        @if ($i % $specialtiesPerColumn === 0)
+                            @if ($i > 0)
+                                </div>
+                            @endif
+                            <div class="col-md-3">
+                                <?php $currentLetter = ''; ?>
+                        @endif
+                
+                        <?php
+                        $firstLetter = substr($specialty->name, 0, 1);
+                        if ($currentLetter !== $firstLetter) {
+                            $currentLetter = $firstLetter;
+                            echo "<h5>{$currentLetter}:</h5>";
+                        }
+                        ?>
+                        <input type="checkbox" value="{{ $specialty->id }}" class="btn-check"
+                            id="specialty{{ $i }}" name="specialty[]" @checked (in_array($specialty->id, old('specialty') ?? ['chiave' => 'valore']))>
+                        <label for="specialty{{ $i }}"
+                            class="btn btn-outline-primary mb-1 rounded-0 mx-0"> {{ $specialty->name }}</label>
+                    @endforeach
+                    </div>
+                </div>
             </div>
             @error('specialty')
                 <div class="text-danger mb-3">{{ $message }}</div>
