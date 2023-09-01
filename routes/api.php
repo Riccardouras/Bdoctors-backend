@@ -3,9 +3,11 @@
 use App\Http\Controllers\API\DoctorController;
 use App\Http\Controllers\API\MessageController;
 use App\Http\Controllers\API\ReviewController;
+use App\Http\Controllers\API\DoctorVoteController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -33,3 +35,4 @@ Route::get('/getDoctorReviews', [DoctorController::class, 'getDoctorReviews']);
 
 Route::post('/message', [MessageController::class, 'storeMessage']);
 Route::post('/review', [ReviewController::class, 'storeReview']);
+Route::post('/vote', [DoctorVoteController::class, 'storeVote']);
