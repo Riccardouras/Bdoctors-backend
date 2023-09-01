@@ -32,7 +32,7 @@ return [
             'service' => 'Ripristino funzionalità epato-renale. Esami istologici. Diagnosi e cura delle principali manifestazioni allergiche'
         ],
         [
-            'name'=> 'Damiano Ligure',
+            'name'=> 'Daniela Ligure',
             'address'=>'Via Liguria 12',
             'city'=>'Torino',
             'image'=>'uploads/medico4.jpg',
@@ -42,7 +42,7 @@ return [
             'service' => 'Controllo al cuore.'
         ],
         [
-            'name'=> 'Eraldo Bossi',
+            'name'=> 'Eralda Bossi',
             'address'=>'Via Sardegna 99',
             'city'=>'Napoli',
             'image'=>'uploads/medico5.jpg',
@@ -115,17 +115,17 @@ return [
             'name'=> 'Norman Dia',
             'address'=>'Via dell Hotel 18',
             'city'=>'Firenze',
-            'image'=>'uploads/medico8.jpg',
+            'image'=>'uploads/medico9.jpg',
             'curriculum'=>'uploads/cvmedico.pdf',
             'phone_number'=>'3901990133',
             'specialties' => ['12'],
             'service' => 'Visita di controllo'
         ],
         [
-            'name'=> 'Orlando Furioso',
+            'name'=> 'Orlanda Furiosa',
             'address'=>'Via popolare',
             'city'=>'Urbino',
-            'image'=>'uploads/medico9.jpg',
+            'image'=>'uploads/medico8.jpg',
             'curriculum'=>'uploads/cvmedico.pdf',
             'phone_number'=>'3489019202',
             'specialties' => ['13'],
