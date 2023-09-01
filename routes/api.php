@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\API\DoctorController;
+use App\Http\Controllers\API\MessageController;
+use App\Http\Controllers\API\ReviewController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\UserController;
@@ -26,3 +28,6 @@ Route::get('/sponsoredDoctors', [DoctorController::class, 'sponsored']);
 Route::get('/allSpecialties', [DoctorController::class, 'allSpecialties']);
 Route::get('/searchPerSpecialty', [DoctorController::class, 'searchPerSpecialty']);
 Route::get('/searchWithFilter', [DoctorController::class, 'searchWithFilter']);
+
+Route::post('/message', [MessageController::class, 'storeMessage']);
+Route::post('/review', [ReviewController::class, 'storeReview']);

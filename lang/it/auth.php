@@ -13,8 +13,8 @@ return [
     |
     */
 
-    'failed' => 'Non esiste nessun utente con questa mail.',
-    'password' => 'La password inserita non è corretta.',
+    'failed' => 'La mail e/o la password inserita non è corretta.',
+    'password' => 'La password inserita non è corretta',
     'throttle' => 'Troppi tentativi di login. Aspetta :seconds prima di riprovare.',
 
 ];

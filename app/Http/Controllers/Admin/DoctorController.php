@@ -192,7 +192,7 @@ class DoctorController extends Controller
         //Creo le date indietro nel tempo di un mese e un anno e le converto in formato DateTime MySQL
         $lastMonthDates = mktime(0, 0, 0, date("m")-1, date("d"),   date("Y"));
         $lastMonthDates = gmdate("Y-m-d H:i:s", $lastMonthDates);
-        $lastYearDates = mktime(0, 0, 0, date("m"), date("d"),   date("Y")-1);
+        $lastYearDates = mktime(0, 0, 0, date("m"), date("d"),   date("Y") - 1);
         $lastYearDates = gmdate("Y-m-d H:i:s", $lastYearDates);
 
         //Dichiaro gli array dei voti dell'ultimo mese e anno che verranno restituiti alla vista
