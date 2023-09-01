@@ -78,7 +78,7 @@
                                                 echo "</div>";
                                             }
                                             echo "<div class='col-4 mb-3'>";
-                                            echo "<h6>{$firstLetter}:</h6>";
+                                            echo "<div style='background-color:#BDDAF2' class='p-1'><h6>{$firstLetter}:</h6></div>";
                                 
                                             $currentLetter = $firstLetter;
                                         }
