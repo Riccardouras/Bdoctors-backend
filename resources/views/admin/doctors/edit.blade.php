@@ -110,7 +110,7 @@
                 
                         <div class="form-check">
                             <input type="checkbox" value="{{ $specialty->id }}" class="form-check-input"
-                            id="specialty{{ $i }}" name="specialty[]" @checked (in_array($specialty->id, old('specialty') ?? ['chiave' => 'valore']))>
+                            id="specialty{{ $i }}" name="specialty[]" @checked ( in_array( $specialty->id, old('specialty') ?? $doctor->specialties->pluck('id')->toArray()))>
                             <label for="specialty{{ $i }}" class="form-check-label"> {{ $specialty->name }}</label>
                         </div>
                 
