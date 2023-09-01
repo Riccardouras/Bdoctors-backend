@@ -28,6 +28,8 @@ Route::get('/sponsoredDoctors', [DoctorController::class, 'sponsored']);
 Route::get('/allSpecialties', [DoctorController::class, 'allSpecialties']);
 Route::get('/searchPerSpecialty', [DoctorController::class, 'searchPerSpecialty']);
 Route::get('/searchWithFilter', [DoctorController::class, 'searchWithFilter']);
+Route::get('/doctorDetails', [DoctorController::class, 'doctorDetails']);
+Route::get('/getDoctorReviews', [DoctorController::class, 'getDoctorReviews']);
 
 Route::post('/message', [MessageController::class, 'storeMessage']);
 Route::post('/review', [ReviewController::class, 'storeReview']);

@@ -7,6 +7,7 @@ use App\Models\Doctor;
 use App\Models\DoctorSpecialty;
 use App\Models\DoctorSponsor;
 use App\Models\DoctorVote;
+use App\Models\Review;
 use App\Models\Specialty;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -167,6 +168,59 @@ class DoctorController extends Controller
         $response = [
             'success' => true,
             'results' => $doctors
+        ];
+
+        return response()->json($response);
+    }
+
+    public function doctorDetails(Request $request){
+
+        $doctor_id = $request->input('doctor_id');
+
+        $doctor = Doctor::where('id', $doctor_id)->first();
+        $userID = Doctor::where('id', $doctor_id)->pluck('user_id');
+        $doctor_name = User::where('id', $userID)->pluck('name');
+        $doctor->name = $doctor_name[0];
+        $doctor->image = 'http://localhost:8000/storage/' . $doctor->image;
+        $doctor->curriculum = 'http://localhost:8000/storage/' . $doctor->curriculum;
+        $specialtyIDS = DoctorSpecialty::where('doctor_id', $doctor_id)->pluck('specialty_id')->toArray();
+        $specialties= [];
+        
+        foreach($specialtyIDS as $id){
+            $specialtyName = Specialty::where('id', $id)->pluck('name');
+            $specialties[] = $specialtyName[0];
+        }
+
+        $doctor->specialties = $specialties;
+        $averageVote = DoctorVote::where('doctor_id', $id)->avg('vote_id');
+        $averageVote = round($averageVote, 1);
+        if ($averageVote == null) {
+            $averageVote = 0;
+        }
+        $numberOfReviews = $doctor->reviews()->count();
+        $doctor->averageVote = $averageVote;
+        $doctor->numberOfReviews = $numberOfReviews;
+
+
+        $response = [
+            'success' => true,
+            'results' =>[
+                'doctor' => $doctor
+            ]
+            ];
+
+        return response()->json($response);
+    }
+
+    public function getDoctorReviews(Request $request){
+        
+        $doctor_id = $request->input('doctor_id');
+
+        $reviews = Review::where('doctor_id', $doctor_id)->get();
+
+        $response = [
+            'success' => true,
+            'results' => $reviews
         ];
 
         return response()->json($response);
