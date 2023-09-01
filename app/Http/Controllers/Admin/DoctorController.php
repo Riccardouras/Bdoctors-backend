@@ -21,13 +21,16 @@ class DoctorController extends Controller
      */
     public function index()
     {
+        //Recupero l'utente autenticato e il record in doctors relativo
         $user_id = Auth::user()->id;
         $doctor = Doctor::where('user_id', $user_id)->first();
 
+        //Creo l'array con i dati da passare alla vista
         $data = [
             'doctor' => $doctor
         ];
 
+        //Richiamo la vista del profilo e restituisco i dati
         return view('admin.doctors.index', $data);
     }
 
@@ -71,15 +74,19 @@ class DoctorController extends Controller
      */
     public function edit(Doctor $doctor)
     {
+        //Controllo che il profilo da modificare sia quello dell'utente loggato
+        //In caso contrario blocco l'operazione
         if ($doctor->id != auth()->id()) {
             abort(code: 403);
         }
+        //Creo l'array con tutti i dati da passare alla vista 
         $data = [
             'doctor' => $doctor,
             'specialtiesArray' => Specialty::all(),
             'doctorSpecialties' => $doctor->specialties->pluck('id')->toArray()
         ];
 
+        //Richiamo la vista edit e restituisco i dati 
         return view('admin.doctors.edit', $data);
     }
 
@@ -92,28 +99,33 @@ class DoctorController extends Controller
      */
     public function update(UpdateDoctorRequest $request, Doctor $doctor)
     {
-
+        //Valido i dati usando una Request esterna
         $data = $request->validated();
 
+        // Se viene inserita una nuova immagine viene salvata nello storage e viene salvato il path
         if (array_key_exists('image', $data)) {
             $imgPath = Storage::put('uploads', $data['image']);
             $data['image'] = $imgPath;
         }
 
+        // Se viene inserito un nuovo curriculum viene salvato nello storage e viene salvato il path
         if (array_key_exists('curriculum', $data)) {
             $imgPath = Storage::put('uploads', $data['curriculum']);
             $data['curriculum'] = $imgPath;
         }
-
+        //Recupero l'utente autenticato e ne aggiorno il nome
         $user = Auth::user();
         $user->name = $data['name'];
         $user->update();
 
+        //Aggiorno i dati del record doctor
         $doctor->fill($data);
         $doctor->update();
 
+        //Aggiorno le specializzazioni collegate al record doctor
         $doctor->specialties()->sync($data['specialty']);
 
+        //Richiamo la vista del profilo passando i nuovi dati
         return to_route('admin.doctors.index', compact('doctor'));
     }
 
@@ -155,7 +167,7 @@ class DoctorController extends Controller
         //Recupero le recensioni, che hanno doctor_id uguale a quello recuperato sopra, per data in ordine decrescente
         $reviews = Review::where('doctor_id', $doctor_id)->orderBy('date', 'desc')->get();
 
-        //Richiamo la vista e passo le recensioni recuperate
+        //Richiamo la vista delle recensioni e passo le recensioni recuperate
         return view('admin.doctors.reviews', compact('reviews'));
     }
 
@@ -173,7 +185,7 @@ class DoctorController extends Controller
         //Recupero i messaggi, che hanno doctor_id uguale a quello recuperato sopra, per data in ordine decrescente
         $messages = Message::where('doctor_id', $doctor_id)->orderBy('date', 'desc')->get();
 
-        //Richiamo la vista e passo i messaggi recuperati
+        //Richiamo la vista dei messaggi e passo i messaggi recuperati
         return view('admin.doctors.messages', compact('messages'));
     }
 
@@ -250,7 +262,7 @@ class DoctorController extends Controller
             'user' => $user
         ];
 
-        //Richiamo la vista passandole l'array di dati dichiarato sopra
+        //Richiamo la vista delle statistiche passandole l'array di dati dichiarato sopra
         return view('admin.doctors.stats', $data);
     }
 }
