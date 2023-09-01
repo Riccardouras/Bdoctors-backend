@@ -27,6 +27,7 @@ class DoctorController extends Controller
         foreach ($sponsoredDoctorsIDS as $id) {
 
             $doctor = Doctor::where('id', $id)->first();
+            $doctor_id = $doctor->id;
 
             $doctorImage = Doctor::where('id', $id)->select('image')->first();
             $doctorImage =  'http://localhost:8000/storage/' . $doctorImage->image;
@@ -38,6 +39,7 @@ class DoctorController extends Controller
             $doctorSpecialtiesArray = $doctor->specialties()->pluck('name')->toArray();
 
             $sponsoredDoctors[] = [
+                'doctorId' => $doctor_id,
                 'doctorImage' => $doctorImage,
                 'doctorName' => $doctorName,
                 'doctorSpecialtiesArray' => $doctorSpecialtiesArray
@@ -75,6 +77,7 @@ class DoctorController extends Controller
         foreach ($doctors_IDS as $id) {
 
             $doctor = Doctor::where('id', $id)->first();
+            $doctor_id = $doctor->id;
 
             $doctorImage = Doctor::where('id', $id)->select('image')->first();
             $doctorImage =  'http://localhost:8000/storage/' . $doctorImage->image;
@@ -91,6 +94,7 @@ class DoctorController extends Controller
             $averageVote = round($averageVote, 1);
 
             $doctors[] = [
+                'doctorId' => $doctor_id,
                 'doctorImage' => $doctorImage,
                 'doctorName' => $doctorName,
                 'doctorSpecialtiesArray' => $doctorSpecialtiesArray,
@@ -123,6 +127,7 @@ class DoctorController extends Controller
             $check = true;
 
             $doctor = Doctor::where('id', $id)->first();
+            $doctor_id = $doctor->id;
 
             $doctorImage = Doctor::where('id', $id)->select('image')->first();
             $doctorImage =  'http://localhost:8000/storage/' . $doctorImage->image;
@@ -149,6 +154,7 @@ class DoctorController extends Controller
 
             if ($check) {
                 $doctors[] = [
+                    'doctorId' => $doctor_id,
                     'doctorImage' => $doctorImage,
                     'doctorName' => $doctorName,
                     'doctorSpecialtiesArray' => $doctorSpecialtiesArray,
