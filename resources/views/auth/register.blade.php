@@ -63,39 +63,40 @@
                             </div>
 
                             <div class="d-block btn-group mb-3" role="group">
-                                <p>Specializzazione/i *</p>
-                                <?php $currentLetter = null; ?>
+                                <p class="mb-3">Specializzazione/i*</p>
                                 <div class="row">
                                     @php
-                                    $totalSpecialties = count($specialtiesArray);
-                                    $specialtiesPerColumn = ceil($totalSpecialties / 3);
-                                    $currentColumn = 1;
+                                    $currentLetter = ''; 
                                     @endphp
                                 
                                     @foreach ($specialtiesArray as $i => $specialty)
-                                        @if ($i % $specialtiesPerColumn === 0)
-                                            @if ($i > 0)
-                                                </div>
-                                            @endif
-                                            <div class="col-md-4">
-                                                <?php $currentLetter = ''; ?>
-                                        @endif
-                                
-                                        <?php
+                                        @php
                                         $firstLetter = substr($specialty->name, 0, 1);
+                                
                                         if ($currentLetter !== $firstLetter) {
+                                            if ($i > 0) {
+                                                echo "</div>";
+                                            }
+                                            echo "<div class='col-4 mb-3'>";
+                                            echo "<h6>{$firstLetter}:</h6>";
+                                
                                             $currentLetter = $firstLetter;
-                                            echo "<h5>{$currentLetter}:</h5>";
                                         }
-                                        ?>
-                                        <input type="checkbox" value="{{ $specialty->id }}" class="btn-check"
+                                        @endphp
+                                
+                                        <div class="form-check">
+                                            <input type="checkbox" value="{{ $specialty->id }}" class="form-check-input"
                                             id="specialty{{ $i }}" name="specialty[]" @checked (in_array($specialty->id, old('specialty') ?? ['chiave' => 'valore']))>
-                                        <label for="specialty{{ $i }}"
-                                            class="btn btn-outline-primary mb-1 rounded-0 mx-0"> {{ $specialty->name }}</label>
+                                            <label for="specialty{{ $i }}" class="form-check-label"> {{ $specialty->name }}</label>
+                                        </div>
+                                
+                                        @if ($loop->last)
+                                            </div>
+                                        @endif
                                     @endforeach
-                                    </div>
                                 </div>
                             </div>
+                          
 
                             <div class="mb-4 row">
                                 <label for="email"

@@ -86,41 +86,41 @@
                 <embed id="cvPreview" style="display: none" src="#" />
             </div>
 
-
-            <span>Specializzazione/i</span>
-            <div class="d-block btn-group mb-5 mt-3" role="group">
+            <div class="d-block btn-group mb-3" role="group">
+                <span ><h5 class="mb-3">Specializzazione/i</h5></span>
                 <div class="row">
                     @php
-                    $totalSpecialties = count($specialtiesArray);
-                    $specialtiesPerColumn = ceil($totalSpecialties / 2);
-                    $currentColumn = 1;
-                    $currentLetter = '';
+                    $currentLetter = ''; 
                     @endphp
                 
                     @foreach ($specialtiesArray as $i => $specialty)
-                        @if ($i % $specialtiesPerColumn === 0)
-                            @if ($i > 0)
-                                </div>
-                            @endif
-                                <div class="col-4">
-                        @endif
-                
-                        <?php
+                        @php
                         $firstLetter = substr($specialty->name, 0, 1);
+                
                         if ($currentLetter !== $firstLetter) {
+                            if ($i > 0) {
+                                echo "</div>";
+                            }
+                            echo "<div class='col-4 mb-3'>";
+                            echo "<h6>{$firstLetter}:</h6>";
+                
                             $currentLetter = $firstLetter;
-                            echo "<h5>{$currentLetter}:</h5>";
                         }
-                        ?>
+                        @endphp
+                
                         <div class="form-check">
                             <input type="checkbox" value="{{ $specialty->id }}" class="form-check-input"
                             id="specialty{{ $i }}" name="specialty[]" @checked (in_array($specialty->id, old('specialty') ?? ['chiave' => 'valore']))>
                             <label for="specialty{{ $i }}" class="form-check-label"> {{ $specialty->name }}</label>
                         </div>
+                
+                        @if ($loop->last)
+                            </div>
+                        @endif
                     @endforeach
-                    </div>
                 </div>
             </div>
+            
             @error('specialty')
                 <div class="text-danger mb-3">{{ $message }}</div>
             @enderror
