@@ -87,7 +87,7 @@
             </div>
 
             <div class="d-block btn-group mb-3" role="group">
-                <span ><h5 class="mb-3">Specializzazione/i</h5></span>
+                <span ><p class="mb-3">Specializzazione/i</p></span>
                 <div class="row">
                     @php
                     $currentLetter = ''; 
@@ -120,7 +120,7 @@
                     @endforeach
                 </div>
             </div>
-            
+
             @error('specialty')
                 <div class="text-danger mb-3">{{ $message }}</div>
             @enderror
