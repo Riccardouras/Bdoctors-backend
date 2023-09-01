@@ -125,11 +125,20 @@ class DoctorController extends Controller
      */
     public function destroy(Doctor $doctor)
     {
+        //Recupero l'utente autenticato
         $user = Auth::user();
+        //Recupero l'id dell'utente
+        $user_id = $user->id;
+        //Faccio il logout dell'utente
         Auth::logout();
+        //Elimino il record in doctors relativo all'utente
+        $doctor = Doctor::where('user_id', $user_id)->first();
         $doctor->delete();
+        //Elimino il record dell'utente
         $user->delete();
-        return view('welcome');
+
+        //Reindirizzo all home del sito
+        return redirect('http://localhost:5174');
     }
 
     /**
@@ -139,12 +148,14 @@ class DoctorController extends Controller
      */
     public function reviews()
     {
+        //Recupero utente autenticato e id dottore corrispondente
         $user_id = Auth::user()->id;
-        $doctor = Doctor::where('user_id', $user_id)->pluck('id');
-        $doctor_id = $doctor[0];
+        $doctor_id = Doctor::where('user_id', $user_id)->pluck('id')->first();
 
+        //Recupero le recensioni, che hanno doctor_id uguale a quello recuperato sopra, per data in ordine decrescente
         $reviews = Review::where('doctor_id', $doctor_id)->orderBy('date', 'desc')->get();
 
+        //Richiamo la vista e passo le recensioni recuperate
         return view('admin.doctors.reviews', compact('reviews'));
     }
 
@@ -155,12 +166,14 @@ class DoctorController extends Controller
      */
     public function messages()
     {
+        //Recupero utente autenticato e id dottore corrispondente
         $user_id = Auth::user()->id;
-        $doctor = Doctor::where('user_id', $user_id)->pluck('id');
-        $doctor_id = $doctor[0];
+        $doctor_id = Doctor::where('user_id', $user_id)->pluck('id')->first();
 
+        //Recupero i messaggi, che hanno doctor_id uguale a quello recuperato sopra, per data in ordine decrescente
         $messages = Message::where('doctor_id', $doctor_id)->orderBy('date', 'desc')->get();
 
+        //Richiamo la vista e passo i messaggi recuperati
         return view('admin.doctors.messages', compact('messages'));
     }
 
@@ -172,17 +185,22 @@ class DoctorController extends Controller
      */
     public function stats()
     {
+        //Recupero utente autenticato e record dottore corrispondente
         $user = Auth::user();
         $doctor = Doctor::where('user_id', $user->id)->first();
 
+        //Creo le date indietro nel tempo di un mese e un anno e le converto in formato DateTime MySQL
         $lastMonthDates = mktime(0, 0, 0, date("m")-1, date("d"),   date("Y"));
         $lastMonthDates = gmdate("Y-m-d H:i:s", $lastMonthDates);
         $lastYearDates = mktime(0, 0, 0, date("m"), date("d"),   date("Y")-1);
         $lastYearDates = gmdate("Y-m-d H:i:s", $lastYearDates);
 
+        //Dichiaro gli array dei voti dell'ultimo mese e anno che verranno restituiti alla vista
         $lastMonthVotes = [];
         $lastYearVotes = [];
 
+        //Creo un array per effettuare la stessa operazione con date e array di store differenti,
+        // Con & uso un riferimento alle variabili e non una copia 
         $dynamicVotesVariables = [
             [
                 'timeVariable' => &$lastMonthDates,
@@ -194,14 +212,17 @@ class DoctorController extends Controller
             ]
         ];
 
+        //Ciclo sull'array appena fatto per salvare la quantità di voti per ogni singolo valore per l'ultimo mese e anno
         foreach($dynamicVotesVariables as $variables){
 
+            //Salvo le quantità di voti per ogni singolo valore
             $oneStar = $doctor->votes()->where('date', '>', $variables['timeVariable'])->where('vote_id', '1')->count();
             $twoStar = $doctor->votes()->where('date', '>', $variables['timeVariable'])->where('vote_id', '2')->count();
             $threeStar = $doctor->votes()->where('date', '>', $variables['timeVariable'])->where('vote_id', '3')->count();
             $fourStar = $doctor->votes()->where('date', '>', $variables['timeVariable'])->where('vote_id', '4')->count();
             $fiveStar = $doctor->votes()->where('date', '>', $variables['timeVariable'])->where('vote_id', '5')->count();
 
+            //Inserisco nell'array i dati appena recuperati
             $variables['storeVariable'] = [
                 'oneStar' => $oneStar,
                 'twoStar' => $twoStar,
@@ -211,12 +232,14 @@ class DoctorController extends Controller
             ];
         }
 
+        //Recupero il numero dei messaggi e delle recensioni ricevute nell'ultimo mese e anno
         $lastMonthMessages = $doctor->messages()->where('date', '>', $lastMonthDates)->count();
         $lastYearMessages = $doctor->messages()->where('date', '>', $lastYearDates)->count();
 
         $lastMonthReviews = $doctor->reviews()->where('date', '>', $lastMonthDates)->count();
         $lastYearReviews = $doctor->reviews()->where('date', '>', $lastYearDates)->count();
 
+        // Dichiaro l'array con i dati che devono essere mandati alla vista
         $data = [
             'lastMonthVotes' => $lastMonthVotes,
             'lastYearVotes' => $lastYearVotes,
@@ -227,6 +250,7 @@ class DoctorController extends Controller
             'user' => $user
         ];
 
+        //Richiamo la vista passandole l'array di dati dichiarato sopra
         return view('admin.doctors.stats', $data);
     }
 }
