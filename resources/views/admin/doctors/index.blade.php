@@ -54,19 +54,19 @@
                 <hr>
                 <div class="mb-3">
                     @if (count($doctor->specialties)>1)
-                    <h6 class="fw-bold">Specializzazione</h6> 
+                    <h6 class="fw-bold">Specializzazioni</h6> 
                         @foreach ($doctor->specialties as $specialty)
                             @if ($loop->last)
-                                <span class="">{{ $specialty->name }}.</span>
+                                <span>{{ $specialty->name }}.</span>
                             @else
-                                <span class="">{{ $specialty->name }},</span>
+                                <span>{{ $specialty->name }},</span>
                             @endif
                         @endforeach
                         
                         @else
                             <h6 class="fw-bold">Specializzazione <i class="fa-solid fa-stethoscope"></i></h6>
                             @foreach ($doctor->specialties as $specialty)
-                                <span class="">{{ $specialty->name }},</span>
+                                <span>{{ $specialty->name }}.</span>
                             @endforeach
                         @endif   
                 </div>
@@ -75,7 +75,7 @@
                     @if ($doctor->service == null)
                         <p class="text-danger">Aggiorna il profilo e inserisci le prestazioni che offri</p> 
                     @else
-                        {{ $doctor->service }} 
+                        <p>{{ $doctor->service }}</p>
                     @endif
                 </div>
                 <hr>
