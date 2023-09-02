@@ -3,9 +3,11 @@
 use App\Http\Controllers\API\DoctorController;
 use App\Http\Controllers\API\MessageController;
 use App\Http\Controllers\API\ReviewController;
+use App\Http\Controllers\API\DoctorVoteController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -31,5 +33,6 @@ Route::get('/searchWithFilter', [DoctorController::class, 'searchWithFilter']);
 Route::get('/doctorDetails', [DoctorController::class, 'doctorDetails']);
 Route::get('/getDoctorReviews', [DoctorController::class, 'getDoctorReviews']);
 
-Route::post('/message', [MessageController::class, 'storeMessage']);
-Route::post('/review', [ReviewController::class, 'storeReview']);
+Route::post('/storeMessage', [MessageController::class, 'storeMessage']);
+Route::post('/storeReview', [ReviewController::class, 'storeReview']);
+Route::post('/storeVote', [DoctorVoteController::class, 'storeVote']);
