@@ -57,7 +57,7 @@
                     <h6 class="fw-bold">Specializzazione</h6> 
                         @foreach ($doctor->specialties as $specialty)
                             @if ($loop->last)
-                                <span class="">{{ $specialty->name }},</span>
+                                <span class="">{{ $specialty->name }}.</span>
                             @else
                                 <span class="">{{ $specialty->name }},</span>
                             @endif
