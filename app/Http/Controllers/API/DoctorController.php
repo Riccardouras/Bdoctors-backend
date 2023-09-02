@@ -31,21 +31,28 @@ class DoctorController extends Controller
             $doctor_id = $doctor->id;
 
             $doctorImage = Doctor::where('id', $id)->select('image')->first();
-            $doctorImage =  'http://localhost:8000/storage/' . $doctorImage->image;
+            // $doctorImage =  'http://localhost:8000/storage/' . $doctorImage->image;
+            $doctor->image =  'http://localhost:8000/storage/' . $doctorImage->image;
 
             $userID = Doctor::where('id', $id)->pluck('user_id');
             $doctorName = User::where('id', $userID[0])->select('name')->first();
-            $doctorName = $doctorName->name;
+            // $doctorName = $doctorName->name;
+            $doctor->name = $doctorName->name;
 
             $doctorSpecialtiesArray = $doctor->specialties()->pluck('name')->toArray();
+            $doctor->specialties = $doctor->specialties()->pluck('name')->toArray();
 
-            $sponsoredDoctors[] = [
-                'doctorId' => $doctor_id,
-                'doctorImage' => $doctorImage,
-                'doctorName' => $doctorName,
-                'doctorSpecialtiesArray' => $doctorSpecialtiesArray
-            ];
-        }
+
+            $averageVote = DoctorVote::where('doctor_id', $id)->avg('vote_id');
+            $averageVote = round($averageVote, 1);
+            if ($averageVote == null) {
+                $averageVote = 0;
+            }
+            $numberOfReviews = $doctor->reviews()->count();
+            $doctor->averageVote = $averageVote;
+            $doctor->numberOfReviews = $numberOfReviews;
+
+            $sponsoredDoctors[] = $doctor;
 
         $response = [
             'success' => true,
@@ -54,6 +61,7 @@ class DoctorController extends Controller
 
         return response()->json($response);
     }
+}
 
     public function allSpecialties()
     {
