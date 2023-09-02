@@ -57,16 +57,16 @@
                     <h6 class="fw-bold">Specializzazione</h6> 
                         @foreach ($doctor->specialties as $specialty)
                             @if ($loop->last)
-                                <p>{{ $specialty->name }}</p>
+                                <span class="">{{ $specialty->name }},</span>
                             @else
-                                <p>{{ $specialty->name }}</p>,
+                                <span class="">{{ $specialty->name }},</span>
                             @endif
                         @endforeach
                         
                         @else
                             <h6 class="fw-bold">Specializzazione <i class="fa-solid fa-stethoscope"></i></h6>
                             @foreach ($doctor->specialties as $specialty)
-                                <p>{{ $specialty->name }}</p>
+                                <span class="">{{ $specialty->name }},</span>
                             @endforeach
                         @endif   
                 </div>
