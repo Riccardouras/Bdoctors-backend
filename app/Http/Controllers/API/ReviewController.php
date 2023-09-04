@@ -16,10 +16,18 @@ class ReviewController extends Controller
         $validator = Validator::make(
             $data,
             [
-                'name' => 'required|max:300',
-                'title' => 'required|max:30',
+                'name' => 'required|max:30',
+                'title' => 'required|max:50',
                 'comment' => 'required|max:800',
                 'doctor_id' => 'required|exists:doctors,id'
+            ],
+            [
+                'name.required' => 'Il nome è obbligatorio',
+                'name.max' => 'Il nome può avere massimo 30 caratteri',
+                'title.required' => 'Il titolo è obbligatorio',
+                'title.max' => 'Il titolo può avere massimo 50 caratteri',
+                'comment.required' => 'Il commento è obbligatorio',
+                'comment.max' => 'Il commento può avere massimo 800 caratteri',
             ]
         );
 
