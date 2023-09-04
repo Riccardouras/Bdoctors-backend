@@ -198,12 +198,12 @@ class DoctorController extends Controller
         $specialties= [];
         
         foreach($specialtyIDS as $id){
-            $specialtyName = Specialty::where('id', $id)->pluck('name');
+            $specialtyName = Specialty::where('id', $doctor_id)->pluck('name');
             $specialties[] = $specialtyName[0];
         }
 
         $doctor->specialties = $specialties;
-        $averageVote = DoctorVote::where('doctor_id', $id)->avg('vote_id');
+        $averageVote = DoctorVote::where('doctor_id', $doctor_id)->avg('vote_id');
         $averageVote = round($averageVote, 1);
         if ($averageVote == null) {
             $averageVote = 0;
