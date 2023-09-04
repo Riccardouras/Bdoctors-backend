@@ -224,7 +224,7 @@ class DoctorController extends Controller
         
         $doctor_id = $request->input('doctor_id');
 
-        $reviews = Review::where('doctor_id', $doctor_id)->get();
+        $reviews = Review::where('doctor_id', $doctor_id)->orderBy('date', 'desc')->get();
 
         $response = [
             'success' => true,
