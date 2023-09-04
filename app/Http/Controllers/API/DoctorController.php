@@ -198,7 +198,7 @@ class DoctorController extends Controller
         $specialties= [];
         
         foreach($specialtyIDS as $id){
-            $specialtyName = Specialty::where('id', $doctor_id)->pluck('name');
+            $specialtyName = Specialty::where('id', $id)->pluck('name');
             $specialties[] = $specialtyName[0];
         }
 
