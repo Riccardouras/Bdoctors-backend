@@ -18,6 +18,12 @@ class DoctorVoteController extends Controller
             [
                 'doctor_id' => 'required|exists:doctors,id',
                 'vote_id' => 'required|exists:votes,id'
+            ],
+            [
+                'doctor_id.required' => 'Ops qualcosa è andato storto',
+                'doctor_id.exists' => 'Ops qualcosa è andato storto',
+                'vote_id.required' => 'Ops qualcosa è andato storto',
+                'vote_id.exists' => 'Ops qualcosa è andato storto',
             ]
         );
 

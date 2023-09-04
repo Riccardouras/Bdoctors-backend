@@ -1,2 +1,145 @@
-@import '~bootstrap/scss/bootstrap'
+@import '~bootstrap/scss/bootstrap';
 
+
+*{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.borders{
+    // background-color: #BDDAF2; 
+    /* border: 2px solid #2980b9;  */
+    background-color: #2980b9; 
+    border-radius: 10px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+}
+
+.pointer{
+        cursor: pointer;
+}
+
+.btn_close {
+    position: relative;
+    background-color: rgb(230, 34, 77);
+    border-radius: 5px;
+    box-shadow: rgb(121, 18, 55) 0px 4px 0px 0px;
+    padding: 15px;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    width: 154px;
+    height: 49px;
+    color: #fff;
+    border: none;
+    font-size: 20px;
+    transition: all .3s ease-in-out;
+    z-index: 1;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+.btn_close::before {
+    content: "";
+    background-color: rgb(248, 50, 93);
+    width: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: width 700ms ease-in-out;
+    display: inline-block;
+  }
+  
+.btn_close:hover::before {
+    width: 100%;
+  }
+
+//   message-card and review
+//   .modal_header {
+//     width: 190px;
+//     height: 254px;
+//     background: rgb(0, 0, 0);
+//     border: 2px solid rgb(255, 255, 255);
+//     border-radius: 20px;
+//   }
+  
+//   .card:hover {
+//     width: 190px;
+//     height: 254px;
+//     background: rgb(255, 255, 255);
+//     border: 2px solid rgb(200, 200, 200);
+//     border-radius: 20px;
+//     background-color: #dfdfdf;
+//     transition: all .5s;
+//   }
+  
+//   .secondAnimation {
+//     --hoverContorno: #959595;
+//   }
+  
+//   .secondAnimation:hover,
+//   .secondAnimation:focus {
+//     -webkit-animation: cardAnimacion 1.4s;
+//     animation: cardAnimacion 1.4s;
+//     box-shadow: 0 0 0 0.8em rgba(255, 255, 255, 0);
+//     border-radius: 20px;
+//   }
+  
+//   @-webkit-keyframes cardAnimacion {
+//     0% {
+//       box-shadow: 0 0 0 0 var(--hoverContorno);
+//     }
+//   }
+  
+//   @keyframes cardAnimacion {
+//     0% {
+//       box-shadow: 0 0 0 0 var(--hoverContorno);
+//     }
+//   }
+  
+.bg_color{
+    /* background-color: #17a5f5; */
+    // background: rgb(189,218,242);
+    // background: linear-gradient(0deg, rgba(189,218,242,1) 0%, rgba(140,190,229) 51%);
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+    // background-repeat: no-repeat;
+    // background-size: cover;
+    background: #2980b9;
+ }
+ .bg_primary{
+     background-color: #BDDAF2;
+     background: rgb(189,218,242);
+     background: linear-gradient(0deg, rgba(189,218,242,1) 0%, rgba(45,192,253,1) 100%);
+     border: none;
+     border-radius: 50px;
+     color: rgb(255, 255, 255);
+     font-weight: 600;
+     /* display: flex;
+     align-items: center;
+     justify-content: center; */
+     gap: 5px;
+     cursor: pointer;
+     box-shadow: 1px 3px 0px rgba(189,218,242,1) 0%;
+     transition-duration: .3s;
+     
+}
+  
+.max_width{
+    max-width: 56rem !important;
+    margin: 3rem auto!important;
+}
+
+img{
+    width: 28rem;
+    padding-left: 1rem;
+    border-radius: 10px 10px;
+}
+.stats-box{
+    border: 2px black;
+    box-shadow: 2px 2px 2px 2px #BDDAF2;
+    // max-width: 25rem;
+}
+.messandreview_bg{
+    background-color: #BDDAF2; 
+}

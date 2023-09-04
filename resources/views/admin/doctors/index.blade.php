@@ -38,102 +38,92 @@
        
     </div> --}}
 
-    <div class="mt-5 me-5 relative borders p-3">
-        <div class="d-flex  align-items-center pl-3">
+    <div class="mt-5 me-5 relative borders p-3 max_width">
+        <div class="d-flex align-items-center ">
             <div class="d-flex me-5">
                     @if ($doctor->image == null)
                     <p class="text-danger">Aggiorna il profilo e inserisci la foto profilo</p>
                 @else
-                    <img src="{{ asset('storage/'. $doctor->image) }}" alt="">
+                    <img class="img-fluid" src="{{ asset('storage/'. $doctor->image) }}" alt="">
                 @endif
             </div>
             <div class="">
                 <div class="mb-5">
-                    <h1 class="fw-bold">{{ $doctor->user->name }}</h1>
+                    <h1 class="fw-bold text-black">{{ $doctor->user->name }}</h1>
                 </div>
                 <hr>
                 <div class="mb-3">
                     @if (count($doctor->specialties)>1)
-                    <h6 class="fw-bold">Specializzazioni</h6> 
+                    <h6 class="fw-bold text-black">Specializzazioni</h6> 
                         @foreach ($doctor->specialties as $specialty)
                             @if ($loop->last)
-                                <span>{{ $specialty->name }}.</span>
+                                <span class="text-black">{{ $specialty->name }}.</span>
                             @else
-                                <span>{{ $specialty->name }},</span>
+                                <span class="text-black">{{ $specialty->name }},</span>
                             @endif
                         @endforeach
                         
                         @else
-                            <h6 class="fw-bold">Specializzazione <i class="fa-solid fa-stethoscope"></i></h6>
+                            <h6 class="fw-bold text-black">Specializzazione <i class="fa-solid fa-stethoscope text-black"></i></h6>
                             @foreach ($doctor->specialties as $specialty)
-                                <span>{{ $specialty->name }}.</span>
+                                <span class="text-black">{{ $specialty->name }}.</span>
                             @endforeach
                         @endif   
                 </div>
                 <div class="mb-3">
-                    <h6 class="fw-bold">Prestazioni <i class="fa-solid fa-syringe"></i></h6>
+                    <h6 class="fw-bold text-black">Prestazioni <i class="fa-solid fa-syringe"></i></h6>
                     @if ($doctor->service == null)
                         <p class="text-danger">Aggiorna il profilo e inserisci le prestazioni che offri</p> 
                     @else
-                        <p>{{ $doctor->service }}</p>
+                        <p class="text-black">{{ $doctor->service }}</p>
                     @endif
                 </div>
                 <hr>
                 <div class="mb-3">
-                    <h5>Contatti <i class="fa-solid fa-map-pin"></i></h5>
-                    <h6 class="fw-bold">Città</h6>  {{ $doctor->city }} 
-                    <h6 class="fw-bold">Indirizzo</h6>  {{ $doctor->address }} 
-                    <h6 class="fw-bold">Telefono</h6>
+                    <h5 class="text-black">Contatti <i class="fa-solid fa-map-pin text-black"></i></h5>
+                    <h6 class="fw-bold text-black">Città</h6>  <span class="text-black">{{ $doctor->city }}</span> 
+                    <h6 class="fw-bold text-black">Indirizzo</h6>   <span class="text-black">{{ $doctor->address }}</span>
+                    <h6 class="fw-bold text-black">Telefono</h6>
                     @if ($doctor->phone_number == null)
                         <p class="text-danger">Aggiorna il profilo e inserisci il numero di telefono</p> 
                     @else
-                        {{ $doctor->phone_number }} 
+                        <span class="text-black">{{ $doctor->phone_number }} </span>
                     @endif
                 </div>
                 <div>
                     @if ($doctor->curriculum == null)
                     <p class="text-danger">Aggiorna il profilo e inserisci il curriculum</p>
                 @else
-                    <a target="_blank" href="{{ asset('storage/'. $doctor->curriculum) }}"><p class="fw-bold">Curriculum</p></a> 
+                    <a target="_blank" href="{{ asset('storage/'. $doctor->curriculum) }}"><p class="fw-bold text-black">Curriculum</p></a> 
                 @endif
                 </div>
             </div>
             
-            <div class="absolute">
+            <div class="">
                 <a href="{{ route('admin.doctors.edit', $doctor)}}" class="btn">
-                    <i class="fa-solid fa-user-pen size"></i>
+                    <i class="fa-solid fa-user-pen size text-black"></i>
                 </a>
             </div>  
         </div>
     </div>
     <style>
-        img{
-            width: 28rem;
-            border-radius: 20pc;
-            padding-left: 1rem; 
-        }
-        .absolute{
-            position: absolute;
-            top: 4%;
-            right: 0%;
-        }
-        .relative{
-            position: relative;
-        }
+      
         .size{
             width: 3rem;
         }
         .borders{
-            background-color: #BDDAF2; 
-            /* border: 2px solid #2980b9;  */
-            border-radius: 10px; 
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
-        }
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            border-radius: 10px;
+            background-color:  rgb(248, 249, 250);
+            border: 2px solid #313131;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+                }
         h6{
             margin: 0;
         }
-        main{
-            background-color: #dbe1e6;
+        hr{
+            color: black;
         }
     </style>
 @endsection
