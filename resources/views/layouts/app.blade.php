@@ -18,15 +18,13 @@
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
     <style>
-        *{
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-        }
+       
         #logo {
             width: 110px;
         }
         nav{
-            background-color: #17a5f5;
-        }`
+            background-color: #2980b9;
+        }
     </style>
 </head>
 
