@@ -123,7 +123,7 @@
             margin: 0;
         }
         hr{
-            color: white
+            color: black;
         }
     </style>
 @endsection
