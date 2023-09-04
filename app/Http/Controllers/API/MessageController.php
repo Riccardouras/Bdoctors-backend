@@ -16,10 +16,18 @@ class MessageController extends Controller
         $validator = Validator::make(
             $data,
             [
-                'text' => 'required|max:800',
                 'full_name' => 'required|max:30',
                 'mail' => 'required|email',
+                'text' => 'required|max:800',
                 'doctor_id' => 'required|exists:doctors,id',
+            ],
+            [
+                'text.required' => 'Il testo è obbligatorio',
+                'text.max' => 'Il testo può avere massimo 800 caratteri',
+                'full_name.required' => 'Il nome è obbligatorio',
+                'full_name.max' => 'Il nome può avere massimo 30 caratteri',
+                'mail.required' => 'la mail è obbligatoria',
+                'mail.email' => 'Il formato della mail non è valido',
             ]
         );
 
