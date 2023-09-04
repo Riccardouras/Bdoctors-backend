@@ -19,11 +19,14 @@ class DoctorController extends Controller
     public function sponsored()
     {
         $currentDate = date("Y-m-d H:i:s");
-        $activeSponsorships = DoctorSponsor::where('end_date', '>', $currentDate);
+        $activeSponsorships = DoctorSponsor::where('end_date', '>', $currentDate)->get();
 
+        
         $sponsoredDoctorsIDS = $activeSponsorships->pluck('doctor_id')->toArray();
-
+        
+        
         $sponsoredDoctors = [];
+        
 
         foreach ($sponsoredDoctorsIDS as $id) {
 
@@ -52,15 +55,15 @@ class DoctorController extends Controller
             $doctor->averageVote = $averageVote;
             $doctor->numberOfReviews = $numberOfReviews;
 
-            $sponsoredDoctors[] = $doctor;
-
-        $response = [
-            'success' => true,
-            'results' => $sponsoredDoctors
-        ];
-
-        return response()->json($response);
+            $sponsoredDoctors[] = $doctor;   
     }
+
+    $response = [
+        'success' => true,
+        'results' => $sponsoredDoctors
+    ];
+
+    return response()->json($response);
 }
 
     public function allSpecialties()

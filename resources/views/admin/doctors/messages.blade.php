@@ -2,15 +2,15 @@
 
 @section('content')
     <div class="container">
-        <div class="row mt-5 mb-5 bg borders">
-            <h1 class="text-center">MESSAGGI RICEVUTI</h1>
+        <div class="row text-center mt-5 mb-5 bg borders">
+            <h1>MESSAGGI RICEVUTI</h1>
             @if (count($messages) == 0)
                 <h2>Non ci sono messaggi da visualizzare</h2>
             @endif
         </div>
-        <div class="me-5">
+        <div class="row me-5">
             @foreach ($messages as $message)
-                <div class="col-3">
+                <div class="col-4">
                     <div class="card mb-3 messandreview_bg pointer" data-bs-toggle="modal" data-bs-target="#message{{ $loop->index }}">
                         <div class="card-header">
                             <div class="card-title">
