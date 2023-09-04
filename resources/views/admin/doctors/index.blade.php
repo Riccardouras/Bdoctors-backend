@@ -44,7 +44,7 @@
                     @if ($doctor->image == null)
                     <p class="text-danger">Aggiorna il profilo e inserisci la foto profilo</p>
                 @else
-                    <img src="{{ asset('storage/'. $doctor->image) }}" alt="">
+                    <img class="img-fluid" src="{{ asset('storage/'. $doctor->image) }}" alt="">
                 @endif
             </div>
             <div class="">
