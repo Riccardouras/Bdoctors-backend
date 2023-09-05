@@ -11,6 +11,7 @@ use App\Models\Review;
 use App\Models\Specialty;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Braintree\Gateway;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 class DoctorController extends Controller
@@ -21,12 +22,12 @@ class DoctorController extends Controller
         $currentDate = date("Y-m-d H:i:s");
         $activeSponsorships = DoctorSponsor::where('end_date', '>', $currentDate)->get();
 
-        
+
         $sponsoredDoctorsIDS = $activeSponsorships->pluck('doctor_id')->toArray();
-        
-        
+
+
         $sponsoredDoctors = [];
-        
+
 
         foreach ($sponsoredDoctorsIDS as $id) {
 
@@ -55,16 +56,16 @@ class DoctorController extends Controller
             $doctor->averageVote = $averageVote;
             $doctor->numberOfReviews = $numberOfReviews;
 
-            $sponsoredDoctors[] = $doctor;   
+            $sponsoredDoctors[] = $doctor;
+        }
+
+        $response = [
+            'success' => true,
+            'results' => $sponsoredDoctors
+        ];
+
+        return response()->json($response);
     }
-
-    $response = [
-        'success' => true,
-        'results' => $sponsoredDoctors
-    ];
-
-    return response()->json($response);
-}
 
     public function allSpecialties()
     {
@@ -184,7 +185,8 @@ class DoctorController extends Controller
         return response()->json($response);
     }
 
-    public function doctorDetails(Request $request){
+    public function doctorDetails(Request $request)
+    {
 
         $doctor_id = $request->input('doctor_id');
 
@@ -195,9 +197,9 @@ class DoctorController extends Controller
         $doctor->image = 'http://localhost:8000/storage/' . $doctor->image;
         $doctor->curriculum = 'http://localhost:8000/storage/' . $doctor->curriculum;
         $specialtyIDS = DoctorSpecialty::where('doctor_id', $doctor_id)->pluck('specialty_id')->toArray();
-        $specialties= [];
-        
-        foreach($specialtyIDS as $id){
+        $specialties = [];
+
+        foreach ($specialtyIDS as $id) {
             $specialtyName = Specialty::where('id', $id)->pluck('name');
             $specialties[] = $specialtyName[0];
         }
@@ -215,16 +217,17 @@ class DoctorController extends Controller
 
         $response = [
             'success' => true,
-            'results' =>[
+            'results' => [
                 'doctor' => $doctor
             ]
-            ];
+        ];
 
         return response()->json($response);
     }
 
-    public function getDoctorReviews(Request $request){
-        
+    public function getDoctorReviews(Request $request)
+    {
+
         $doctor_id = $request->input('doctor_id');
 
         $reviews = Review::where('doctor_id', $doctor_id)->orderBy('date', 'desc')->get();
