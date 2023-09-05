@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\SponsorshipController;
 use App\Http\Controllers\API\DoctorController;
 use App\Http\Controllers\API\MessageController;
 use App\Http\Controllers\API\ReviewController;
@@ -31,7 +32,7 @@ Route::get('/allSpecialties', [DoctorController::class, 'allSpecialties']);
 Route::get('/searchPerSpecialty', [DoctorController::class, 'searchPerSpecialty']);
 Route::get('/searchWithFilter', [DoctorController::class, 'searchWithFilter']);
 Route::get('/doctorDetails', [DoctorController::class, 'doctorDetails']);
-Route::get('/getDoctorReviews', [DoctorController::class, 'getDoctorReviews']);
+// Route::post('/processpayment', [DoctorController::class, 'processpayment']);;
 
 Route::post('/storeMessage', [MessageController::class, 'storeMessage']);
 Route::post('/storeReview', [ReviewController::class, 'storeReview']);
