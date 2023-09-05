@@ -11,17 +11,18 @@
         </div>
         <div class="row">
             @foreach ($reviews as $review)
-                <div class="col-4">
-                    <div class="card mb-3 pointer messandreview_bg" data-bs-toggle="modal" data-bs-target="#review{{ $loop->index }}">
-                        <div class="card-header">
+                <div class="col-12 col-md-6 col-lg-3 col-xl-2 h-100">
+                    <div class="card mb-3 pointer messandreview_bg " data-bs-toggle="modal" data-bs-target="#review{{ $loop->index }}">
+                        <div class="card-header h-50">
                             <div class="card-title">
-                                <h4><i class="fa-solid fa-comment"></i> {{ $review->name }}</h4>
-                            </div>
-                            <div class="card-subtitle">
-                                {{ $review->date }}
+                                <h6><i class="fa-solid fa-comment"></i> </h6>
+                                <p>{{ $review->name }}</p>
                             </div>
                         </div>
-                    </div>
+                        <div class="card-body"> 
+                            {{ $review->date }}
+                        </div>
+                    </div>   
                 </div>
 
 

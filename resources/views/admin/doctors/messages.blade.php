@@ -10,11 +10,12 @@
         </div>
         <div class="row me-5">
             @foreach ($messages as $message)
-                <div class="col-4">
-                    <div class="card mb-3 messandreview_bg pointer" data-bs-toggle="modal" data-bs-target="#message{{ $loop->index }}">
+                <div class="col-12 col-md-6 col-lg-3 col-xl-2 h-100">
+                    <div class="card mb-3 messandreview_bg pointer " data-bs-toggle="modal" data-bs-target="#message{{ $loop->index }}">
                         <div class="card-header">
+                            <h6><i class="fa-solid fa-envelope"></i></h6>
                             <div class="card-title">
-                                <h4><i class="fa-solid fa-envelope"></i> {{ $message->full_name }}</h4>
+                                 {{ $message->full_name }}</h4>
                             </div>
                             <div class="card-subtitle">
                                 {{ $message->date }}
