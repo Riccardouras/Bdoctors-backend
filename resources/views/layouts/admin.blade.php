@@ -37,21 +37,24 @@
 
                             <li class="nav-item">
                                 <a target="_blank" class="nav-link text-white" href="/">
-                                    <i class="fa-solid fa-home-alt fa-lg fa-fw"></i> Vai al sito
+                                    <i class="fa-solid fa-home-alt fa-lg fa-fw"></i> 
+                                    <span class="d_none">Vai al sito</span>
                                 </a>
                             </li>
 
                             <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.doctors.index' ? 'bg_primary' : '' }}"
                                     href="{{ route('admin.doctors.index') }}">
-                                    <i class="fa-solid fa-user-doctor fa-lg fa-fw"></i> Home
+                                    <i class="fa-solid fa-user-doctor fa-lg fa-fw"></i> 
+                                    <span class="d_none">Home</span>
                                 </a>
                             </li>
 
                             <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.doctors.stats' ? 'bg_primary' : '' }}"
                                     href="{{ route('admin.doctors.stats') }}">
-                                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Statistiche
+                                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> 
+                                    <span class="d_none">Statistiche</span>
                                 </a>
                             </li>
 
@@ -59,21 +62,23 @@
                             <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.doctors.messages' ? 'bg_primary' : '' }}"
                                     href="{{ route('admin.doctors.messages') }}">
-                                    <i class="fa-solid fa-message fa-lg fa-fw"></i> Messaggi
+                                    <i class="fa-solid fa-message fa-lg fa-fw"></i> 
+                                    <span class="d_none">Messaggi</span>
                                 </a>
                             </li>
 
                             <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.doctors.reviews' ? 'bg_primary' : '' }}"
                                     href="{{ route('admin.doctors.reviews') }}">
-                                    <i class="fa-solid fa-comment fa-lg fa-fw"></i> Recensioni
+                                    <i class="fa-solid fa-comment fa-lg fa-fw"></i> <span class="d_none">Recensioni</span>
                                 </a>
                             </li>
 
                             <li class="nav-item">
                                 <a class="nav-link text-white" href="{{ route('logout') }}"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    <i class="fa-solid fa-sign-out-alt fa-lg fa-fw"></i> {{ __('Logout') }}
+                                    <i class="fa-solid fa-sign-out-alt fa-lg fa-fw"></i> 
+                                    <span class="d_none">{{ __('Logout') }}</span>
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf

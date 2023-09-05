@@ -88,7 +88,7 @@
 
             <div class="d-block btn-group mb-3" role="group">
                 <span ><p class="mb-3">Specializzazione/i</p></span>
-                <div class="row">
+                <div class="row" id="mediaQueryCheckboxContainer">
                     @php
                     $currentLetter = ''; 
                     @endphp
@@ -118,6 +118,14 @@
                             </div>
                         @endif
                     @endforeach
+                </div>
+                <div class="col-12 mb-3" id="mediaQuerySelectContainer">
+                    <label for="specialtySelect">Seleziona una specializzazione:</label>
+                    <select name="specialtySelect" id="specialtySelect">
+                        @foreach ($specialtiesArray as $specialty)
+                            <option value="{{ $specialty->id }}">{{ $specialty->name }}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
 

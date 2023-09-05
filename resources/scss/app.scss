@@ -143,3 +143,53 @@ img{
 .messandreview_bg{
     background-color: #BDDAF2; 
 }
+
+
+@media screen and (max-width: 768px) {
+    #mediaQuerySelectContainer {
+        display: block;
+    }
+}
+
+
+@media screen and (min-width: 769px) {
+    #mediaQuerySelectContainer {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #mediaQueryCheckboxContainer {
+        display: none;
+    }
+}
+@media (max-width: 767px) {
+    /* Styles for mobile devices */
+    .borders {
+        border: 1px solid #313131;
+        border-radius: 5px;
+    }
+    .size {
+        width: 2rem;
+    }
+    /* Adjust other styles as needed */
+}
+@media (min-width: 576px) and (max-width: 768px) {
+    .navbar-dark.sidebar {
+        display: block !important; 
+        width: 10% !important;
+    }
+    a span{
+        display: none;    
+    }
+    li{
+        display: flex !important;
+        align-items: center !important;
+        margin-left: -10px;
+
+    }
+    
+    .bg_primary{
+       background-color: none;
+   }
+}

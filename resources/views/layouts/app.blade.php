@@ -41,15 +41,10 @@
                     {{-- config('app.name', 'Laravel') --}}
                 </a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto nav-right gap-5">
+                    <ul class="navbar-nav ml-auto nav-right gap-3">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
