@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container mt-3">
-        <div class="row gap-3 justify-content-center">
+        <div class="row gap-3 justify-content-center bg">
             <h1 class="mb-5 mt-5 text-center borders"> Statistiche</h1>
 
                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

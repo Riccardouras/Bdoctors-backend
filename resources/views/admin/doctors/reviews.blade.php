@@ -2,14 +2,14 @@
 
 @section('content')
     <div class="container">
-        <div class="row text-center mt-5 mb-5 borders">
+        <div class="row text-center mt-5 mb-5 borders bg">
             <h1>RECENSIONI RICEVUTE</h1>
 
             @if (count($reviews) == 0)
                 <h2>Non ci sono recensioni da visualizzare</h2>
             @endif
         </div>
-        <div class="row">
+        <div class="row bg">
             @foreach ($reviews as $review)
                 <div class="col-12 col-md-6 col-lg-3 col-xl-2 h-100">
                     <div class="card mb-3 pointer messandreview_bg " data-bs-toggle="modal" data-bs-target="#review{{ $loop->index }}">

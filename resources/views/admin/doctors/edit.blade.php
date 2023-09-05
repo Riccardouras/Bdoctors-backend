@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container my-3">
+    <div class="container my-3 marginQuery">
 
         <h1>MODIFICA PROFILO</h1>
 
@@ -120,13 +120,34 @@
                     @endforeach
                 </div>
                 <div class="col-12 mb-3" id="mediaQuerySelectContainer">
-                    <label for="specialtySelect">Seleziona una specializzazione:</label>
-                    <select name="specialtySelect" id="specialtySelect">
+                    <label for="specialty{{ $i }}" >Seleziona una specializzazione:</label>
+                    <select value="{{ $specialty->id }}" 
+                        id="specialty{{ $i }}" name="specialty[]" @checked ( in_array( $specialty->id, old('specialty') ?? $doctor->specialties->pluck('id')->toArray()))>
                         @foreach ($specialtiesArray as $specialty)
-                            <option value="{{ $specialty->id }}">{{ $specialty->name }}</option>
+                            <option type="checkbox" value="{{ $specialty->id }}">{{ $specialty->name }}</option>
                         @endforeach
                     </select>
                 </div>
+                    {{-- <div class="multiselect" id="mediaQuerySelectContainer">
+                      <div class="selectBox" onclick="showCheckboxes()">
+                        <select value="{{ $specialty->id }}" 
+                            id="specialty{{ $i }}" name="specialty[]" @checked ( in_array( $specialty->id, old('specialty') ?? $doctor->specialties->pluck('id')->toArray()))>
+                          <option>Seleziona una opzione</option>
+                          @foreach ($specialtiesArray as $specialty)
+                            <option>{{ $specialty->name }}</option>
+                          @endforeach
+                        </select>
+                        <div class="overSelect"></div>
+                      </div>
+                      <div id="checkboxes">
+                        @foreach ($specialtiesArray as $specialty)
+                          <label for="specialty{{ $specialty->id }}">
+                            <input type="checkbox" id="specialty{{ $specialty->id }}" />
+                            {{ $specialty->name }}
+                            </label>
+                        @endforeach
+                      </div>
+                    </div> --}}
             </div>
 
             @error('specialty')
@@ -199,5 +220,17 @@
         //         event.preventDefault()
         //     }
         // }
+        var expanded = false;
+
+        function showCheckboxes() {
+        var checkboxes = document.getElementById("checkboxes");
+        if (!expanded) {
+            checkboxes.style.display = "block";
+            expanded = true;
+        } else {
+            checkboxes.style.display = "none";
+            expanded = false;
+        }
+        }
     </script>
 @endsection

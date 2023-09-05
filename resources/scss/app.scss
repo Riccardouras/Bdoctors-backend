@@ -5,6 +5,8 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+// checkbox
+
 .borders{
     // background-color: #BDDAF2; 
     /* border: 2px solid #2980b9;  */
@@ -55,75 +57,12 @@
     width: 100%;
   }
 
-//   message-card and review
-//   .modal_header {
-//     width: 190px;
-//     height: 254px;
-//     background: rgb(0, 0, 0);
-//     border: 2px solid rgb(255, 255, 255);
-//     border-radius: 20px;
-//   }
-  
-//   .card:hover {
-//     width: 190px;
-//     height: 254px;
-//     background: rgb(255, 255, 255);
-//     border: 2px solid rgb(200, 200, 200);
-//     border-radius: 20px;
-//     background-color: #dfdfdf;
-//     transition: all .5s;
-//   }
-  
-//   .secondAnimation {
-//     --hoverContorno: #959595;
-//   }
-  
-//   .secondAnimation:hover,
-//   .secondAnimation:focus {
-//     -webkit-animation: cardAnimacion 1.4s;
-//     animation: cardAnimacion 1.4s;
-//     box-shadow: 0 0 0 0.8em rgba(255, 255, 255, 0);
-//     border-radius: 20px;
-//   }
-  
-//   @-webkit-keyframes cardAnimacion {
-//     0% {
-//       box-shadow: 0 0 0 0 var(--hoverContorno);
-//     }
-//   }
-  
-//   @keyframes cardAnimacion {
-//     0% {
-//       box-shadow: 0 0 0 0 var(--hoverContorno);
-//     }
-//   }
-  
+
 .bg_color{
-    /* background-color: #17a5f5; */
-    // background: rgb(189,218,242);
-    // background: linear-gradient(0deg, rgba(189,218,242,1) 0%, rgba(140,190,229) 51%);
-     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
-    // background-repeat: no-repeat;
-    // background-size: cover;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
     background: #2980b9;
  }
- .bg_primary{
-     background-color: #BDDAF2;
-     background: rgb(189,218,242);
-     background: linear-gradient(0deg, rgba(189,218,242,1) 0%, rgba(45,192,253,1) 100%);
-     border: none;
-     border-radius: 50px;
-     color: rgb(255, 255, 255);
-     font-weight: 600;
-     /* display: flex;
-     align-items: center;
-     justify-content: center; */
-     gap: 5px;
-     cursor: pointer;
-     box-shadow: 1px 3px 0px rgba(189,218,242,1) 0%;
-     transition-duration: .3s;
-     
-}
+ 
   
 .max_width{
     max-width: 56rem !important;
@@ -144,11 +83,67 @@ img{
     background-color: #BDDAF2; 
 }
 
-
+@media screen and (min-witdh: 768px){
+    .bg_primary{
+        background-color: #BDDAF2;
+        background: rgb(189,218,242);
+        background: linear-gradient(0deg, rgba(189,218,242,1) 0%, rgba(45,192,253,1) 100%);
+        border: none;
+        border-radius: 50px;
+        color: rgb(255, 255, 255);
+        font-weight: 600;
+        /* display: flex;
+        align-items: center;
+        justify-content: center; */
+        gap: 5px;
+        cursor: pointer;
+        box-shadow: 1px 3px 0px rgba(189,218,242,1) 0%;
+        transition-duration: .3s;
+        
+   }
+}
 @media screen and (max-width: 768px) {
     #mediaQuerySelectContainer {
         display: block;
     }
+    #mediaQueryCheckboxContainer {
+        display: none;
+    }
+    .multiselect {
+        width: 200px;
+      }
+      
+      .selectBox {
+        position: relative;
+      }
+      
+      .selectBox select {
+        width: 100%;
+      }
+      
+      .overSelect {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+      }
+      
+      #checkboxes {
+        display: none;
+        border: 1px #dadada solid;
+        overflow-y: scroll;
+        height: 70px;
+      }
+      
+      #checkboxes label {
+        display: block;
+      }
+      
+      #checkboxes label:hover {
+        background-color: #1e90ff;
+      }
+      // endcheckbox
 }
 
 
@@ -158,11 +153,7 @@ img{
     }
 }
 
-@media screen and (max-width: 768px) {
-    #mediaQueryCheckboxContainer {
-        display: none;
-    }
-}
+
 @media (max-width: 767px) {
     /* Styles for mobile devices */
     .borders {
@@ -182,7 +173,7 @@ img{
     a span{
         display: none;    
     }
-    li{
+    ul{
         display: flex !important;
         align-items: center !important;
         margin-left: -10px;
@@ -191,5 +182,14 @@ img{
     
     .bg_primary{
        background-color: none;
+   }
+   .container{
+    margin: 20px 20px !important;
+   }
+   .bg{
+    margin-left: 35px;
+   }
+   .marginQuery{
+    margin-left: 75px !important;
    }
 }
