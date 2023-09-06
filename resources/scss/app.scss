@@ -103,6 +103,12 @@ img {
         transition-duration: .3s;
 
     }
+
+    .elements {
+        display: flex;
+        flex-direction: column;
+    }
+
 }
 
 @media screen and (max-width: 768px) {
@@ -159,6 +165,12 @@ img {
     }
 }
 
+@media (max-width: 1279px) {
+    .elements {
+        display: flex;
+        flex-direction: column;
+    }
+}
 
 @media (max-width: 767px) {
 
@@ -171,6 +183,7 @@ img {
     .size {
         width: 2rem;
     }
+
 
     /* Adjust other styles as needed */
 }
@@ -244,5 +257,9 @@ img {
     .elements {
         display: flex;
         flex-direction: column;
+    }
+
+    .fa-lg {
+        width: 0.75em;
     }
 }
