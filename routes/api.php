@@ -32,7 +32,7 @@ Route::get('/allSpecialties', [DoctorController::class, 'allSpecialties']);
 Route::get('/searchPerSpecialty', [DoctorController::class, 'searchPerSpecialty']);
 Route::get('/searchWithFilter', [DoctorController::class, 'searchWithFilter']);
 Route::get('/doctorDetails', [DoctorController::class, 'doctorDetails']);
-// Route::post('/processpayment', [DoctorController::class, 'processpayment']);;
+Route::get('/getDoctorReviews', [DoctorController::class, 'getDoctorReviews']);
 
 Route::post('/storeMessage', [MessageController::class, 'storeMessage']);
 Route::post('/storeReview', [ReviewController::class, 'storeReview']);
