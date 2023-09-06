@@ -65,7 +65,6 @@ class SponsorshipController extends Controller
         $selectedSponsor = Sponsor::where('id', $selectedPackage)->first();
 
 
-
         $gateway = new Gateway([
             'environment' => 'sandbox',
             'merchantId' => 'cstsvtg6wg8yxdcn',
@@ -115,14 +114,14 @@ class SponsorshipController extends Controller
                 $sponsorship->sponsor_id = $selectedSponsor->id;
                 $sponsorship->save();
                 $message = 'Pagamento completato con successo';
-                return view('admin.sponsorship.form', compact('sponsors', 'sponsoredDoctors'))->with('message', $message);
+                return redirect()->route('admin.sponsorship.form', compact('sponsors', 'sponsoredDoctors'))->with('message', $message);
             } else {
                 $message = 'Errore durante il processo di pagamento';
-                return view('admin.sponsorship.form', compact('sponsors', 'sponsoredDoctors'))->with('error', $message);
+                return redirect()->route('admin.sponsorship.form', compact('sponsors', 'sponsoredDoctors'))->with('error', $message);
             }
         } catch (\Exception $e) {
             $message = 'Errore durante il pagamento: ' . $e->getMessage();
-            return view('admin.sponsorship.form', 'sponsoredDoctors')->with('error', $message);
+            return redirect()->route('admin.sponsorship.form', 'sponsoredDoctors')->with('error', $message);
         }
     }
 }

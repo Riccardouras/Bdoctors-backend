@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateDoctorRequest;
 use App\Models\Doctor;
 use App\Models\DoctorSponsor;
+use App\Models\DoctorVote;
 use App\Models\Message;
 use App\Models\Review;
 use App\Models\Specialty;
@@ -28,12 +29,14 @@ class DoctorController extends Controller
         $doctor = Doctor::where('user_id', $user_id)->first();
         // Verifico se l'utente ha una sposnosorizzazione in corso
         $sponsoredDoctor = DoctorSponsor::where('doctor_id', $doctor->id)->first();
-
+        $rating = DoctorVote::where('doctor_id', $doctor->id)->avg('vote_id');
+        $averageRating = round($rating, 1);
 
         //Creo l'array con i dati da passare alla vista
         $data = [
             'doctor' => $doctor,
-            'sponsoredDoctor' => $sponsoredDoctor
+            'sponsoredDoctor' => $sponsoredDoctor,
+            'averageRating' => $averageRating
         ];
 
         //Richiamo la vista del profilo e restituisco i dati
