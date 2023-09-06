@@ -4,10 +4,10 @@
     <div class="container">
         <div class="row text-center mt-5 mb-5 bg borders ">
             <h1>MESSAGGI RICEVUTI</h1>
-            @if (count($messages) == 0)
-                <h2>Non ci sono messaggi da visualizzare</h2>
-            @endif
         </div>
+        @if (count($messages) == 0)
+                <h2>Non ci sono messaggi da visualizzare</h2>
+        @endif
         <div class="row me-5 bg">
             @foreach ($messages as $message)
                 <div class="col-12 col-md-6 col-lg-3 col-xl-2 h-100">

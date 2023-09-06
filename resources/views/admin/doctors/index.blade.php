@@ -38,8 +38,8 @@
        
     </div> --}}
 
-    <div class="mt-5 me-5 relative borders p-3 max_width">
-        <div class="d-flex align-items-center ">
+    <div class="container mt-5 me-5 relative borders p-3 max_width">
+        <div class="elements d-flex align-items-center ">
             <div class="d-flex me-5">
                     @if ($doctor->image == null)
                     <p class="text-danger">Aggiorna il profilo e inserisci la foto profilo</p>
@@ -47,8 +47,8 @@
                     <img class="img-fluid" src="{{ asset('storage/'. $doctor->image) }}" alt="">
                 @endif
             </div>
-            <div class="">
-                <div class="mb-5">
+            <div class="text-center">
+                <div class="mb-5 mt-1">
                     <h1 class="fw-bold text-black">{{ $doctor->user->name }}</h1>
                 </div>
                 <hr>
