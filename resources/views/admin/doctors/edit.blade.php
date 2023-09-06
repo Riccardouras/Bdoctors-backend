@@ -119,35 +119,23 @@
                         @endif
                     @endforeach
                 </div>
-                <div class="col-12 mb-3" id="mediaQuerySelectContainer">
-                    <label for="specialty{{ $i }}" >Seleziona una specializzazione:</label>
-                    <select value="{{ $specialty->id }}" 
-                        id="specialty{{ $i }}" name="specialty[]" @checked ( in_array( $specialty->id, old('specialty') ?? $doctor->specialties->pluck('id')->toArray()))>
-                        @foreach ($specialtiesArray as $specialty)
-                            <option type="checkbox" value="{{ $specialty->id }}">{{ $specialty->name }}</option>
-                        @endforeach
-                    </select>
+            </div>
+            <div class="row" id="mediaQuerySelectContainer">
+                <div class="mb-3">
+                    <label>Ricerca specializzazione:</label>
+                    <input type="text" id="specialtyFilter" class="form-control" placeholder="Inserisci iniziale...">
                 </div>
-                    {{-- <div class="multiselect" id="mediaQuerySelectContainer">
-                      <div class="selectBox" onclick="showCheckboxes()">
-                        <select value="{{ $specialty->id }}" 
-                            id="specialty{{ $i }}" name="specialty[]" @checked ( in_array( $specialty->id, old('specialty') ?? $doctor->specialties->pluck('id')->toArray()))>
-                          <option>Seleziona una opzione</option>
-                          @foreach ($specialtiesArray as $specialty)
-                            <option>{{ $specialty->name }}</option>
-                          @endforeach
-                        </select>
-                        <div class="overSelect"></div>
-                      </div>
-                      <div id="checkboxes">
-                        @foreach ($specialtiesArray as $specialty)
-                          <label for="specialty{{ $specialty->id }}">
-                            <input type="checkbox" id="specialty{{ $specialty->id }}" />
-                            {{ $specialty->name }}
-                            </label>
-                        @endforeach
-                      </div>
-                    </div> --}}
+                <div class="overflow-scroll mb-2" style="height: 200px;">
+                @foreach ($specialtiesArray as $i => $specialty)
+                    <div class="col-4 mb-3">
+                        <div class="form-check specialty-checkbox-container h-100" style="display: none;">
+                            <input type="checkbox" value="{{ $specialty->id }}" class="form-check-input specialty-checkbox"
+                                id="specialty{{ $i }}" name="specialty[]" @checked ( in_array( $specialty->id, old('specialty') ?? $doctor->specialties->pluck('id')->toArray()))>
+                            <label for="specialty{{ $i }}" class="form-check-label"> {{ $specialty->name }}</label>
+                        </div>
+                    </div>
+                @endforeach
+                </div>
             </div>
 
             @error('specialty')
@@ -220,17 +208,25 @@
         //         event.preventDefault()
         //     }
         // }
-        var expanded = false;
+         // Variabili filtro
+        var specialtyFilter = document.getElementById("specialtyFilter");
+        var checkboxContainers = document.querySelectorAll(".specialty-checkbox-container");
 
-        function showCheckboxes() {
-        var checkboxes = document.getElementById("checkboxes");
-        if (!expanded) {
-            checkboxes.style.display = "block";
-            expanded = true;
-        } else {
-            checkboxes.style.display = "none";
-            expanded = false;
-        }
-        }
+    // Filtro
+        specialtyFilter.addEventListener("input", function() {
+            var filterText = this.value.toLowerCase();
+
+            checkboxContainers.forEach(function(container) {
+                var checkbox = container.querySelector(".specialty-checkbox");
+                var label = container.querySelector(".form-check-label");
+                var specialtyName = label.textContent.toLowerCase();
+
+                if (specialtyName.includes(filterText)) {
+                    container.style.display = "block"; // Mostra il contenitore delle checkbox
+                } else {
+                    container.style.display = "none";
+                }
+            });
+        });
     </script>
 @endsection
