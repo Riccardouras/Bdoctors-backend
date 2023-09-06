@@ -88,7 +88,7 @@
 
             <div class="d-block btn-group mb-3" role="group">
                 <span ><p class="mb-3">Specializzazione/i</p></span>
-                <div class="row" id="mediaQueryCheckboxContainer">
+                <div class="row">
                     @php
                     $currentLetter = ''; 
                     @endphp
@@ -119,7 +119,7 @@
                         @endif
                     @endforeach
                 </div>
-                <div class="col-12 mb-3" id="mediaQuerySelectContainer">
+                {{-- <div class="col-12 mb-3" id="mediaQuerySelectContainer">
                     <label for="specialty{{ $i }}" >Seleziona una specializzazione:</label>
                     <select value="{{ $specialty->id }}" 
                         id="specialty{{ $i }}" name="specialty[]" @checked ( in_array( $specialty->id, old('specialty') ?? $doctor->specialties->pluck('id')->toArray()))>
@@ -127,7 +127,7 @@
                             <option type="checkbox" value="{{ $specialty->id }}">{{ $specialty->name }}</option>
                         @endforeach
                     </select>
-                </div>
+                </div> --}}
                     {{-- <div class="multiselect" id="mediaQuerySelectContainer">
                       <div class="selectBox" onclick="showCheckboxes()">
                         <select value="{{ $specialty->id }}" 
