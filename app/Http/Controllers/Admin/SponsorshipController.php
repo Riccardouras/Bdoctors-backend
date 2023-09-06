@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Braintree\Gateway;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
 
 
 use Symfony\Component\CssSelector\Node\SelectorNode;
@@ -48,12 +49,15 @@ class SponsorshipController extends Controller
 
     public function processpayment(Request $request)
     {
+        $sponsors = Sponsor::all();
         $user_id = Auth::user()->id;
         $doctor = Doctor::where('user_id', $user_id)->first();
 
         $nonce = $request->input('payment_method_nonce');
         $selectedPackage = $request->input('selected_package');
         $selectedSponsor = Sponsor::where('id', $selectedPackage)->first();
+
+
 
         $gateway = new Gateway([
             'environment' => 'sandbox',
@@ -73,22 +77,28 @@ class SponsorshipController extends Controller
 
             if ($result->success) {
                 $sponsorship = new DoctorSponsor();
-                $sponsorship->start_date = date("Y-m-d H:i:s");
-                $sponsorship->end_date = Carbon::now()->addHours(48);
+                if ($sponsorship->id == 1) {
+                    $sponsorship->start_date = Carbon::now();
+                    $sponsorship->end_date = Carbon::now()->addHours(24);
+                } elseif ($sponsorship->id == 2) {
+                    $sponsorship->start_date = Carbon::now();
+                    $sponsorship->end_date = Carbon::now()->addHours(72);
+                } else {
+                    $sponsorship->start_date = Carbon::now();
+                    $sponsorship->end_date = Carbon::now()->addHours(144);
+                }
                 $sponsorship->doctor_id = $doctor->id;
                 $sponsorship->sponsor_id = $selectedSponsor->id;
-
-                $sponsorship->save();
-                // $message = [
-                //     'status' => true,
-                //     'message' => 'Il pagamento è stato effettuato con successo'
-                // ];
-                return to_route('admin.sponsorship.form');
+                // $sponsorship->save();
+                $message = 'Pagamento completato con successo';
+                return view('admin.sponsorship.form', compact('sponsors'))->with('message', $message);
             } else {
-                return response()->json(['success' => false, 'error' => 'Errore durante il pagamento']);
+                $message = 'Errore durante il processo di pagamento';
+                return view('admin.sponsorship.form', compact('sponsors'))->with('error', $message);
             }
         } catch (\Exception $e) {
-            return response()->json(['success' => false, 'error' => $e->getMessage()]);
+            $message = 'Errore durante il pagamento: ' . $e->getMessage();
+            return view('admin.sponsorship.form')->with('error', $message);
         }
     }
 }

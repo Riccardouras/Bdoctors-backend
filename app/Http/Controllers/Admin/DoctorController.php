@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateDoctorRequest;
 use App\Models\Doctor;
+use App\Models\DoctorSponsor;
 use App\Models\Message;
 use App\Models\Review;
 use App\Models\Specialty;
+use App\Models\Sponsor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -24,10 +26,14 @@ class DoctorController extends Controller
         //Recupero l'utente autenticato e il record in doctors relativo
         $user_id = Auth::user()->id;
         $doctor = Doctor::where('user_id', $user_id)->first();
+        // Verifico se l'utente ha una sposnosorizzazione in corso
+        $sponsoredDoctor = DoctorSponsor::where('doctor_id', $doctor->id)->first();
+
 
         //Creo l'array con i dati da passare alla vista
         $data = [
-            'doctor' => $doctor
+            'doctor' => $doctor,
+            'sponsoredDoctor' => $sponsoredDoctor
         ];
 
         //Richiamo la vista del profilo e restituisco i dati
@@ -202,7 +208,7 @@ class DoctorController extends Controller
         $doctor = Doctor::where('user_id', $user->id)->first();
 
         //Creo le date indietro nel tempo di un mese e un anno e le converto in formato DateTime MySQL
-        $lastMonthDates = mktime(0, 0, 0, date("m")-1, date("d"),   date("Y"));
+        $lastMonthDates = mktime(0, 0, 0, date("m") - 1, date("d"),   date("Y"));
         $lastMonthDates = gmdate("Y-m-d H:i:s", $lastMonthDates);
         $lastYearDates = mktime(0, 0, 0, date("m"), date("d"),   date("Y") - 1);
         $lastYearDates = gmdate("Y-m-d H:i:s", $lastYearDates);
@@ -225,7 +231,7 @@ class DoctorController extends Controller
         ];
 
         //Ciclo sull'array appena fatto per salvare la quantità di voti per ogni singolo valore per l'ultimo mese e anno
-        foreach($dynamicVotesVariables as $variables){
+        foreach ($dynamicVotesVariables as $variables) {
 
             //Salvo le quantità di voti per ogni singolo valore
             $oneStar = $doctor->votes()->where('date', '>', $variables['timeVariable'])->where('vote_id', '1')->count();
