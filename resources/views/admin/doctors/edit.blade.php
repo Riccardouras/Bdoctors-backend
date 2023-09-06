@@ -88,7 +88,7 @@
 
             <div class="d-block btn-group mb-3" role="group">
                 <span ><p class="mb-3">Specializzazione/i</p></span>
-                <div class="row" id="mediaQueryCheckboxContainer">
+                <div class="row" id="">
                     @php
                     $currentLetter = ''; 
                     @endphp
@@ -101,7 +101,7 @@
                             if ($i > 0) {
                                 echo "</div>";
                             }
-                            echo "<div class='col-4 mb-3 '>";
+                            echo "<div class='col-md-4 mb-3 '>";
                             echo "<div style='background-color:#BDDAF2' class='p-1'><h6>{$firstLetter}:</h6></div>";
                 
                             $currentLetter = $firstLetter;
@@ -119,24 +119,24 @@
                         @endif
                     @endforeach
                 </div>
-            </div>
-            <div class="row" id="mediaQuerySelectContainer">
-                <div class="mb-3">
-                    <label>Ricerca specializzazione:</label>
-                    <input type="text" id="specialtyFilter" class="form-control" placeholder="Inserisci iniziale...">
-                </div>
-                <div class="overflow-scroll mb-2" style="height: 200px;">
-                @foreach ($specialtiesArray as $i => $specialty)
-                    <div class="col-4 mb-3">
-                        <div class="form-check specialty-checkbox-container h-100" style="display: none;">
-                            <input type="checkbox" value="{{ $specialty->id }}" class="form-check-input specialty-checkbox"
-                                id="specialty{{ $i }}" name="specialty[]" @checked ( in_array( $specialty->id, old('specialty') ?? $doctor->specialties->pluck('id')->toArray()))>
-                            <label for="specialty{{ $i }}" class="form-check-label"> {{ $specialty->name }}</label>
-                        </div>
+                {{-- <div class="row" id="mediaQuerySelectContainer">
+                    <div class="mb-3">
+                        <label>Ricerca specializzazione:</label>
+                        <input type="text" id="specialtyFilter" class="form-control" placeholder="specializzazione">
                     </div>
-                @endforeach
-                </div>
+                    <div class="overflow-scroll mb-2" style="height: 200px;">
+                        @foreach ($specialtiesArray as $i => $specialtys)
+                            <div class="col-4 mb-3">
+                                <div class="form-check specialty-checkbox-container" style="display: none;">
+                                    <input type="checkbox" value="{{ $specialtys->id }}" class="form-check-input specialty-checkbox"
+                                        id="specialtys{{ $i }}" name="specialty[{{ $i }}]" @checked ( in_array( $specialtys->id, old('specialtys') ?? $doctor->specialties->pluck('id')->toArray()))>
+                                    <label for="specialtys{{ $i }}" class="form-check-label"> {{ $specialtys->name }}</label>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>   --}}
             </div>
+            
 
             @error('specialty')
                 <div class="text-danger mb-3">{{ $message }}</div>
