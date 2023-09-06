@@ -20,7 +20,16 @@ class DoctorController extends Controller
     public function sponsored()
     {
         $currentDate = date("Y-m-d H:i:s");
-        $activeSponsorships = DoctorSponsor::where('end_date', '>', $currentDate)->get();
+        // $sponsorEndDate= DoctorSponsor::where('end_date', '>', $currentDate)->get();
+        // $sponsorStartDate= DoctorSponsor::where('start_date', '<', $currentDate)->get();       
+
+
+        // if ($currentDate >= $sponsorStartDate && $currentDate <= $sponsorEndDate ) {
+        //     $activeSponsorships =
+        // }
+        $activeSponsorships = DoctorSponsor::where('end_date', '>', $currentDate)
+            ->where('start_date', '<', $currentDate)->get();
+
 
 
         $sponsoredDoctorsIDS = $activeSponsorships->pluck('doctor_id')->toArray();
