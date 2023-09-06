@@ -2,27 +2,29 @@
 
 @section('content')
     <div class="container">
-        <h1 class="mt-2">Effettua il pagamento</h1>
-        <div class="row">
-            <div class="col-6">
-                <div class="card mt-2">
-                    <div class="card-body">
-                        <h5 class="card-title">Hai selezionato il pacchetto: {{ $selectedPackage->hours }} ore </h5>
-                        <p class="card-text">{{ $selectedPackage->price }} €</p>
+        <div class="bg">
+            <h1 class="mt-2">Effettua il pagamento</h1>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card mt-2">
+                        <div class="card-body">
+                            <h5 class="card-title">Hai selezionato il pacchetto: {{ $selectedPackage->hours }} ore </h5>
+                            <p class="card-text">{{ $selectedPackage->price }} €</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-12">
-                <!-- Form per il pagamento -->
-                <form id="payment-form" action="{{ route('admin.sponsorship.processpayment') }}" method="POST">
-                    @csrf
-                    <!-- Elemento per il modulo di pagamento di Braintree -->
-                    <div id="bt-dropin"></div>
-                    <input type="hidden" name="selected_package" id="selected_package" value="{{ $selectedPackage->id }}">
-                    <button class="btn btn-warning" type="submit">Effettua il pagamento</button>
-                </form>
-            </div>
+                <div class="col-12">
+                    <!-- Form per il pagamento -->
+                    <form id="payment-form" action="{{ route('admin.sponsorship.processpayment') }}" method="POST">
+                        @csrf
+                        <!-- Elemento per il modulo di pagamento di Braintree -->
+                        <div id="bt-dropin"></div>
+                        <input type="hidden" name="selected_package" id="selected_package" value="{{ $selectedPackage->id }}">
+                        <button class="btn btn-warning" type="submit">Effettua il pagamento</button>
+                    </form>
+                </div>
 
+            </div>
         </div>
     </div>
 
