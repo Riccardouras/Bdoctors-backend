@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Carbon;
+
 
 
 class ReviewController extends Controller
@@ -42,7 +44,7 @@ class ReviewController extends Controller
 
         $newData = $validator->validated();
         // $newData['doctor_id'] = $id;
-        $newData['date'] = date("Y-m-d H:i:s");
+        $newData['date'] = Carbon::now();
         $newMessage = new Review();
         $newMessage->fill($newData);
         $newMessage->save();

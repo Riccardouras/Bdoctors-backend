@@ -11,6 +11,7 @@ use App\Models\Review;
 use App\Models\Specialty;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Braintree\Gateway;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
@@ -19,14 +20,7 @@ class DoctorController extends Controller
 
     public function sponsored()
     {
-        $currentDate = date("Y-m-d H:i:s");
-        // $sponsorEndDate= DoctorSponsor::where('end_date', '>', $currentDate)->get();
-        // $sponsorStartDate= DoctorSponsor::where('start_date', '<', $currentDate)->get();       
-
-
-        // if ($currentDate >= $sponsorStartDate && $currentDate <= $sponsorEndDate ) {
-        //     $activeSponsorships =
-        // }
+        $currentDate = Carbon::now();
         $activeSponsorships = DoctorSponsor::where('end_date', '>', $currentDate)
             ->where('start_date', '<', $currentDate)->get();
 

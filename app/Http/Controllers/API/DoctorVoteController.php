@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\DoctorVote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Carbon;
 
 
 class DoctorVoteController extends Controller
@@ -37,7 +38,7 @@ class DoctorVoteController extends Controller
         }
 
         $newData = $validator->validated();
-        $newData['date'] = date("Y-m-d H:i:s");
+        $newData['date'] = Carbon::now();
         $newVote = new DoctorVote();
         $newVote->fill($newData);
         $newVote->save();
