@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container">
+    <div class="container margin">
         <div class="row text-center mt-5 mb-5 bg borders ">
             <h1>MESSAGGI RICEVUTI</h1>
         </div>

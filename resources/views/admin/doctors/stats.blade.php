@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container">
+    <div class="container margin">
         <div class="row gap-2 justify-content-center bg mt-5">
             <h1 class="mb-5  text-center borders"> Statistiche</h1>
 

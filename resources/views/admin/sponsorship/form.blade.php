@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container">
+    <div class="container margin">
         <div class="bg">
             <h1 class="mt-2">Sponsorizza il tuo profilo</h1>
 
