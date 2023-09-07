@@ -12,17 +12,18 @@
         <div class="row bg">
             @foreach ($reviews as $review)
                 <div class="col-12 col-md-6 col-lg-3 col-xl-2 h-100">
-                    <div class="card mb-3 pointer messandreview_bg " data-bs-toggle="modal" data-bs-target="#review{{ $loop->index }}">
+                    <div class="card mb-3 pointer messandreview_bg " data-bs-toggle="modal"
+                        data-bs-target="#review{{ $loop->index }}">
                         <div class="card-header h-50">
                             <div class="card-title">
                                 <h6><i class="fa-solid fa-comment"></i> </h6>
                                 <p>{{ $review->name }}</p>
                             </div>
                         </div>
-                        <div class="card-body"> 
-                            {{ $review->date }}
+                        <div class="card-body">
+                            {{ date('d-m-Y', strtotime($review->date)) }}
                         </div>
-                    </div>   
+                    </div>
                 </div>
 
 
@@ -49,7 +50,6 @@
                         </div>
                     </div>
                 </div>
-                
             @endforeach
         </div>
     </div>
@@ -65,7 +65,7 @@
 
 
 
-            {{-- @foreach ($reviews as $review)
+{{-- @foreach ($reviews as $review)
                 <div class="col-12">
                     <div class="card mb-3 ">
                         <div class="card-header">
@@ -87,4 +87,3 @@
                     </div>
                 </div>
             @endforeach --}}
-       
