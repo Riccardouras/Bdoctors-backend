@@ -8,10 +8,11 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <div class="card mt-2">
-                        <div class="card-body">
-                            <h5 class="card-title">Hai selezionato il pacchetto: {{ $selectedPackage->hours }} ore </h5>
-                            <p class="card-text">{{ $selectedPackage->price }} €</p>
+                    <div class="card sponsorCard mt-2">
+                        <div class="card-body z-1 text-center">
+                            <h5 class="card-title titoloCard">Hai selezionato il pacchetto: {{ $selectedPackage->hours }} ore
+                            </h5>
+                            <p class="card-text sponsorPrice fs-3">{{ $selectedPackage->price }} €</p>
                         </div>
                     </div>
                 </div>
@@ -21,7 +22,8 @@
                         @csrf
                         <!-- Elemento per il modulo di pagamento di Braintree -->
                         <div id="bt-dropin"></div>
-                        <input type="hidden" name="selected_package" id="selected_package" value="{{ $selectedPackage->id }}">
+                        <input type="hidden" name="selected_package" id="selected_package"
+                            value="{{ $selectedPackage->id }}">
                         <button class="btn btn-warning" type="submit">Effettua il pagamento</button>
                     </form>
                 </div>
