@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container">
+    <div class="container margin">
         <div class="bg">
             <h1 class="mt-2">Effettua il pagamento</h1>
             <div class="row">
