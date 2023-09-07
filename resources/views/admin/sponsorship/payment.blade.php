@@ -3,7 +3,9 @@
 @section('content')
     <div class="container margin">
         <div class="bg">
-            <h1 class="mt-2">Effettua il pagamento</h1>
+            <div class="row text-center mt-5 mb-5 borders bg">
+                <h1 class="mt-2">Effettua il pagamento</h1>
+            </div>
             <div class="row">
                 <div class="col-md-6">
                     <div class="card mt-2">
