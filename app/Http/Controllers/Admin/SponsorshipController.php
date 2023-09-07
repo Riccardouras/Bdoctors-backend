@@ -25,7 +25,8 @@ class SponsorshipController extends Controller
         $user_id = Auth::user()->id;
         $doctor = Doctor::where('user_id', $user_id)->first();
         // Verifico se l'utente ha una sposnosorizzazione in corso
-        $sponsoredDoctors = DoctorSponsor::where('doctor_id', $doctor->id)->get();
+        $sponsoredDoctors = DoctorSponsor::where('doctor_id', $doctor->id)->where('end_date', '>', Carbon::now() )->get();
+
 
         return view('admin.sponsorship.form', compact('sponsors', 'sponsoredDoctors'));
     }
@@ -56,7 +57,8 @@ class SponsorshipController extends Controller
         $sponsors = Sponsor::all();
         $user_id = Auth::user()->id;
         $doctor = Doctor::where('user_id', $user_id)->first();
-        $sponsoredDoctors = DoctorSponsor::where('doctor_id', $doctor->id)->get();
+        $sponsoredDoctors = DoctorSponsor::where('doctor_id', $doctor->id)->where('end_date', '>' , Carbon::now())->get();
+
 
         $oldSponsor = DoctorSponsor::where('doctor_id', $doctor->id)->orderBy('end_date', 'desc')->first();
 
@@ -84,11 +86,11 @@ class SponsorshipController extends Controller
             if ($result->success) {
                 $sponsorship = new DoctorSponsor();
                 if ($oldSponsor) {
-                    if ($sponsorship->id == 1) {
+                    if ($selectedPackage == 1) {
                         $sponsorship->start_date =
                             $oldSponsor->end_date;
                         $sponsorship->end_date = Carbon::parse($oldSponsor->end_date)->addHours(24);
-                    } elseif ($sponsorship->id == 2) {
+                    } elseif ($selectedPackage == 2) {
                         $sponsorship->start_date =
                             $oldSponsor->end_date;
                         $sponsorship->end_date = Carbon::parse($oldSponsor->end_date)->addHours(72);
@@ -99,10 +101,10 @@ class SponsorshipController extends Controller
                     }
                 } else {
 
-                    if ($sponsorship->id == 1) {
+                    if ($selectedPackage == 1) {
                         $sponsorship->start_date = Carbon::now();
                         $sponsorship->end_date = Carbon::now()->addHours(24);
-                    } elseif ($sponsorship->id == 2) {
+                    } elseif ($selectedPackage == 2) {
                         $sponsorship->start_date = Carbon::now();
                         $sponsorship->end_date = Carbon::now()->addHours(72);
                     } else {
@@ -113,15 +115,15 @@ class SponsorshipController extends Controller
                 $sponsorship->doctor_id = $doctor->id;
                 $sponsorship->sponsor_id = $selectedSponsor->id;
                 $sponsorship->save();
-                $message = 'Pagamento completato con successo';
-                return redirect()->route('admin.sponsorship.form', compact('sponsors', 'sponsoredDoctors'))->with('message', $message);
+                $msg = 'Pagamento completato con successo';
+                return to_route('admin.sponsorship.form', compact('sponsors', 'sponsoredDoctors'))->with('msg', $msg);
             } else {
-                $message = 'Errore durante il processo di pagamento';
-                return redirect()->route('admin.sponsorship.form', compact('sponsors', 'sponsoredDoctors'))->with('error', $message);
+                $err = 'Errore durante il processo di pagamento';
+                return to_route('admin.sponsorship.form', compact('sponsors', 'sponsoredDoctors'))->with('err', $err);
             }
         } catch (\Exception $e) {
-            $message = 'Errore durante il pagamento: ' . $e->getMessage();
-            return redirect()->route('admin.sponsorship.form', 'sponsoredDoctors')->with('error', $message);
+            $err = 'Errore durante il pagamento: ' . $e->getMessage();
+            return to_route('admin.sponsorship.form', compact('sponsors', 'sponsoredDoctors'))->with('err', $err);
         }
     }
 }

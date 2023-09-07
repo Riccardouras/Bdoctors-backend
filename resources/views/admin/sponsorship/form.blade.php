@@ -5,15 +5,15 @@
         <div class="bg">
             <h1 class="mt-2">Sponsorizza il tuo profilo</h1>
 
-            @if (isset($message))
+            @if (session('msg'))
                 <div class="alert alert-success">
-                    {{ $message }}
+                    {{ session('msg') }}
                 </div>
             @endif
 
-            @if (isset($error))
+            @if (session('err'))
                 <div class="alert alert-danger">
-                    {{ $error }}
+                    {{ session('err') }}
                 </div>
             @endif
 
@@ -22,13 +22,15 @@
                 <div class="row">
                     @foreach ($sponsors as $sponsor)
                         <div class="col-md-4">
-                            <div class="card mt-2">
-                                <div class="card-body">
-                                    <h5 class="card-title">Sponsorizza il tuo profilo per {{ $sponsor->hours }} ore </h5>
-                                    <p class="card-text">{{ $sponsor->price }} €</p>
-                                    <input type="radio" name="selected_package" checked value="{{ $sponsor->id }}"> Seleziona
+                            <label for="selected_package{{$loop->index}}">
+                                <div class="card mt-2 sponsor-card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Sponsorizza il tuo profilo per {{ $sponsor->hours }} ore </h5>
+                                        <p class="card-text">{{ $sponsor->price }} €</p>
+                                        <input type="radio" name="selected_package" id="selected_package{{$loop->index}}" checked value="{{ $sponsor->id }}"> Seleziona
+                                    </div>
                                 </div>
-                            </div>
+                            </label>
                         </div>
                     @endforeach
                 </div>
@@ -40,9 +42,13 @@
                     <div class="col-md-4">
                         <div class="card mt-2">
                             <div class="card-body">
-                                <div class="card-title">Sponsorizzazione attiva </div>
-                                <div class="card-text">Data inizio: {{ $item->start_date }}</div>
-                                <div class="card-text">Data fine: {{ $item->end_date }}</div>
+                                @if ($loop->first)
+                                    <div class="card-title">Sponsorizzazione attiva </div>
+                                @else 
+                                    <div class="card-title">Sponsorizzazione futura </div>
+                                @endif
+                                <div class="card-text">Data inizio: {{ date("d-m-Y H:i:s" ,strtotime($item->start_date)) }}</div>
+                                <div class="card-text">Data fine: {{ date("d-m-Y H:i:s" ,strtotime($item->end_date)) }}</div>
                             </div>
                         </div>
                     </div>
