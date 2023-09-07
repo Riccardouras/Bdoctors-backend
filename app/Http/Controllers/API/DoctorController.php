@@ -233,7 +233,12 @@ class DoctorController extends Controller
 
         $doctor_id = $request->input('doctor_id');
 
-        $reviews = Review::where('doctor_id', $doctor_id)->orderBy('date', 'desc')->get();
+        $reviews = Review::where('doctor_id', $doctor_id)->orderBy('id', 'desc')->get()
+            ->map(function ($review) {
+                // Formatto la data in formato europeo dopo averla recuperata dal DB
+                $review->date = Carbon::parse($review->date)->format('d/m/Y');
+                return $review;
+            });
 
         $response = [
             'success' => true,
