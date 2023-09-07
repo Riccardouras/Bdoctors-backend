@@ -1,8 +1,9 @@
 @import '~bootstrap/scss/bootstrap';
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
 
 
 * {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Roboto", Arial, sans-serif;
 }
 
 // checkbox
@@ -57,12 +58,151 @@
     width: 100%;
 }
 
+.titoloCard {
+    background-color: #BDDAF2;
+    border-radius: 5px;
+}
+
+.sponsorPrice {
+    color: #04395c;
+}
+
+
+.radioButton {
+    --input-focus: #04395c;
+    --input-out-of-focus: #ccc;
+    --bg-color: #fff;
+    --bg-color-alt: #262bb7;
+    --main-color: #2980b9;
+    position: relative;
+    cursor: pointer;
+}
+
+.radioButton input {
+    position: absolute;
+    opacity: 0;
+}
+
+.checkmark {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: 0;
+    left: 0;
+    border: 2px solid var(--main-color);
+    border-radius: 5px;
+    box-shadow: 4px 4px var(--main-color);
+    background-color: var(--input-out-of-focus);
+    transition: all 0.3s;
+}
+
+.radioButton input:checked~.checkmark {
+    background-color: var(--input-focus);
+}
+
+.checkmark:after {
+    content: "";
+    width: 7px;
+    height: 15px;
+    position: absolute;
+    top: 2px;
+    left: 8px;
+    display: none;
+    border: solid var(--bg-color);
+    border-width: 0 2.5px 2.5px 0;
+    transform: rotate(45deg);
+}
+
+.radioButton input:checked~.checkmark:after {
+    display: block;
+}
+
 
 .bg_color {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     background: #2980b9;
 }
 
+.sponsorCard {
+    background: #07182E;
+    position: relative;
+    display: flex;
+    place-content: center;
+    place-items: center;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+
+.sponsorCard::before {
+    content: '';
+    position: absolute;
+    width: 100px;
+    background-image: linear-gradient(180deg, rgb(0, 183, 255), rgb(45, 150, 48));
+    height: 250%;
+    animation: rotBGimg 3s linear infinite;
+    transition: all 0.2s linear;
+}
+
+.borderCard {
+    border: 3px solid #07182E;
+    border-radius: 20px;
+    background-color: #DDEEF8;
+}
+
+
+
+@keyframes rotBGimg {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.sponsorCard::after {
+    content: '';
+    position: absolute;
+    background: #dfeef7;
+    ;
+    inset: 5px;
+    border-radius: 15px;
+}
+
+.bottone {
+    width: fit-content;
+    display: flex;
+    padding: 1.2em 1rem;
+    cursor: pointer;
+    gap: 0.4rem;
+    font-weight: bold;
+    border-radius: 30px;
+    text-shadow: 2px 2px 3px rgb(136 0 136 / 50%);
+    background: linear-gradient(15deg, #0a6fb3, #033e66, #038eeb, #2980b9) no-repeat;
+    background-size: 300%;
+    color: #fff;
+    border: none;
+    background-position: left center;
+    box-shadow: 0 30px 10px -20px rgba(0, 0, 0, .2);
+    transition: background .3s ease;
+}
+
+.bottone:hover {
+    background-size: 320%;
+    background-position: right center;
+}
+
+.bottone:hover svg {
+    fill: #fff;
+}
+
+.bottone svg {
+    width: 23px;
+    fill: #f09f33;
+    transition: .3s ease;
+}
 
 .max_width {
     max-width: 56rem !important;
@@ -264,6 +404,6 @@ img {
     }
 }
 
-.sponsor-card{
+.sponsor-card {
     cursor: pointer;
 }
