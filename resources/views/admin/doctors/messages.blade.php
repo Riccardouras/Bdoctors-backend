@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="container margin">
-        <div class="row text-center mt-5 mb-5 bg borders ">
-            <h1>MESSAGGI RICEVUTI</h1>
+        <div class="row text-center mt-5 mb-5">
+            <h1>Messaggi ricevuti</h1>
         </div>
         @if (count($messages) == 0)
             <h2>Non ci sono messaggi da visualizzare</h2>

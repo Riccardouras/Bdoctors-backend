@@ -223,6 +223,12 @@ img {
     background-color: #BDDAF2;
 }
 
+h1 {
+    color: #2980b9;
+    font-weight: bold;
+    text-shadow: 4px 4px 5px #aaa;
+}
+
 @media screen and (min-witdh: 768px) {
     .bg_primary {
         background-color: #BDDAF2;
@@ -400,19 +406,20 @@ img {
 }
 
 @media screen and (min-width: 992px) and (max-width: 1030px) {
-    .bg_color{
+    .bg_color {
         padding: 0 !important;
     }
 }
 
 @media screen and (max-width: 1279px) {
-    .elements > div{
+    .elements>div {
         margin-right: 0 !important;
         margin-left: 0 !important;
     }
 }
+
 @media screen and (min-width: 576px) and (max-width: 678px) {
-    .query_margin{
+    .query_margin {
         margin-left: 60px !important;
     }
 }

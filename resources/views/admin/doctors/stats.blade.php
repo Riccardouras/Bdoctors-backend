@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="container margin">
-        <div class="row gap-2 justify-content-center bg mt-5">
-            <h1 class="mb-5  text-center borders"> Statistiche</h1>
+        <div class="row gap-2 justify-content-center mt-5">
+            <h1 class="mb-5  text-center"> Statistiche</h1>
 
                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 

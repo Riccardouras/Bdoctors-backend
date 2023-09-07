@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="container margin">
-        <div class="row text-center mt-5 mb-5 borders bg">
-            <h1>RECENSIONI RICEVUTE</h1>
+        <div class="row text-center mt-5 mb-5 ">
+            <h1>Recensioni ricevute</h1>
 
             @if (count($reviews) == 0)
                 <h2>Non ci sono recensioni da visualizzare</h2>
