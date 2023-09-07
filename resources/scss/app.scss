@@ -65,13 +65,11 @@
 
 
 .max_width {
-    max-width: 56rem !important;
     margin: 3rem auto !important;
 }
 
 img {
     width: 28rem;
-    padding-left: 1rem;
     border-radius: 10px 10px;
 }
 
@@ -165,14 +163,14 @@ img {
     }
 }
 
-@media (max-width: 1279px) {
+@media screen and (max-width: 1279px) {
     .elements {
         display: flex;
         flex-direction: column;
     }
 }
 
-@media (max-width: 767px) {
+@media screen and (max-width: 767px) {
 
     /* Styles for mobile devices */
     .borders {
@@ -188,7 +186,7 @@ img {
     /* Adjust other styles as needed */
 }
 
-@media (min-width: 576px) and (max-width: 768px) {
+@media screen and (min-width: 576px) and (max-width: 768px) {
     .navbar-dark.sidebar {
         display: block !important;
         width: 10% !important;
@@ -209,9 +207,6 @@ img {
         background-color: none;
     }
 
-    .container {
-        margin: 20px 20px !important;
-    }
 
     .bg {
         margin-left: 35px;
@@ -227,7 +222,7 @@ img {
     }
 }
 
-@media (max-width: 576px) {
+@media screen and (max-width: 576px) {
 
     #sidebarMenu {
         display: block;
@@ -261,5 +256,23 @@ img {
 
     .fa-lg {
         width: 0.75em;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1030px) {
+    .bg_color{
+        padding: 0 !important;
+    }
+}
+
+@media screen and (max-width: 1279px) {
+    .elements > div{
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+    }
+}
+@media screen and (min-width: 576px) and (max-width: 678px) {
+    .query_margin{
+        margin-left: 60px !important;
     }
 }
