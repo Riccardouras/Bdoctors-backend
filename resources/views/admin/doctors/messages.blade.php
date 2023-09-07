@@ -10,7 +10,7 @@
         @endif
         <div class="row me-5 bg">
             @foreach ($messages as $message)
-                <div class="col-12 col-md-6 col-lg-3 col-xl-2 h-100">
+                <div class="col-12 col-md-6">
                     <div class="card mb-3 messandreview_bg pointer " data-bs-toggle="modal"
                         data-bs-target="#message{{ $loop->index }}">
                         <div class="card-header">

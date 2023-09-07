@@ -11,7 +11,7 @@
         </div>
         <div class="row bg">
             @foreach ($reviews as $review)
-                <div class="col-12 col-md-6 col-lg-3 col-xl-2 h-100">
+                <div class="col-12 col-md-6">
                     <div class="card mb-3 pointer messandreview_bg " data-bs-toggle="modal"
                         data-bs-target="#review{{ $loop->index }}">
                         <div class="card-header h-50">
