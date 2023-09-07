@@ -38,7 +38,7 @@
        
     </div> --}}
 
-    <div class="container margin mt-5 me-5 relative borders p-3 max_width">
+    <div class="container margin mt-5 me-5 relative borders p-3 query_margin max_width">
         <div class="elements d-flex align-items-center ">
             <div class="d-flex me-5">
                 @if ($doctor->image == null)
