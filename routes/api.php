@@ -29,8 +29,7 @@ Route::get('/doctors/{id}', [UserController::class, 'show']);
 
 Route::get('/sponsoredDoctors', [DoctorController::class, 'sponsored']);
 Route::get('/allSpecialties', [DoctorController::class, 'allSpecialties']);
-Route::get('/searchPerSpecialty', [DoctorController::class, 'searchPerSpecialty']);
-Route::get('/searchWithFilter', [DoctorController::class, 'searchWithFilter']);
+Route::get('/search', [DoctorController::class, 'search']);
 Route::get('/doctorDetails', [DoctorController::class, 'doctorDetails']);
 Route::get('/getDoctorReviews', [DoctorController::class, 'getDoctorReviews']);
 

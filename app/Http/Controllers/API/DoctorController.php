@@ -81,57 +81,7 @@ class DoctorController extends Controller
         ]);
     }
 
-    public function searchPerSpecialty(Request $request)
-    {
-
-        $specialty = $request->input('specialty');
-
-        $doctors_IDS = DoctorSpecialty::where('specialty_id', $specialty)->pluck('doctor_id')->toArray();
-
-        $doctors = [];
-
-        foreach ($doctors_IDS as $id) {
-
-            $doctor = Doctor::where('id', $id)->first();
-            $doctor_id = $doctor->id;
-
-            $doctorImage = Doctor::where('id', $id)->select('image')->first();
-            $doctorImage =  'http://localhost:8000/storage/' . $doctorImage->image;
-
-            $userID = Doctor::where('id', $id)->pluck('user_id');
-            $doctorName = User::where('id', $userID[0])->select('name')->first();
-            $doctorName = $doctorName->name;
-
-            $doctorSpecialtiesArray = $doctor->specialties()->pluck('name')->toArray();
-
-            $numberOfReviews = $doctor->reviews()->count();
-
-            $averageVote = DoctorVote::where('doctor_id', $id)->avg('vote_id');
-            $averageVote = round($averageVote, 1);
-
-            $currentDate = Carbon::now();
-            $is_sponsored = DoctorSponsor::where('doctor_id', $doctor->id)->where('end_date', '>', $currentDate)->exists();
-
-            $doctors[] = [
-                'doctorId' => $doctor_id,
-                'doctorImage' => $doctorImage,
-                'doctorName' => $doctorName,
-                'doctorSpecialtiesArray' => $doctorSpecialtiesArray,
-                'numberOfReviews' => $numberOfReviews,
-                'averageVote' => $averageVote,
-                'isSponsored' => $is_sponsored
-            ];
-        }
-
-        $response = [
-            'success' => true,
-            'results' => $doctors
-        ];
-
-        return response()->json($response);
-    }
-
-    public function searchWithFilter(Request $request)
+    public function search(Request $request)
     {
 
         $specialty = $request->input('specialty');
@@ -147,46 +97,39 @@ class DoctorController extends Controller
             $check = true;
 
             $doctor = Doctor::where('id', $id)->first();
-            $doctor_id = $doctor->id;
 
-            $doctorImage = Doctor::where('id', $id)->select('image')->first();
-            $doctorImage =  'http://localhost:8000/storage/' . $doctorImage->image;
+            $doctor->image =  'http://localhost:8000/storage/' . $doctor->image;
 
             $userID = Doctor::where('id', $id)->pluck('user_id');
-            $doctorName = User::where('id', $userID[0])->select('name')->first();
-            $doctorName = $doctorName->name;
+            $doctor->name = User::where('id', $userID[0])->pluck('name');
+            $doctor->name = $doctor->name[0];
 
-            $doctorSpecialtiesArray = $doctor->specialties()->pluck('name')->toArray();
+            $doctor->specialties= $doctor->specialties()->pluck('name')->toArray();
 
-            $numberOfReviews = $doctor->reviews()->count();
-            if ($numberOfReviews < $minNumOfReviews) {
+            $doctor-> numberOfReviews = $doctor->reviews()->count();
+            if ($doctor->numberOfReviews < $minNumOfReviews) {
                 $check = false;
             }
 
-            $averageVote = DoctorVote::where('doctor_id', $id)->avg('vote_id');
-            $averageVote = round($averageVote, 1);
-            if ($averageVote == null) {
-                $averageVote = 0;
+            $doctor->averageVote = DoctorVote::where('doctor_id', $id)->avg('vote_id');
+            $doctor->averageVote = round($doctor->averageVote, 1);
+            if ($doctor->averageVote == null) {
+                $doctor->averageVote = 0;
             }
-            if ($averageVote < $minAvgVote) {
+            if ($doctor->averageVote < $minAvgVote) {
                 $check = false;
             }
 
             $currentDate = Carbon::now();
-            $is_sponsored = DoctorSponsor::where('doctor_id', $doctor->id)->where('end_date', '>', $currentDate)->exists();
+            $doctor->sponsorCheck = DoctorSponsor::where('doctor_id', $doctor->id)->where('end_date', '>', $currentDate)->exists();
 
             if ($check) {
-                $doctors[] = [
-                    'doctorId' => $doctor_id,
-                    'doctorImage' => $doctorImage,
-                    'doctorName' => $doctorName,
-                    'doctorSpecialtiesArray' => $doctorSpecialtiesArray,
-                    'numberOfReviews' => $numberOfReviews,
-                    'averageVote' => $averageVote,
-                    'isSponsored' => $is_sponsored
-                ];
+                $doctors[] = $doctor;
             }
         }
+
+        $doctors = collect($doctors)->sortByDesc('sponsorCheck')->values()->all();
+
 
         $response = [
             'success' => true,
