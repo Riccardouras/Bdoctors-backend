@@ -8,7 +8,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <div class="card sponsorCard mt-2">
+                    <div class="card sponsorCard mt-2" style="max-width: 20rem">
                         <div class="card-body z-1 text-center">
                             <h5 class="card-title titoloCard">Hai selezionato il pacchetto: {{ $selectedPackage->hours }} ore
                             </h5>

@@ -55,9 +55,9 @@
                         <div class="card borderCard mt-2">
                             <div class="card-body text-center">
                                 @if ($loop->first)
-                                    <div class="card-title titoloCard"><h5>Sponsorizzazione attiva</h5> &#x1F911;</div>
+                                    <div class="card-title titoloCard"><h5>Sponsorizzazione attiva &#x1F911;</h5></div>
                                 @else 
-                                    <div class="card-title titoloCard">Sponsorizzazione futura &#x1F911;</div>
+                                    <div class="card-title titoloCard"><h5>Sponsorizzazione futura &#x1F911;</h5></div>
                                 @endif
                                 <div class="card-text"><strong>Data inizio:</strong> {{ date("d-m-Y H:i:s" ,strtotime($item->start_date)) }}</div>
                                 <div class="card-text"><strong>Data fine: </strong>{{ date("d-m-Y H:i:s" ,strtotime($item->end_date)) }}</div>
