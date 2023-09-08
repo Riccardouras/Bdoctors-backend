@@ -53,7 +53,7 @@ class UpdateDoctorRequest extends FormRequest
             'phone_number.max' => 'Il numero di telefono può avere masssimo 20 caratteri',
             'service.max' => 'Il campo di testo delle prestazioni può avere massimo 2000 caratteri',
             'image.max' => 'L\'immagine deve pesare massimo 5MB',
-            'curriculum.mimetypes' => 'Il curriculum deve essere in formato PDF',
+            'curriculum.mimes' => 'Il curriculum deve essere in formato PDF',
             'specialty.required' => 'Seleziona almeno una specializzazione',
             'specialty.exists' => 'C\'è stato un problema, riprova'
 
