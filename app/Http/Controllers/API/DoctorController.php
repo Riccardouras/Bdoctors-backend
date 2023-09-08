@@ -109,13 +109,17 @@ class DoctorController extends Controller
             $averageVote = DoctorVote::where('doctor_id', $id)->avg('vote_id');
             $averageVote = round($averageVote, 1);
 
+            $currentDate = Carbon::now();
+            $is_sponsored = DoctorSponsor::where('doctor_id', $doctor->id)->where('end_date', '>', $currentDate)->exists();
+
             $doctors[] = [
                 'doctorId' => $doctor_id,
                 'doctorImage' => $doctorImage,
                 'doctorName' => $doctorName,
                 'doctorSpecialtiesArray' => $doctorSpecialtiesArray,
                 'numberOfReviews' => $numberOfReviews,
-                'averageVote' => $averageVote
+                'averageVote' => $averageVote,
+                'isSponsored' => $is_sponsored
             ];
         }
 
@@ -168,6 +172,9 @@ class DoctorController extends Controller
                 $check = false;
             }
 
+            $currentDate = Carbon::now();
+            $is_sponsored = DoctorSponsor::where('doctor_id', $doctor->id)->where('end_date', '>', $currentDate)->exists();
+
             if ($check) {
                 $doctors[] = [
                     'doctorId' => $doctor_id,
@@ -175,7 +182,8 @@ class DoctorController extends Controller
                     'doctorName' => $doctorName,
                     'doctorSpecialtiesArray' => $doctorSpecialtiesArray,
                     'numberOfReviews' => $numberOfReviews,
-                    'averageVote' => $averageVote
+                    'averageVote' => $averageVote,
+                    'isSponsored' => $is_sponsored
                 ];
             }
         }
