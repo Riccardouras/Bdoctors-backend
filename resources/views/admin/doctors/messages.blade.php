@@ -1,16 +1,18 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container margin">
-        <div class="row text-center mt-5 mb-5">
+    <div class="backgroundHeader">
+        <header-section class="d-flex flex-column justify-content-center h-100">
             <h1>Messaggi ricevuti</h1>
-        </div>
-        @if (count($messages) == 0)
-            <h2>Non ci sono messaggi da visualizzare</h2>
-        @endif
-        <div class="row me-5 bg">
+            
+            @if (count($messages) == 0)
+                <h2>Non ci sono messaggi da visualizzare</h2>
+            @endif
+        </header-section>
+    </div>
+        <div class="row ps-5 pe-5 bg">
             @foreach ($messages as $message)
-                <div class="col-12 col-md-6">
+                <div class="col-xs-12 col-md-6 col-xl-4 gap-2 p-2">
                     <div class="card mb-3 messandreview_bg pointer " data-bs-toggle="modal"
                         data-bs-target="#message{{ $loop->index }}">
                         <div class="card-header">
@@ -52,5 +54,4 @@
                 </div>
             @endforeach
         </div>
-    </div>
 @endsection

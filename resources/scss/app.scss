@@ -223,32 +223,13 @@ img {
     background-color: #BDDAF2;
 }
 
-header-section {
-    position: fixed;
+
+.backgroundHeader {
     height: 20em;
     width: 100%;
-    display: flex;
-    align-items: center;
-}
-
-/* Create angled background with 'before' pseudo-element */
-header-section::before {
-    content: "";
-    display: block;
-    position: absolute;
-    // right: 2px;
-    bottom: 6em;
-    width: 100%;
-    height: 100%;
-    // margin-right: 20px;
-    z-index: -1;
-    transform: skewY(-3.5deg);
-    background:
-        linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6)),
-        url(/storage/app/public/uploads/img.jpg) no-repeat center,
-        linear-gradient(#4e4376, #2b5876);
+    background-image: url(/storage/app/public/uploads/img.jpg);
     background-size: cover;
-    border-bottom: .2em solid #fff;
+    background-repeat: no-repeat;
 }
 
 h1 {
@@ -256,8 +237,8 @@ h1 {
     font-weight: 700;
     letter-spacing: .01em;
     padding-left: 25px;
-    text-shadow: .022em .022em .022em #111;
-    color: #fff;
+    text-shadow: 0.3em 0.3em 0.3em #868282;
+    color: #2980b9;
 }
 
 
@@ -270,9 +251,6 @@ h1 {
         border-radius: 50px;
         color: rgb(255, 255, 255);
         font-weight: 600;
-        /* display: flex;
-        align-items: center;
-        justify-content: center; */
         gap: 5px;
         cursor: pointer;
         box-shadow: 1px 3px 0px rgba(189, 218, 242, 1) 0%;
@@ -294,13 +272,9 @@ h1 {
 @media screen and (max-width: 768px) {
 
     header-section {
-        position: fixed;
-        height: 20em;
-        width: 100%;
-        display: flex;
-        align-items: center;
         display: flex;
         justify-content: center;
+        align-items: center;
     }
 
     #mediaQuerySelectContainer {

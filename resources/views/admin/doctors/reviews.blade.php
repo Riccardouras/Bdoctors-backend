@@ -1,18 +1,20 @@
 @extends('layouts.admin')
 
 @section('content')
-        <header-section>
+        <div class="backgroundHeader">
+            <header-section class="d-flex flex-column justify-content-center h-100">
                 <h1>Recensioni ricevute</h1>
     
                 @if (count($reviews) == 0)
                     <h2>Non ci sono recensioni da visualizzare</h2>
                 @endif
         </header-section>
+        </div>
         
         <section> 
-            <div class="row bg">
+            <div class="row bg ps-5 pe-5">
                 @foreach ($reviews as $review)
-                    <div class="col-12 col-md-6 m-auto">
+                    <div class="col-xs-12 col-md-6 col-xl-4 gap-2 p-2">
                         <div class="card mb-3 pointer messandreview_bg " data-bs-toggle="modal"
                             data-bs-target="#review{{ $loop->index }}">
                             <div class="card-header h-50">
