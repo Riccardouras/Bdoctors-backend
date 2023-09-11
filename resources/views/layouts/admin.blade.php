@@ -28,12 +28,10 @@
 <body>
     <div id="app">
 
-        <div class="container-fluid overflow-hidden">
-            <div class="row">
                 <nav id="sidebarMenu"
                     class="col-md-3 col-lg-2 d-md-block navbar-dark sidebar collapse fixed-top h-100 bg_color">
                     <div class="position-sticky pt-3">
-                        <ul class="nav flex-column">
+                        <ul class="nav flex-column ps-2">
 
                             <li class="nav-item">
                                 <a target="_blank" class="nav-link text-white" href="/">
@@ -99,13 +97,10 @@
                     </div>
                 </nav>
 
-                <main class="col-md-9 ms-sm-auto col-lg-10 p-0">
+                <main>
                     @yield('content')
                 </main>
             </div>
-        </div>
-
-    </div>
 </body>
 
 </html>
