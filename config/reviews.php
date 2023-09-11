@@ -28,7 +28,7 @@ return [
         'name' => 'Francesco Meloni',
         'title' => 'Grande professionista',
         'content' => 'Avevo bisogno di una prescrizione immediata e il medico è stato veramente celere.',
-        'date' => '2023-02-18'
+        'date' => '2023-09-10'
     ],
     [
         'doctor_id' => '2',
@@ -42,14 +42,14 @@ return [
         'name' => 'Marco Rossi',
         'title' => 'Ottimo medico',
         'content' => 'Il dottor Bartini è davvero un ottimo medico. Consiglio le sue cure a tutti.',
-        'date' => '2023-03-02'
+        'date' => '2023-09-01'
     ],
     [
         'doctor_id' => '2',
         'name' => 'Anna Bianchi',
         'title' => 'Eccellente servizio',
         'content' => 'Sono rimasta molto soddisfatta dell\'approccio del dottor Bartino. La raccomando vivamente.',
-        'date' => '2023-03-03'
+        'date' => '2023-08-25'
     ],
     [
         'doctor_id' => '2',

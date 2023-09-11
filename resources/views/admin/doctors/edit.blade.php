@@ -3,6 +3,8 @@
 @section('content')
     <div class="container my-3 marginQuery">
 
+        <div class="col-md-9 ms-sm-auto col-lg-10 p-0 overflow-hidden">
+
         <h1>MODIFICA PROFILO</h1>
 
         <form action="{{ route('admin.doctors.update', $doctor) }}" method="POST" class="needs-valiation"
@@ -183,6 +185,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     {{-- add image preview --}}

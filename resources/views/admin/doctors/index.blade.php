@@ -19,9 +19,7 @@
                             </div>
         
                             <div>
-                                @for ($i = 1; $i <= $averageRating; $i++)
                                     <span class="rating-label fs-3">⭐</span>
-                                @endfor
                                 <strong>{{ $averageRating }}</strong>
                             </div>
         

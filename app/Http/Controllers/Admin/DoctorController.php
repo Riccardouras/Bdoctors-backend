@@ -174,7 +174,7 @@ class DoctorController extends Controller
         $doctor_id = Doctor::where('user_id', $user_id)->pluck('id')->first();
 
         //Recupero le recensioni, che hanno doctor_id uguale a quello recuperato sopra, per data in ordine decrescente
-        $reviews = Review::where('doctor_id', $doctor_id)->orderBy('id', 'desc')->get();
+        $reviews = Review::where('doctor_id', $doctor_id)->orderBy('date', 'desc')->get();
 
         //Richiamo la vista delle recensioni e passo le recensioni recuperate
         return view('admin.doctors.reviews', compact('reviews'));
@@ -192,7 +192,7 @@ class DoctorController extends Controller
         $doctor_id = Doctor::where('user_id', $user_id)->pluck('id')->first();
 
         //Recupero i messaggi, che hanno doctor_id uguale a quello recuperato sopra, per data in ordine decrescente
-        $messages = Message::where('doctor_id', $doctor_id)->orderBy('id', 'desc')->get();
+        $messages = Message::where('doctor_id', $doctor_id)->orderBy('date', 'desc')->get();
 
         //Richiamo la vista dei messaggi e passo i messaggi recuperati
         return view('admin.doctors.messages', compact('messages'));
