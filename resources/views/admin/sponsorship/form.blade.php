@@ -31,7 +31,7 @@
                     @foreach ($sponsors as $sponsor)
                         <div class="col-12 col-lg-4 d-flex justify-content-center mb-2">
                             <label for="selected_package{{ $loop->index }}">
-                                <div class="card mt-2 border-5 rounded">
+                                <div class="card mt-2 border-5">
                                     <div class="card-body z-1 text-center">
                                         <h5 class="card-title titoloCard p-2">Sponsorizza il tuo profilo per
                                             {{ $sponsor->hours }} ore </h5>
