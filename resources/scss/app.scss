@@ -225,11 +225,12 @@ img {
 
 
 .backgroundHeader {
-    height: 20em;
+    height: 15em;
     width: 100%;
     background-image: url(/images/Dottori4.jpg);
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
 }
 
 h1 {
@@ -255,6 +256,7 @@ h1 {
         cursor: pointer;
         box-shadow: 1px 3px 0px rgba(189, 218, 242, 1) 0%;
         transition-duration: .3s;
+        
 
     }
 
@@ -357,6 +359,10 @@ h1 {
     .navbar-dark.sidebar {
         display: block !important;
         width: 10% !important;
+    }
+
+    .my-table {
+    margin-left: 70px
     }
 
     a span {
