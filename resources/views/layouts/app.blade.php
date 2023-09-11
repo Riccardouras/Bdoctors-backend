@@ -20,10 +20,15 @@
     <style>
        
         #logo {
-            width: 110px;
+            width: 84px;
+            height: 84px;
         }
         nav{
-            background-color: #2980b9;
+            background-image: url('images/Dottori4.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #0b6091;
+            height: 100px;
         }
     </style>
 </head>
@@ -34,7 +39,7 @@
 
         <nav class="navbar nav-left navbar-expand-md shadow-sm">
             <div class="container">
-                <a class="navbar-brand d-flex align-items-center nav-item" href="{{ url('/') }}">
+                <a class="navbar-brand d-flex align-items-center nav-item p-0" href="{{ url('/') }}">
                     <div class="logo_laravel">
                         <img id="logo" src="{{ asset('images/LogoPiccolo.png')}}" alt="logo">
                     </div>
@@ -44,15 +49,15 @@
 
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto nav-right gap-3">
+                    <ul class="d-flex list-unstyled gap-3 m-0">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="{{ route('register') }}">{{ __('Registrati') }}</a>
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Registrati') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link text-white" href="{{ route('login') }}">{{ __('Accedi') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Accedi') }}</a>
                                 </li>
                             @endif
                         @else
