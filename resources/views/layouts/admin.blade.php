@@ -28,7 +28,7 @@
 <body>
     <div id="app">
 
-        <div class="container-fluid">
+        <div class="container-fluid overflow-hidden">
             <div class="row">
                 <nav id="sidebarMenu"
                     class="col-md-3 col-lg-2 d-md-block navbar-dark sidebar collapse fixed-top h-100 bg_color">
