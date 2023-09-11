@@ -8,17 +8,42 @@ return[
     ],
     [
         'doctor_id'=> '1',
-        'vote_id' => '1',
-        'date' => '2023-08-07'
+        'vote_id' => '5',
+        'date' => '2023-07-07'
     ],
     [
         'doctor_id'=> '1',
         'vote_id' => '5',
-        'date' => '2023-08-07'
+        'date' => '2023-07-07'
     ],
     [
         'doctor_id'=> '1',
+        'vote_id' => '1',
+        'date' => '2023-08-07'
+    ],
+    [
+        'doctor_id'=> '4',
         'vote_id' => '3',
+        'date' => '2023-08-07'
+    ],
+    [
+        'doctor_id'=> '4',
+        'vote_id' => '4',
+        'date' => '2023-07-07'
+    ],
+    [
+        'doctor_id'=> '2',
+        'vote_id' => '4',
+        'date' => '2023-07-07'
+    ],
+    [
+        'doctor_id'=> '2',
+        'vote_id' => '5',
+        'date' => '2023-07-07'
+    ],
+    [
+        'doctor_id'=> '2',
+        'vote_id' => '4',
         'date' => '2023-07-07'
     ],
     [
@@ -64,12 +89,12 @@ return[
     ],
     [
         'doctor_id'=> '14',
-        'vote_id' => '5',
+        'vote_id' => '2',
         'date' => '2023-07-07'
     ],
     [
         'doctor_id'=> '14',
-        'vote_id' => '5',
+        'vote_id' => '3',
         'date' => '2023-07-07'
     ],
     [

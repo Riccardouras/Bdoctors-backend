@@ -14,7 +14,56 @@ return [
         'name' => 'Sara Tafani',
         'title' => 'Eccellente professionista!',
         'content' => 'Il dottore è incredibilmente competente e ha risolto il mio problema in modo rapido e senza dolore. Consiglio vivamente!',
-        'date' => '2023-02-23'
+        'date' => '2023-02-12'
+    ],
+    [
+        'doctor_id' => '2',
+        'name' => 'Matteo Galoni',
+        'title' => 'Ottimo medico',
+        'content' => 'Il medico è stato molto disponibile. Consigliato.',
+        'date' => '2023-02-14'
+    ],
+    [
+        'doctor_id' => '2',
+        'name' => 'Francesco Meloni',
+        'title' => 'Grande professionista',
+        'content' => 'Avevo bisogno di una prescrizione immediata e il medico è stato veramente celere.',
+        'date' => '2023-02-18'
+    ],
+    [
+        'doctor_id' => '2',
+        'name' => 'Luca Lambiase',
+        'title' => 'Molto colpito!',
+        'content' => 'Sono rimasto molto colpito dalla sua competenza. Affidatevi a lui!!!',
+        'date' => '2023-03-01'
+    ],
+    [
+        'doctor_id' => '2',
+        'name' => 'Marco Rossi',
+        'title' => 'Ottimo medico',
+        'content' => 'Il dottor Bartini è davvero un ottimo medico. Consiglio le sue cure a tutti.',
+        'date' => '2023-03-02'
+    ],
+    [
+        'doctor_id' => '2',
+        'name' => 'Anna Bianchi',
+        'title' => 'Eccellente servizio',
+        'content' => 'Sono rimasta molto soddisfatta dell\'approccio del dottor Bartino. La raccomando vivamente.',
+        'date' => '2023-03-03'
+    ],
+    [
+        'doctor_id' => '2',
+        'name' => 'Giuseppe Verdi',
+        'title' => 'Professionista competente',
+        'content' => 'Il dottor Bartino dimostra una grande competenza nel suo campo. Ottimo medico!',
+        'date' => '2023-03-04'
+    ],
+    [
+        'doctor_id' => '2',
+        'name' => 'Paola Ferrari',
+        'title' => 'Molto gentile',
+        'content' => 'Il dott. Bartino è molto gentile e attenta alle esigenze del paziente. La consiglio.',
+        'date' => '2023-03-05'
     ],
     [
         'doctor_id' => '21',
@@ -36,6 +85,27 @@ return [
         'title' => 'Molto deluso',
         'content' => 'Mi aspettavo di più da questo medico. Non mi ha dato molta attenzione e il trattamento non ha funzionato come previsto.',
         'date' => '2023-05-22'
+    ],
+    [
+        'doctor_id' => '14',
+        'name' => 'Luigi Blu',
+        'title' => 'Incredibile!',
+        'content' => 'Il medico è stato incredibile. Ha risolto il mio problema in modo rapido e indolore. Altamente raccomandato!',
+        'date' => '2023-05-24'
+    ],
+    [
+        'doctor_id' => '14',
+        'name' => 'Luigi Blu',
+        'title' => 'Incredibile!',
+        'content' => 'Il medico è stato incredibile. Ha risolto il mio problema in modo rapido e indolore. Altamente raccomandato!',
+        'date' => '2023-05-24'
+    ],
+    [
+        'doctor_id' => '14',
+        'name' => 'Luigi Blu',
+        'title' => 'Incredibile!',
+        'content' => 'Il medico è stato incredibile. Ha risolto il mio problema in modo rapido e indolore. Altamente raccomandato!',
+        'date' => '2023-05-24'
     ],
     [
         'doctor_id' => '14',
@@ -105,6 +175,48 @@ return [
         'name' => 'Pasquale Enrico Pratticò',
         'title' => 'Molto professionale',
         'content' => 'Il medico è stato estremamente professionale. Ha ascoltato attentamente le mie preoccupazioni e ha fornito un trattamento efficace. Lo raccomando.',
+        'date' => '2023-07-25'
+    ],
+    [
+        'doctor_id' => '4',
+        'name' => 'Alfonso Alfonsini',
+        'title' => 'Molto professionale',
+        'content' => 'Il medico è stato estremamente professionale. Ha ascoltato attentamente le mie preoccupazioni e ha fornito un trattamento efficace. Lo raccomando.',
+        'date' => '2023-07-25'
+    ],
+    [
+        'doctor_id' => '4',
+        'name' => 'Paola Paoletti',
+        'title' => 'Così così',
+        'content' => 'Il medico è stato poco cordiale e non è riuscito a risolvere tutti i miei dubbi.',
+        'date' => '2023-07-25'
+    ],
+    [
+        'doctor_id' => '5',
+        'name' => 'Lorenzo Tegliucci',
+        'title' => 'Tutto ok',
+        'content' => 'La visita è andata tutta per il verso giusto.',
+        'date' => '2023-07-25'
+    ],
+    [
+        'doctor_id' => '7',
+        'name' => 'Lorenzo Lorenzini',
+        'title' => 'Eccezionale',
+        'content' => 'Il dottore durante la visita è riuscito a trovare la soluzione al mio problema in pochissimo tempo.',
+        'date' => '2023-07-25'
+    ],
+    [
+        'doctor_id' => '7',
+        'name' => 'Lorenzo Lorenzini',
+        'title' => 'Eccezionale',
+        'content' => 'Il dottore durante la visita è riuscito a trovare la soluzione al mio problema in pochissimo tempo.',
+        'date' => '2023-07-25'
+    ],
+    [
+        'doctor_id' => '7',
+        'name' => 'Francesco Franceschini',
+        'title' => 'Tutto nella norma',
+        'content' => 'Niente da dire. Tutto ok.',
         'date' => '2023-07-25'
     ],
     [
