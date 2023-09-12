@@ -16,14 +16,13 @@
                                 {{ session('msg') }}
                             </div>
                         @endif
+
+                        @if (session('err'))
+                            <div class="card alert alert-danger mt-4">
+                                {{ session('err') }}
+                            </div>
+                        @endif
                     </div>
-                </div>
-                <div class="col-12">
-                    @if (session('err'))
-                        <div class="card alert alert-danger mt-4">
-                            {{ session('err') }}
-                        </div>
-                    @endif
                 </div>
 
                 <form method="POST" enctype="multipart/form-data" action="{{ route('admin.sponsorship.payment') }}">
@@ -61,7 +60,7 @@
                 <div class="row justify-content-center">
                     @foreach ($sponsoredDoctors as $item)
                         <div class="col-12 col-lg-4 mt-2">
-                            <div class="card mt-2">
+                            <div class="card my-2">
                                 <div class="card-body text-center">
                                     @if ($loop->first)
                                         <div class="card-title titoloCard">
