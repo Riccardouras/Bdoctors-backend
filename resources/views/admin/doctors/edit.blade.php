@@ -5,7 +5,7 @@
 
         <div class="col-md-9 ms-sm-auto col-lg-10 p-0 overflow-hidden">
 
-        <h1>MODIFICA PROFILO</h1>
+        <h1>Modifica Profilo</h1>
 
         <form action="{{ route('admin.doctors.update', $doctor) }}" method="POST" class="needs-valiation"
             enctype="multipart/form-data">
