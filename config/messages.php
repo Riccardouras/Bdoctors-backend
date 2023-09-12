@@ -68,7 +68,7 @@ return [
         'text' => 'Buonasera, sto cercando di prenotare un appuntamento per la prossima settimana. Si prega di rispondere alla mia email.',
         'full_name' => 'Antonio Russo',
         'mail' => 'antoniorusso@gmail.com',
-        'date' => '2023-10-12',
+        'date' => '2023-08-12',
         'doctor_id' => '2',
     ],
     [
