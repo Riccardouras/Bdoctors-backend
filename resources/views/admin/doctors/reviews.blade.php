@@ -4,7 +4,7 @@
     <div class="col-md-9 ms-sm-auto col-lg-10 p-0 overflow-hidden">
         <div class="backgroundHeader">
             <header-section class="d-flex flex-column justify-content-center h-100">
-                <h1>Recensioni ricevuti</h1>
+                <h1>Recensioni ricevute</h1>
             </header-section>
         </div>
 
