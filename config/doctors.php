@@ -68,7 +68,7 @@ return [
             'image'=>'uploads/medico6.jpg',
             'curriculum'=>'uploads/cvmedico.pdf',
             'phone_number'=>'3115648123',
-            'specialties' => ['7'],
+            'specialties' => ['2','7'],
             'service' => 'Intervento chirurgico cavità addominale dei bambini'
         ],
         [
@@ -108,7 +108,7 @@ return [
             'image'=>'uploads/medico7.jpg',
             'curriculum'=>'uploads/cvmedico.pdf',
             'phone_number'=>'3333333333',
-            'specialties' => ['11'],
+            'specialties' => ['2','11'],
             'service' => 'Visita di controllo'
         ],
         [
@@ -138,7 +138,7 @@ return [
             'image'=>'uploads/medico10.jpg',
             'curriculum'=>'uploads/cvmedico.pdf',
             'phone_number'=>'3891790189',
-            'specialties' => ['14'],
+            'specialties' => ['2','14'],
             'service' => 'Visita di controllo'
         ],
         [

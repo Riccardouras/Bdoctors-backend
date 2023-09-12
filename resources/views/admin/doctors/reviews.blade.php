@@ -39,11 +39,10 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <div>
-                                                    <h1 class="modal-title fs-5" id="messageLabel{{ $loop->index }}">
-                                                        {{ $review->name }}
-                                                    </h1>
-                                                    <h5><a href="mailto:{{ $review->title }}">{{ $review->title }}</a>
-                                                    </h5>
+                                                    <h3 class="modal-title" id="messageLabel{{ $loop->index }}">
+                                                        {{ $review->title }}
+                                                    </h3>
+                                                    <h5>{{ $review->name }}</h5>
                                                 </div>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
@@ -53,7 +52,7 @@
                                                 <p>{{ $review->comment }}</p>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn_close" data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn_close" data-bs-dismiss="modal">Chiudi</button>
                                             </div>
                                         </div>
                                     </div>

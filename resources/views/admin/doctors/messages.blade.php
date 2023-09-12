@@ -53,7 +53,7 @@
                                                 <p>{{ $message->text }}</p>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn_close" data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn_close" data-bs-dismiss="modal">Chiudi</button>
                                             </div>
                                         </div>
                                     </div>
